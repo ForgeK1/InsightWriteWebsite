@@ -1,4 +1,4 @@
-## Name: <ins> Group 7: Tony Lau, Hoang Le, Miguel Gonzalez Torres, Keyvan Mahmoodzadeh Kani, Hayk Vardapetyan, Jian Verdad, Will May</ins>
+## Name: Group 7: Tony Lau, Hoang Le, Miguel Gonzalez Torres, Keyvan Mahmoodzadeh Kani, Hayk Vardapetyan, Jian Verdad, Will May
 
 # Project Name: 
 
