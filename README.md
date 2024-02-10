@@ -6,7 +6,7 @@
 
 ## Features:
 
-- Not Implemented:
+- <strong>Not Implemented:</strong>
 
 <br><br>
 
