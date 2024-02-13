@@ -1,4 +1,4 @@
-## Name: Group 7: Tony Lau, Hoang Le, Miguel Gonzalez Torres, Keyvan Mahmoodzadeh Kani, Hayk Vardapetyan, Jian Verdad, Will May
+## Name: Group 7: Tony Lau, Hoang Le, Miguel Gonzalez Torres, Keyvan Mahmoodzadeh Kani, Hayk Vardapetyan, Jian Verdad, Will May, Niyusha Zarnegar
 
 # Project Name: Pending..TBA
 
@@ -7,7 +7,7 @@
 - Insipirations:
     - Onenote
     - Medito
-    - Reflectly <u>(SCAM LIKELY)</u>
+    - Reflectly 
 
 
 ## Features:
