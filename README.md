@@ -2,7 +2,7 @@
 
 # Webpage URL: https://zarbar.net
 
-# Project Name: Pending..TBA
+# Project Name: Insight Write
 
 # **Journaling with Data Analysis Website**
 
