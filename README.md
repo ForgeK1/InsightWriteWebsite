@@ -1,6 +1,6 @@
 ## Name: Group 7: Tony Lau, Hoang Le, Miguel Gonzalez Torres, Keyvan Mahmoodzadeh Kani, Hayk Vardapetyan, Jian Verdad, Will May, Niyusha Zarnegar
 
-# Webpage URL: https://csula-cs3337swe.github.io/202401Group7-repo/
+# Webpage URL: https://zarbar.net
 
 # Project Name: Pending..TBA
 
