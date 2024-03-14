@@ -72,6 +72,10 @@ docker run -it --rm -v sqlite:/sqlite django-docker-template:master python manag
 ```console
 docker run -it --rm -p 8000:8000 -v sqlite:/sqlite -v $(pwd)/website:/usr/src/website django-docker-template:master python manage.py runserver 0.0.0.0:8000
 ```
+Above is for Linux. If using Windows, replace (pwd) with {pwd}.
+```console
+docker run -it --rm -p 8000:8000 -v sqlite:/sqlite -v ${pwd}/website:/usr/src/website django-docker-template:master python manage.py runserver 0.0.0.0:8000
+```
 
 Now you can go to http://127.0.0.1:8000/admin/ in your browser. Go to the Django admin panel and try updating the server code "on the fly." Everything works just like if you were running the Django development server outside the container.
 
