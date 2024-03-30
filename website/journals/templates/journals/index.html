@@ -21,5 +21,129 @@
 
   <!-- Link Bootstrap JavaScript (optional) -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+
+    header {
+        text-align: center;
+        padding: 20px;
+        background-color: turquoise;
+        color: black;
+    }
+
+    main {
+        max-width: 800px;
+        margin: 0 auto;
+        display: flex; /* Use flexbox for layout */
+        justify-content: space-between; /* Space elements evenly */
+        align-items: flex-start; /* Align items at the start */
+    }
+
+    h2 {
+        color: #333;
+    }
+
+    .img-be {
+        width: 200px;
+    }
+
+    .entry {
+        margin-bottom: 20px;
+        border: 1px solid #ddd; /* Border for entire entry */
+        padding: 10px;
+    }
+
+    .entry h3 {
+        margin-top: 0; /* Remove default margin for h3 */
+    }
+
+    .entry-controls {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px; /* Add margin to space out controls */
+    }
+</style>
+
+<header>
+    <h1>Share Your Thoughts</h1>
+</header>
+
+<main>
+    <div>
+        <h2>Journal Entries</h2>
+
+        <img class="img-be" src="img/bekindtourmind.jpg" alt="quote">
+    
+        <img class="img-be" src="img/note.jpg" alt="note">
+
+        <!-- Entry Template -->
+        <template id="entry-template">
+            <div class="entry">
+                <h3><input type="text" placeholder="Entry Title"></h3>
+                <textarea placeholder="Write your thoughts and experiences here..."></textarea>
+                <p>Date: <input type="text" placeholder="Date"></p>
+                <div class="entry-controls">
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn">Delete</button>
+                </div>
+            </div>
+        </template>
+        <!-- Entries Container -->
+        <div id="entries-container">
+            <!-- Existing Entries will be appended here -->
+        </div>
+        <button onclick="addEntry()">Add Entry</button>
+    </div>
+
+    <img class="img-be" src="img/calendar.jpg" alt="calendar"> <!-- Move calendar image outside main container -->
+</main>
+
+<script>
+    // Function to add a new entry
+    function addEntry() {
+        // Get the entry template
+        var template = document.getElementById("entry-template");
+        // Clone the template content
+        var newEntry = template.content.cloneNode(true);
+        // Append the new entry to the entries container
+        document.getElementById("entries-container").appendChild(newEntry);
+    }
+
+    // Event delegation for edit and delete buttons
+    document.getElementById("entries-container").addEventListener("click", function(event) {
+        var target = event.target;
+        if (target.classList.contains("edit-btn")) {
+            // Handle edit button click
+            var entry = target.closest(".entry");
+            var title = entry.querySelector("h3 input").value;
+            var content = entry.querySelector("textarea").value;
+            var date = entry.querySelector("p input").value;
+            // Implement your edit logic here
+        } else if (target.classList.contains("delete-btn")) {
+            // Handle delete button click
+            var entry = target.closest(".entry");
+            entry.remove();
+        }
+    });
+
+    // Function to display image when URL is entered
+    document.getElementById("entries-container").addEventListener("input", function(event) {
+        var target = event.target;
+        if (target.tagName === "INPUT" && target.type === "text" && target.placeholder === "Image URL") {
+            var entry = target.closest(".entry");
+            var imageUrl = target.value;
+            var image = entry.querySelector(".entry-image");
+            image.src = imageUrl;
+        }
+    });
+</script>
+
+
+
+
 </body>
 </html>
