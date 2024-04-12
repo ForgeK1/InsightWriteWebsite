@@ -5,7 +5,7 @@ from django.views import generic
 from django.utils import timezone
 from .models import Journal
 
-
+from django.views.generic import TemplateView
 
 # Journal views
 class IndexView(generic.ListView):
@@ -16,3 +16,5 @@ class IndexView(generic.ListView):
 class DetailView(generic.DetailView):
     template_name = 'journals/detail.html'
 
+class JournalEntriesView(TemplateView):
+    template_name = 'journals/Journal Entries.html'
