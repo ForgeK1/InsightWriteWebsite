@@ -6,6 +6,10 @@
 
 
     <title>Insight Write</title>
+
+    <!-- Load the static template tag library -->
+    {% load static %}
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -71,11 +75,9 @@
         <div>
             <h2>Journal Entries</h2>
 
-
-            <img class="img-be" src="img/bekindtourmind.jpg" alt="quote">
+            <img class="img-be" src="{% static 'img/bekindtourmind.jpg' %}" alt="quote">
        
-            <img class="img-be" src="img/note.jpg" alt="note">
-
+            <img class="img-be" src="{% static 'img/note.jpg' %}" alt="note">
 
             <!-- Entry Template -->
             <template id="entry-template">
@@ -97,7 +99,7 @@
         </div>
 
 
-        <img class="img-be" src="img/calendar.jpg" alt="calendar"> <!-- Move calendar image outside main container -->
+        <img class="img-be" src="{% static 'img/calendar.jpg' %}" alt="calendar"> <!-- Move calendar image outside main container -->
     </main>
 
 
@@ -141,12 +143,7 @@
                 image.src = imageUrl;
             }
         });
+
     </script>
-
-
-
-
-
-
 </body>
 </html>

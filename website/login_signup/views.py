@@ -8,6 +8,10 @@ from .models import LoginForm
 from django.contrib.auth import authenticate
 from django.contrib.auth import login
 
+from django.shortcuts import render
+
+
+
 # Login_signup views
 
 class LoginIndexView(FormView):
@@ -39,5 +43,8 @@ class LoginDetailView(generic.DetailView):
         if user is not None:
             login(self.request, user)
         return super().form_valid(form)
+    
+def signup(request):
+    return render(request, 'login_signup/Sign-up.html')
 
 

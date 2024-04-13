@@ -33,15 +33,18 @@
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 350px;
 }
 
 h2 {
     text-align: center;
+    font-weight: bold;
+    font-size: xx-large;
 }
 
 .input-group {
     margin-bottom: 15px;
+    width: 325px;
 }
 
 .input-group label {
@@ -56,7 +59,7 @@ h2 {
     border: 1px solid #ccc;
     margin-right: 20px;
 }
-
+/** submit button for login***/
 button {
     width: 100%;
     padding: 10px;
@@ -69,6 +72,10 @@ button {
 
 button:hover {
     background-color: #0056b3;
+}
+
+.signup-link {
+    margin-top: 10px; /* Adjust spacing as needed */
 }
 </style>
 <body>
@@ -87,12 +94,14 @@ button:hover {
             <label for="username">Username</label>
             <input type="text" id="username" name="username" required>
         </div>
+
         <div class="input-group">
             <label for="password">Password</label>
             <input type="password" id="password" name="password" required>
         </div>
+
         <button type="submit">Login</button>
-        <p>Don't have an account? <a href="Sign-up.html">Sign-up here</a></p>
+        <p class="signup-link">Don't have an account? <a href="{% url 'login_signup:signup' %}">Sign-up here</a></p>
     </form>
 </div>
 
