@@ -1,3 +1,5 @@
+<!-- MEDITTIONS/INDEX>HTML-->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,68 +12,99 @@
   
     <!-- Link to Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <link rel="stylesheet" href="../style/solution.css">
+  
+  <link rel="stylesheet" href="../style/style.css">
 </head>
 
 <body>
 
 
-  <!-- Title -->
+  <!-- Header/Title -->
   <section id="title" class="gradient-background">
 
     <div class="container col-xxl-8 px-4 pt-5">
       <div class="row flex-lg-row-reverse align-items-center g-5 pt-5">
         <div class="col-10 col-sm-8 col-lg-6">
-          <img src="./images/iphone.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" height="200"
-            loading="lazy">
+            <header>
+              <h2 class="InsightWrite">Insight Write</h2>
+              <nav class="navigation">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Services</a>
+                <a href="#">Contact</a>
+              </nav>
+            </header>
         </div>
         <div class="col-lg-6">
           <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Find Your Insightful Meditations</h1>
-
-        
-
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Features -->
-  <section id="features">
-    <div class="container mt-5">
-      <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-        <div class="col d-flex align-items-start">
-          <div>
-            <h3 class="fs-2">Find What You Need</h3>
-            <p>Let us recommend our source of meditative content.</p>
-
-          </div>
+<!-- Features -->
+<section id="features">
+  <div class="container mt-5">
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+      <div class="col d-flex flex-column align-items-center justify-content-center">
+        <div class="feature-icon">
+          <i class="fas fa-search fa-3x"></i>
         </div>
-        <div class="col d-flex align-items-start">
-          <div>
-            <h3 class="fs-2">Improve Your Well-being</h3>
-            <p>Enhance your mental, emotional, and physical well-being with our curated content.</p>
-
-          </div>
+        <h3 class="fs-2">Find What You Need</h3>
+        <p>Let us recommend our source of mindful content.</p>
+      </div>
+      <div class="col d-flex flex-column align-items-center justify-content-center">
+        <div class="feature-icon">
+          <i class="fas fa-heart fa-3x"></i>
         </div>
-        <div class="col d-flex align-items-start">
-          <div>
-            <h3 class="fs-2">Anytime, Anywhere</h3>
-            <p>Access our content anytime on any device.</p>
-
-          </div>
+        <h3 class="fs-2">Improve Your Well-being</h3>
+        <p>Enhance your mental, emotional, and physical well-being with our curated content.</p>
+      </div>
+      <div class="col d-flex flex-column align-items-center justify-content-center">
+        <div class="feature-icon">
+          <i class="fas fa-mobile-alt fa-3x"></i>
         </div>
+        <h3 class="fs-2">Anytime, Anywhere</h3>
+        <p>Access our content anytime on any device.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Youtube Video -->
+
+
+  <!-- Youtube Video Section/ Playlists -->
   <section id="playlist-video" class="videos flex-center">
     <div class="my-5">
       <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
-<div class="elfsight-app-ad4d35c1-85e7-4da1-ba78-f22865e2cea7" data-elfsight-app-lazy></div>
+      <div class="elfsight-app-ad4d35c1-85e7-4da1-ba78-f22865e2cea7" data-elfsight-app-lazy></div>
     </div>
   </section>
+
+  <!-- Journaling Tips -->
+  <section id="journaling" class="py-5">
+  </section>
+
+  <!-- Mindfulness Tips -->
+<section id="mindfulness-tips" class="py-5">
+  <div class="container">
+    <h2 class="text-center">Mindfulness Tips</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h3>Stay Present Throughout the Day</h3>
+        <p>Try these tips to incorporate mindfulness into your daily life:</p>
+        <ul>
+          <li>Take a few moments to focus on your breath whenever you feel stressed or overwhelmed.</li>
+          <li>Practice mindful eating by paying attention to the taste, texture, and aroma of your food.</li>
+          <li>Engage fully in each activity you do, whether it's washing dishes, walking, or talking to a friend.</li>
+          <li>Set aside time for regular meditation practice to strengthen your mindfulness muscle.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 
   <!-- Footer -->
@@ -92,6 +125,8 @@
               <i class="fab fa-twitter"></i>Twitter</a></li>
             <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">
               <i class="fab fa-facebook"></i>Facebook</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">
+                <i class="fab fa-youtube"></i>Youtube</a></li>
         </div>
 
         <div class="col mb-5">
@@ -111,6 +146,37 @@
 </html>
 
 <style>
+  header{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 0;
+
+    }
+
+    .InsightWrite{
+        font-size: 2em;
+        color: #2a2a28;
+        user-select: none;
+        font-weight: bold;
+    }
+    /** nav bar ***/
+    .navigation a{
+        position: static;
+        font-size: 1.1em;
+        color: #2a2a28;
+        text-decoration: none;
+        font-weight: 500;
+        margin-left: 40px;
+    }
+
+
+
   .footer-flex {
   display: flex;
   justify-content: space-between;
@@ -167,9 +233,31 @@
   flex-wrap: wrap;
 }
 
+
 .features p {
   font-size: 1.25rem;
   align-items: center;
 }
+
+.feature-icon {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #2B4F60, #BDC7C9, #EAD3CB, #845460);
+  background-size: 300% 300%;
+  animation: gradient-animation 18s ease infinite;
+}
+
+.feature-icon i {
+  color: white; /* Set icon color to white */
+}
+
+.feature-icon:hover {
+  background-position: 100% 0; /* Adjust gradient position on hover */
+}
+
 
 </style>
