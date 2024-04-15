@@ -1,4 +1,4 @@
-//this is java script back end for login_signup page
+//this is Java Script back end file for login_signup page
 const wrapper = document.querySelector('.wrapper');
 const loginLink = document.querySelector('.login-link');
 const registerLink = document.querySelector('.register-link');
