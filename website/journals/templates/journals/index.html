@@ -9,7 +9,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="dashboard" content="width=device-width, initial-scale=1.0">
-  <title>Insight Write Journal Webpage</title>
+  <title> Dashboard</title>
   <!-- Link CSS -->
   <link href="../../../journals/templates/style/style.css" rel="stylesheet">
   
@@ -236,16 +236,17 @@
         <!-- Settings dropdown button -->
         <div class="dropdown ms-auto">
             <a class="navbar-brand ms-auto align-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <ion-icon name="settings" style="font-size: 24px; color: #000; margin-top: 5px;"></ion-icon>
+                <ion-icon name="person-circle" style="font-size: 30px; color: #282828; margin-top: 5px;"></ion-icon>
             </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">User Profile</a></li>
-                        <li><a class="dropdown-item" href="#">Account Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Notifications</a></li>
+                        <li style="display: flex; align-items: center;"><a class="dropdown-item" href="#"><ion-icon name="person" style="margin-right: 20px;"></ion-icon>User Profile</a></li>
+                        <li style="display: flex; align-items: center;"><a class="dropdown-item" href="#"><ion-icon name="settings" style="margin-right: 20px;"></ion-icon>Settings</a></li>
+                        <li style="display: flex; align-items: center;"><a class="dropdown-item" href="#"><ion-icon name="notifications" style="margin-right: 20px;"></ion-icon>Notifications</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{% url 'login_signup:index' %}">Logout</a></li>
+                        <li style="display: flex; align-items: center;"><a class="dropdown-item" href="{% url 'login_signup:index' %}"><ion-icon name="log-out" style="margin-right: 20px;"></ion-icon>Logout</a></li>
                     </ul>
         </div>
+        
 
         </div>
     </nav>
