@@ -185,7 +185,10 @@
 </head>
 
 <body class="container">
+{% load socialaccount %}
+
 <div class="container-fluid">
+
     <nav class="navbar navbar-expand-md navbar-light" style="background-color: #cab79f;">
         <!-- Insight Write button and Icon -->
         <a class="navbar-brand" href="#">
@@ -243,7 +246,7 @@
                         <li style="display: flex; align-items: center;"><a class="dropdown-item" href="#"><ion-icon name="settings" style="margin-right: 20px;"></ion-icon>Settings</a></li>
                         <li style="display: flex; align-items: center;"><a class="dropdown-item" href="#"><ion-icon name="notifications" style="margin-right: 20px;"></ion-icon>Notifications</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li style="display: flex; align-items: center;"><a class="dropdown-item" href="{% url 'login_signup:index' %}"><ion-icon name="log-out" style="margin-right: 20px;"></ion-icon>Logout</a></li>
+                        <li><a class="dropdown-item" href="{% url 'login_signup:index' %}">Logout</a></li>
                     </ul>
         </div>
         
@@ -254,7 +257,7 @@
     <!-- banner section -->
     <section id="hero" class="d-flex aligh-items-center">
         <div class="container text-center">
-        <h1>Welcome to Insight Write</h1>
+        <h1>Welcome to Insight Write, {{ request.user.username|capfirst}} </h1>
         <h2>A custom journaling website to start your journey of self-discovery</h2>
         <a href="/journals/journal-entries/" class="btn_get_started">Get Started</a>
         </div>

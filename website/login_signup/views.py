@@ -6,13 +6,17 @@ from django.utils import timezone
 from django.views.generic.edit import FormView
 from .models import LoginForm
 from django.contrib.auth import authenticate
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 
 
 # Login_signup views
+
+def home(request):
+    return render(request, "index.html")
+
 
 class LoginIndexView(FormView):
     template_name = 'login_signup/index.html'

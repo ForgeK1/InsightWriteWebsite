@@ -349,6 +349,8 @@
 
 <body>
   <!-- new login visual -->
+  {% load socialaccount %}
+
   <header>
   <h2 class="InsightWrite">Insight Write</h2>
   <nav class="navigation">
@@ -388,6 +390,7 @@
             <div class="login-register">
                 <p style="color: #D5D8DC;">Don't have an account? <a href="#" 
                     class="register-link">Sign-Up</a></p>
+                <a href="{% provider_login_url 'google' %}?next=/journals">Login With Google</a>
             </div>
 
             <button type="submit" class="btn1">

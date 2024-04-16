@@ -24,6 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 INSECURE_KEY = 'django-insecure-0eikswwglid=ukts4l2_b=676m!-q_%154%2z@&l3)n6)cp3#c'
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', INSECURE_KEY)
 
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = is_true(os.getenv('DJANGO_DEBUG', 'true'))
 
@@ -40,6 +41,7 @@ if DEBUG:
 
 # Application definition
 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -51,7 +53,13 @@ INSTALLED_APPS = [
     'journals',
     'login_signup',
     'meditations',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google'
+
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -61,6 +69,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = 'website.urls'
@@ -247,3 +256,33 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'polls', 'static'),
 ]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+]
+
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            # I posted the client id and secret in discord resources paste them here. as a string 
+            'client_id': '',
+            'secret': '',
+
+            # ignore this
+            'key': ''
+        }
+    }
+}
+
+SOCIALACCOUNT_LOGIN_ON_GET = True
+ACCOUNT_LOGOUT_ON_GET = True
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_EMAIL_REQUIRED = True
+
