@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf.urls.static import static
 from django.conf import settings
+from login_signup import views
 
 # All webpage paths for Insight Write
 urlpatterns = [
@@ -25,7 +26,10 @@ urlpatterns = [
     path('polls/', include('polls.urls')),
     path('journals/', include('journals.urls')),
     path('login_signup/', include('login_signup.urls')),
-    path('meditations/', include('meditations.urls'))
+    path('meditations/', include('meditations.urls')),
+    path('accounts/', include('allauth.urls')),
+    
+    
 ]
 
 # Serve media files from MEDIA_ROOT. It will only work when DEBUG=True is set.
