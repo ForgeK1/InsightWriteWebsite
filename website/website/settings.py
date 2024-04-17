@@ -244,17 +244,15 @@ LOGGING = {
     },
 }
 
-# 
-STATIC_URL = '/static/'
-#
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-]
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
 
+# Define the directories where Django will look for static files.
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'polls', 'static'),
+    BASE_DIR / 'static',  # Include the base static directory
+    os.path.join(BASE_DIR, 'website', 'polls', 'static', 'polls'),  # Include the static directory for the polls app
 ]
 
 AUTHENTICATION_BACKENDS = [
