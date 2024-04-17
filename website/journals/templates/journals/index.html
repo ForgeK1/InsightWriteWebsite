@@ -26,162 +26,8 @@
 
 </head>
 <body>
-  
+
   <!-- Content here -->
-  <style>
-    body {
-        left: 0;
-        right: 0;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100%;
-    }
-
-    a{
-        text-decoration: none;
-    }
-
-    a:hover{
-        text-decoration: none;
-    }
-
-    section{
-        padding: 60px 0;
-        overflow: hidden;
-    }
-
-    /** Banner css ***/
-    #hero{
-        width: 100%;
-        height: 100vh;
-        background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/static/img/photo2.jpg');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        
-    }
-
-    #hero .container{
-        padding-top: 80px;
-    }
-
-    #hero h1{
-        font-size: 48px;
-        font-weight: 700;
-        font-family: 'Raleway', sans-serif;
-        line-height: 56px;
-        margin: 0 0 10px 0;
-        color: #fff;
-
-
-    }
-
-    #hero h2{
-        color: #eee;
-        margin-bottom: 40px;
-        font-size: 15px;
-        font-weight: 400;
-        font-family: 'Open Sans', sans-serif;
-        letter-spacing: 0.5px;
-        text-transform: uppercase;
-
-    }
-
-    #hero .btn_get_started{
-        font-family: 'Poppins', sans-serif;
-        text-transform: uppercase;
-        font-weight: 500;
-        font-size: 14px;
-        letter-spacing: 1px;
-        display: inline-block;
-        padding: 8px 28px;
-        border-radius: 50px;
-        margin: 15x;
-        border: 2px solid #fff;
-        background-color: transparent;
-        color: #fff;
-        transition: 0.6s all;
-    }
-
-    #hero .btn_get_started:hover{
-        background: #009970;
-        border: 2px solid #009970;
-    }
-
-   
-    /** Nav bar css ***/
-    .navbar {
-        width: 100%;
-        margin-bottom: 10px; /* Add margin to separate from the content */
-        padding: 5px; /* Add padding for better spacing */
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        font-size: 1.1em;
-        color: #2a2a28;
-        text-decoration: none;
-        font-weight: 500;
-        
-    }
-
-    /* Journal icon */
-    .navbar-brand svg {
-    width: 1.75rem; /* Adjust the size of the icon */
-    height: auto;
-    margin-right: 1px; /* Add some spacing between the icon and text */
-    margin-bottom: 2px;
-    }
-
-    textarea {
-    resize: both; /* Allow vertical resizing only */
-    }
-   
-    .navbar-brand strong {
-    font-weight: bold;
-    }
-    
-
-    /* Style for the bottom typing sentence */
-    .fill {
-    font-family: 'Courier New', monospace;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 10px;
-    text-align: center;
-    box-shadow: 0px -1px 5px rgba(0, 0, 0, 0.1);
-    background-color: #cab79f; /* Background color outside the animation */
-    }
-     /* typing animation */
-    .fill-text {
-    margin-top: 15px;
-    display: inline-block;
-    border-right: 5px solid;
-    white-space: nowrap;
-    overflow: hidden;
-    animation: typing 3s steps(24), cursor .4s step-end infinite alternate;
-    }
-
-    @keyframes cursor {
-        50% { border-color: transparent; }
-    }
-
-    @keyframes typing {
-        from { width: 0; }
-        to { width: 100%; }
-    }
-
-   
-
-    h2 {
-        color: #333;
-    }
-
-    
-</style>
-
 </head>
 
 <body class="container">
@@ -268,7 +114,159 @@
         <h1><span class="fill-text">Fill your paper with the breathings of your heart.</span></h1>
     </div>
     
+    <style>
+        body {
+            left: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
     
+        a{
+            text-decoration: none;
+        }
+    
+        a:hover{
+            text-decoration: none;
+        }
+    
+        section{
+            padding: 60px 0;
+            overflow: hidden;
+        }
+    
+        /** Banner css ***/
+        #hero{
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/static/img/photo2.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            
+        }
+    
+        #hero .container{
+            padding-top: 80px;
+        }
+    
+        #hero h1{
+            font-size: 48px;
+            font-weight: 700;
+            font-family: 'Raleway', sans-serif;
+            line-height: 56px;
+            margin: 0 0 10px 0;
+            color: #fff;
+    
+    
+        }
+    
+        #hero h2{
+            color: #eee;
+            margin-bottom: 40px;
+            font-size: 15px;
+            font-weight: 400;
+            font-family: 'Open Sans', sans-serif;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+    
+        }
+    
+        #hero .btn_get_started{
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 1px;
+            display: inline-block;
+            padding: 8px 28px;
+            border-radius: 50px;
+            margin: 15x;
+            border: 2px solid #fff;
+            background-color: transparent;
+            color: #fff;
+            transition: 0.6s all;
+        }
+    
+        #hero .btn_get_started:hover{
+            background: #009970;
+            border: 2px solid #009970;
+        }
+    
+       
+        /** Nav bar css ***/
+        .navbar {
+            width: 100%;
+            margin-bottom: 10px; /* Add margin to separate from the content */
+            padding: 5px; /* Add padding for better spacing */
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            font-size: 1.1em;
+            color: #2a2a28;
+            text-decoration: none;
+            font-weight: 500;
+            
+        }
+    
+        /* Journal icon */
+        .navbar-brand svg {
+        width: 1.75rem; /* Adjust the size of the icon */
+        height: auto;
+        margin-right: 1px; /* Add some spacing between the icon and text */
+        margin-bottom: 2px;
+        }
+    
+        textarea {
+        resize: both; /* Allow vertical resizing only */
+        }
+       
+        .navbar-brand strong {
+        font-weight: bold;
+        }
+        
+    
+        /* Style for the bottom typing sentence */
+        .fill {
+        font-family: 'Courier New', monospace;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+        box-shadow: 0px -1px 5px rgba(0, 0, 0, 0.1);
+        background-color: #cab79f; /* Background color outside the animation */
+        }
+         /* typing animation */
+        .fill-text {
+        margin-top: 15px;
+        display: inline-block;
+        border-right: 5px solid;
+        white-space: nowrap;
+        overflow: hidden;
+        animation: typing 3s steps(24), cursor .4s step-end infinite alternate;
+        }
+    
+        @keyframes cursor {
+            50% { border-color: transparent; }
+        }
+    
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+    
+       
+    
+        h2 {
+            color: #333;
+        }
+    
+        
+    </style>    
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
