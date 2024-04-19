@@ -14,4 +14,7 @@ urlpatterns = [
     #configure the URL pattern for the /custom_logout_page
     path('custom_login_redirect/', CustomLoginRedirectView.as_view(), name='custom_login_redirect'),
 
+        #configure the URL pattern for the calendar entries page
+    path('calendar/', views.CalendarView.as_view(), name='calendar'),
+
 ]

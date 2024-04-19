@@ -1,0 +1,176 @@
+/* Calendar css styles in the journal entries */
+.calendar .header {
+    background-color: transparent; /* Remove or set to transparent */
+    margin-bottom: 5px; /* Adjust margin */
+
+  }
+  
+  .calendar #monthYear {
+    margin: auto;
+    font-size: 1.1em;
+    color: #333;
+  }
+  
+
+.today {
+    background-color: #76A5E3;
+    /* Darker color for today */
+    color: #fff;
+    /* White text color */
+  }
+  
+  
+  .calendar {
+    height: 245px;
+    max-width: 300px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    position: absolute;
+    left: 0;
+    top: 0%
+  }
+
+
+  
+  .days {
+    display: flex;
+  }
+  
+  .day {
+    flex: 1;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .dates {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .date {
+    flex: 1;
+    text-align: center;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .date:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* styles.css */
+  
+  .calendar .active {
+    cursor: move;
+    user-select: none;
+  }
+  
+  /* Calendar container */
+  .calendar {
+    max-width: 420px;
+    /* Increased width */
+    margin: 20px auto;
+    /* Added some margin */
+    font-family: Arial, sans-serif;
+    border-radius: 10px;
+    background-color: #f0f7fc;
+    /* Light blue background */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Added shadow for depth */
+    padding: 20px;
+    /* Added padding for spacing */
+    position: absolute;
+    /* Changed to absolute */
+    left: 0;
+    /* Added left position */
+    top: 0;
+    /* Added top position */
+  }
+  
+  /* Header */
+  .header {
+    margin-bottom: 5px; /* Adjust margin */
+  }
+  
+  /* Month/Year display */
+  #monthYear {
+    margin: auto;
+    font-size: 1.1em;
+    /* Increased font size */
+    color: #333;
+    /* Dark text color */
+  
+  }
+  .navigation {
+  display: flex;
+  align-items: center;
+  }
+  
+  #nextMonth{
+  width: 30px;
+  height: 25px;
+  align-items: center;
+  }
+  
+  #prevMonth{
+  width: 30px;
+  height: 25px;
+  align-items: center;
+  }
+  
+  #prevMonth,
+  #nextMonth {
+  
+  background-color: #4a90e2;
+  color: #fff;
+  border: none;
+  padding: 5px 9px; /* Adjust padding to make the buttons smaller */
+  
+  border-radius: 3px; /* Adjust border radius if needed */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 8px; /* Add margin for spacing between buttons */
+  }
+  
+  #prevMonth:hover,
+  #nextMonth:hover {
+  background-color: #357bd8;
+  }
+  
+  /* Days of the week */
+  .days {
+     /*display: flex;*/
+     display: none;
+ 
+  }
+  
+  .day {
+    flex: 1;
+    text-align: center;
+    font-weight: bold;
+    color: #666;
+    font-size: x-small;
+    /* Dark gray text */
+  }
+  
+  /* Dates container */
+  .dates {
+    display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Adjust the number of columns */
+  gap: 5px; /* Adjust gap */
+  }
+  
+  /* Individual dates */
+  .date {
+    text-align: center;
+  padding: 5px;
+  font-size: 12px; /* Adjust font size */
+  }
+  
+  .date:hover {
+    background-color: #dff0ff;
+    /* Light blue on hover */
+  }

@@ -15,21 +15,54 @@
   <title>Journal Entries</title>
 </head>
 
+
+
 <body>
 
   <div class="container">
     <header class="header" style="--header-background: url('{% static 'img/banner1.jpg' %}')">
+
+      <header>
+        <link rel="stylesheet" type="text/css" href="{% static 'polls/jncal-styles.css' %}">
+      </header>
+
+      <div class="calendar" style="margin-right: 45%;">
+        <div class="header1">
+          <div class="navigation">
+            <button id="prevMonth">
+              <ion-icon name="chevron-back"></ion-icon>
+            </button>
+            <h2 id="monthYear"></h2>
+            <button id="nextMonth">
+              <ion-icon name="chevron-forward"></ion-icon>
+            </button>
+          </div>
+        </div>
+        <div class="days">
+          <div class="day">Sun</div>
+          <div class="day">Mon</div>
+          <div class="day">Tue</div>
+          <div class="day">Wed</div>
+          <div class="day">Thu</div>
+          <div class="day">Fri</div>
+          <div class="day">Sat</div>
+        </div>
+        <div class="dates" id="dates"></div>
+      </div>
+
+
       <h1>Share your thoughts</h1>
       <div class="buttons">
         <button>Gallery view</button>
         <button>Filter</button>
         <button>Sort</button>
       </div>
+
     </header>
 
     <main class="main">
 
-      <h2>Journal Entries</h2>
+      <h2 style="text-align: center; margin-right: 45%;">Journal Entries</h2>
 
 
       <section class="journal-categories">
@@ -56,8 +89,6 @@
         </div>
 
       </section>
-      <img class="img-be" src="{% static 'img/calendar.jpg' %}" alt="calendar">
-      <!-- Move calendar image outside main container -->
 
 
       <section class="journal-entry">
@@ -66,7 +97,6 @@
           <p>Write your journal entry here. You can add text, images, or even videos.</p>
 
         </div>
-
         <!-- Entry Template -->
         <template id="entry-template">
           <div class="entry">
@@ -77,15 +107,20 @@
               <button class="edit-btn">Edit</button>
               <button class="delete-btn">Delete</button>
             </div>
+
+
           </div>
         </template>
+
+
+
         <!-- Entries Container -->
         <div id="entries-container">
           <!-- Existing Entries will be appended here -->
         </div>
         <button onclick="addEntry()">Add Entry</button>
-
       </section>
+
 
 
     </main>
@@ -130,6 +165,96 @@
           image.src = imageUrl;
         }
       });
+
+
+
+      const monthYearElement = document.getElementById("monthYear");
+      const datesElement = document.getElementById("dates");
+      const prevMonthButton = document.getElementById("prevMonth");
+      const nextMonthButton = document.getElementById("nextMonth");
+
+      let currentDate = new Date();
+
+      prevMonthButton.addEventListener("click", () => {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        renderCalendar();
+      });
+
+      nextMonthButton.addEventListener("click", () => {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        renderCalendar();
+      });
+
+      function renderCalendar() {
+        const month = currentDate.getMonth();
+        const year = currentDate.getFullYear();
+        const today = new Date(); // Get today's date
+
+        monthYearElement.textContent = `${getMonthName(month)} ${year}`;
+
+        datesElement.innerHTML = "";
+
+        const firstDayOfMonth = new Date(year, month, 1);
+        const lastDayOfMonth = new Date(year, month + 1, 0);
+        const daysInMonth = lastDayOfMonth.getDate();
+
+        const startingDay = firstDayOfMonth.getDay();
+
+        for (let i = 0; i < startingDay; i++) {
+          const dateElement = document.createElement("div");
+          dateElement.classList.add("date");
+          datesElement.appendChild(dateElement);
+        }
+
+        for (let i = 1; i <= daysInMonth; i++) {
+          const dateElement = document.createElement("div");
+          dateElement.classList.add("date");
+          dateElement.textContent = i;
+
+          // Check if the current date is today
+          if (year === today.getFullYear() && month === today.getMonth() && i === today.getDate()) {
+            dateElement.classList.add("today");
+          }
+
+          dateElement.addEventListener("click", () => {
+            alert(`Clicked on ${getMonthName(month)} ${i}, ${year}`);
+          });
+          datesElement.appendChild(dateElement);
+        }
+      }
+
+      function getMonthName(month) {
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September",
+          "October", "November", "December"
+        ];
+        return monthNames[month];
+      }
+
+      // Drag and drop functionality
+      const calendar = document.querySelector(".calendar");
+      const header = document.querySelector(".header"); // Select the header element
+
+      function onDrag({
+        movementX,
+        movementY
+      }) {
+        let left = parseInt(window.getComputedStyle(calendar).left);
+        let top = parseInt(window.getComputedStyle(calendar).top);
+        calendar.style.left = `${left + movementX}px`;
+        calendar.style.top = `${top + movementY}px`;
+      }
+
+      header.addEventListener("mousedown", () => {
+        header.classList.add("active");
+        header.addEventListener("mousemove", onDrag);
+      });
+
+      document.addEventListener("mouseup", () => {
+        header.removeEventListener("mousemove", onDrag);
+      });
+
+      // Initial rendering of the calendar
+      renderCalendar();
 
     </script>
 

@@ -30,3 +30,8 @@ class CustomLoginRedirectView(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         # Add any additional context data you need here
         return context
+
+
+#define custom view for the calendar page
+class CalendarView(TemplateView):
+    template_name = 'journals/Calendar.html'
