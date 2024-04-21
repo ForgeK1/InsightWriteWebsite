@@ -1,173 +1,322 @@
-<!-- Load the static template tag library -->
-{% load static %}
+  <!-- Load the static template tag library -->
+  {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
+  <!DOCTYPE html>
+  <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- css linked file fixed to polls -->
-  <link rel="stylesheet" type="text/css" href="{% static 'polls/jnentries-styles.css' %}">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css linked file fixed to polls -->
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/jnentries-styles.css' %}">
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>Journal Entries</title>
 
 
-  <title>Journal Entries</title>
-</head>
+  </head>
+
+
+  <body>
+    <!-- side bar -->
+    <nav class="sidebar">
+      <div class="logo-menu">
+        <h2 class="logo">Insight Write</h2>
+        <i class='bx bx-menu toggle-btn'></i>
+      </div>
+
+      <ul class="list">
+        <li class="list-item active">
+          <a href="#">
+            <i class='bx bx-grid-alt'></i>
+            <span class="link-name" style="--i:1;">Dashboard</span>
+          </a>
+        </li>
+
+        <li class="list-item">
+          <a href="#">
+            <i class='bx bx-list-ul'></i>
+            <span class="link-name" style="--i:4;">List</span>
+          </a>
+        </li>
+
+        <li class="list-item">
+          <a href="#" id="calendar-btn">
+            <i class='bx bx-calendar'></i>
+            <span class="link-name" style="--i:6;">Mini-Calendar</span>
+          </a>
+        </li>
+
+        <li class="list-item">
+          <a href="#">
+            <i class='bx bx-image'></i>
+            <span class="link-name" style="--i:5;">Media</span>
+          </a>
+        </li>
+
+        <li class="list-item">
+          <a href="#">
+            <i class='bx bx-cloud-snow'></i>
+            <span class="link-name" style="--i:3;">Weather</span>
+          </a>
+        </li>
+
+        <li class="list-item">
+          <a href="#">
+            <i class='bx bx-search'></i>
+            <span class="link-name" style="--i:2;">Search</span>
+          </a>
+        </li>
+
+        <li class="list-item">
+          <a href="#">
+            <i class='bx bx-user'></i>
+            <span class="link-name" style="--i:2;">User</span>
+          </a>
+        </li>
+
+        <li class="list-item">
+          <a href="#">
+            <i class='bx bx-cog'></i>
+            <span class="link-name" style="--i:8;">Settings</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
 
 
 
-<body>
+    <!-- Journal entry -->
+    <section>
+      <div class="container">
+        <h1>Your Journals</h1>
+        <div class="entry-form">
 
-  <div class="container">
-    <header class="header" style="--header-background: url('{% static 'img/banner1.jpg' %}')">
+          <label for="date">Date:</label>
+          <input type="date" id="date" required>
 
-      <header>
-        <link rel="stylesheet" type="text/css" href="{% static 'polls/jncal-styles.css' %}">
-      </header>
+          <label for="title">Title:</label>
+          <input type="text" id="title" required>
 
-      <div class="calendar" style="margin-right: 45%;">
-        <div class="header1">
-          <div class="navigation">
-            <button id="prevMonth">
-              <ion-icon name="chevron-back"></ion-icon>
-            </button>
-            <h2 id="monthYear"></h2>
-            <button id="nextMonth">
-              <ion-icon name="chevron-forward"></ion-icon>
-            </button>
+          <label for="entry">Entry:</label>
+
+          <!-- Supported buttons below Entry: -->
+          <nav class="horizontal-navbar">
+            <ul>
+              <li><button title="Bold"><i class='bx bx-bold'></i></button></li>
+              <li><button title="Italic"><i class='bx bx-italic'></i></button></li>
+              <li><button title="Attach File" class="file-button"><i class='bx bx-paperclip'></i></button></li>
+            </ul>
+          </nav>
+          <div class="entry-content">
+            <input type="file" id="upload-image" class="file-input"> <!-- Image upload input -->
+            <div class="image-preview"></div> <!-- Image preview div -->
           </div>
+
+
+          <textarea id="entry" rows="10" required></textarea>
+
+          <button id="submit-button">Save Entry</button>
+
         </div>
-        <div class="days">
-          <div class="day">Sun</div>
-          <div class="day">Mon</div>
-          <div class="day">Tue</div>
-          <div class="day">Wed</div>
-          <div class="day">Thu</div>
-          <div class="day">Fri</div>
-          <div class="day">Sat</div>
+
+        <div class="entries" id="entries-container">
+          <div class="entries" id="entries"></div>
         </div>
-        <div class="dates" id="dates"></div>
+
       </div>
+    </section>
 
 
-      <h1>Share your thoughts</h1>
-      <div class="buttons">
-        <button>Gallery view</button>
-        <button>Filter</button>
-        <button>Sort</button>
-      </div>
-
-    </header>
-
-    <main class="main">
-
-      <h2 style="text-align: center; margin-right: 45%;">Journal Entries</h2>
-
-
-      <section class="journal-categories">
-
-        <div class='box' style="margin-right: 50px">
-          <div class='wave -one'></div>
-          <div class='wave -two'></div>
-          <div class='wave -three'></div>
-          <p>Daily Journal</p>
-        </div>
-
-        <div class='box' style="margin-right: 50px">
-          <div class='wave -one'></div>
-          <div class='wave -two'></div>
-          <div class='wave -three'></div>
-          <p>Food Journal</p>
-        </div>
-
-        <div class='box' style="margin-right: 50px">
-          <div class='wave -one'></div>
-          <div class='wave -two'></div>
-          <div class='wave -three'></div>
-          <p>Travel Journal</p>
-        </div>
-
-      </section>
-
-
-      <section class="journal-entry">
-        <h2>My Journals</h2>
-        <div class="content">
-          <p>Write your journal entry here. You can add text, images, or even videos.</p>
-
-        </div>
-        <!-- Entry Template -->
-        <template id="entry-template">
-          <div class="entry">
-            <h3><input type="text" placeholder="Entry Title"></h3>
-            <textarea placeholder="Write your thoughts and experiences here..."></textarea>
-            <p>Date: <input type="text" placeholder="Date"></p>
-            <div class="entry-controls">
-              <button class="edit-btn">Edit</button>
-              <button class="delete-btn">Delete</button>
+    <!-- Calendar -->
+    <div class="header">
+      <div id="calendar-container" style="margin-right: 45%; display: none;">
+        <div class="calendar" style="margin-right: 45%;">
+          <div class="header1">
+            <div class="navigation">
+              <button id="prevMonth">
+                <ion-icon name="chevron-back"></ion-icon>
+              </button>
+              <h2 id="monthYear"></h2>
+              <button id="nextMonth">
+                <ion-icon name="chevron-forward"></ion-icon>
+              </button>
             </div>
-
-
           </div>
-        </template>
-
-
-
-        <!-- Entries Container -->
-        <div id="entries-container">
-          <!-- Existing Entries will be appended here -->
+          <div class="days">
+            <div class="day">Sun</div>
+            <div class="day">Mon</div>
+            <div class="day">Tue</div>
+            <div class="day">Wed</div>
+            <div class="day">Thu</div>
+            <div class="day">Fri</div>
+            <div class="day">Sat</div>
+          </div>
+          <div class="dates" id="dates"></div>
         </div>
-        <button onclick="addEntry()">Add Entry</button>
-      </section>
-
-
-
-    </main>
+      </div>
+    </div>
 
     <script>
-      // Function to add a new entry
-      function addEntry() {
-        // Get the entry template
-        var template = document.getElementById("entry-template");
-        // Clone the template content
-        var newEntry = template.content.cloneNode(true);
-        // Append the new entry to the entries container
-        document.getElementById("entries-container").appendChild(newEntry);
+      //sidebar script toggle functions
+      const sidebar = document.querySelector('.sidebar');
+      const toggleBtn = document.querySelector('.toggle-btn');
+
+      toggleBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('active');
+      });
+
+
+      // Get the file button and file input
+      const fileButton = document.querySelector('.file-button');
+      const fileInput = document.getElementById('upload-image');
+
+      // Add event listener to file button
+      fileButton.addEventListener('click', function () {
+        fileInput.click(); // Trigger the file input click event
+      });
+
+      // Add event listener to file input change event
+      fileInput.addEventListener('change', function () {
+        const file = this.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            const imageUrl = e.target.result;
+            const entryContent = document.querySelector('.entry-content'); // Select the entry content div
+            const imagePreview = entryContent.querySelector('.image-preview'); // Select the image preview div
+            // Set the image URL as the background of the image preview div
+            imagePreview.style.backgroundImage = `url('${imageUrl}')`;
+            // Show the image preview div
+            imagePreview.style.display = 'block';
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+
+      // Entry script functions
+      const entryForm = document.querySelector('.entry-form');
+      const entryContainer = document.querySelector('#entries-container');
+      const submitButton = document.querySelector('#submit-button');
+
+
+      // Function to create the delete button
+      function createDeleteButton() {
+        const deleteButton = document.createElement('button');
+        deleteButton.classList.add('delete-btn');
+        deleteButton.innerHTML = "<i class='bx bxs-trash'></i>";
+
+        // Add event listener to handle click event on delete button
+        deleteButton.addEventListener('click', function (event) {
+          handleDeleteButtonClick(event);
+        });
+        return deleteButton;
+      }
+
+      // Function to handle delete button click
+      function handleDeleteButtonClick(event) {
+        const entry = event.target.closest('.entry');
+        // Ask for confirmation
+        const confirmDelete = confirm("Are you sure you want to delete this entry?");
+
+        // If confirmed, delete the entry
+        if (confirmDelete) {
+          entry.remove();
+        }
       }
 
 
-      // Event delegation for edit and delete buttons
-      document.getElementById("entries-container").addEventListener("click", function (event) {
-        var target = event.target;
-        if (target.classList.contains("edit-btn")) {
-          // Handle edit button click
-          var entry = target.closest(".entry");
-          var title = entry.querySelector("h3 input").value;
-          var content = entry.querySelector("textarea").value;
-          var date = entry.querySelector("p input").value;
-          // Implement your edit logic here
-        } else if (target.classList.contains("delete-btn")) {
-          // Handle delete button click
-          var entry = target.closest(".entry");
-          entry.remove();
+      // Event delegation for delete button
+      entryContainer.addEventListener('click', function (event) {
+        if (event.target.classList.contains('delete-btn')) {
+          handleDeleteButtonClick(event);
         }
       });
 
 
-      // Function to display image when URL is entered
-      document.getElementById("entries-container").addEventListener("input", function (event) {
-        var target = event.target;
-        if (target.tagName === "INPUT" && target.type === "text" && target.placeholder === "Image URL") {
-          var entry = target.closest(".entry");
-          var imageUrl = target.value;
-          var image = entry.querySelector(".entry-image");
-          image.src = imageUrl;
+      // Function to create and append new entry
+      function appendNewEntry(date, title, text, imageUrl) {
+        // Create a new entry element
+        const newEntry = document.createElement('div');
+        newEntry.classList.add('entry');
+
+        // Create entry content container
+        const entryContent = document.createElement('div');
+        entryContent.classList.add('entry-content');
+
+        // Create date element
+        const entryDate = document.createElement('h2');
+        entryDate.textContent = date;
+        entryContent.appendChild(entryDate); // Append date to entry content container
+
+        // Create title element
+        const entryTitle = document.createElement('h3');
+        entryTitle.textContent = title;
+        entryContent.appendChild(entryTitle); // Append title to entry content container
+
+        // Create text content element
+        const entryText = document.createElement('p');
+        entryText.textContent = text;
+        entryContent.appendChild(entryText); // Append text to entry content container
+
+        // Append entry content container to the new entry
+        newEntry.appendChild(entryContent);
+
+        // Create and append delete button to the new entry
+        const deleteButton = createDeleteButton();
+        newEntry.appendChild(deleteButton);
+
+        // Check if there's an image and create an image preview
+        if (imageUrl) {
+          const imagePreview = document.createElement('div');
+          imagePreview.classList.add('image-preview');
+          // Extract URL from backgroundImage
+          const cleanUrl = imageUrl.match(/url\("(.*)"\)/)[1];
+          imagePreview.style.backgroundImage = `url('${cleanUrl}')`;
+          newEntry.appendChild(imagePreview); // Append image preview to new entry
         }
+
+        // Add the new entry to the entries container
+        entryContainer.appendChild(newEntry);
+      }
+
+
+
+      submitButton.addEventListener('click', function () {
+        const dateValue = document.querySelector('#date').value;
+        const titleValue = document.querySelector('#title').value;
+        const textValue = document.querySelector('#entry').value;
+        const imageUrl = document.querySelector('.image-preview').style.backgroundImage;
+
+        // Call the function with the correct parameters
+        appendNewEntry(dateValue, titleValue, textValue, imageUrl);
+
+        // Clear the form and hide the image preview
+        entryForm.reset();
+        document.querySelector('.image-preview').style.backgroundImage = '';
+        document.querySelector('.image-preview').style.display = 'none';
       });
 
 
 
+
+
+
+
+      // Get the Calendar button and the Calendar container
+      const calendarBtn = document.getElementById("calendar-btn");
+      const calendarContainer = document.getElementById("calendar-container");
+
+      // Add event listener to the Calendar button
+      calendarBtn.addEventListener("click", () => {
+        // Toggle the display of the Calendar container
+        calendarContainer.style.display = calendarContainer.style.display === "none" ? "block" : "none";
+      });
+
+      // Calendar functions
       const monthYearElement = document.getElementById("monthYear");
       const datesElement = document.getElementById("dates");
       const prevMonthButton = document.getElementById("prevMonth");
@@ -258,8 +407,545 @@
 
     </script>
 
+    <style>
+      /**this is css style for the sidebar**/
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      body {
+        min-height: 100vh;
+        background: url("{% static '/img/photo5.jpg' %}") no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 80px;
+        height: 100%;
+        background: transparent;
+        backdrop-filter: blur(40px);
+        border-right: 2px solid rgba(255, 255, 255, .2);
+        box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        padding: 6px 14px;
+        transition: .5s;
+      }
+
+      .sidebar.active {
+        width: 260px;
+      }
+
+      .sidebar .logo-menu {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 70px;
+      }
+
+      .sidebar .logo-menu .logo {
+        font-size: 25px;
+        color: #253333;
+        pointer-events: none;
+        opacity: 0;
+        transition: .3s;
+      }
+
+      .sidebar.active .logo-menu .logo {
+        opacity: 1;
+        transition-delay: .2s;
+      }
+
+      .sidebar .logo-menu .toggle-btn {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 40px;
+        font-size: 22px;
+        color: #253333;
+        text-align: center;
+        line-height: 40px;
+        cursor: pointer;
+        transition: .5s;
+      }
+
+      .sidebar.active .logo-menu .toggle-btn {
+        left: 90%;
+      }
+
+      .sidebar .list {
+        margin-top: 10px;
+      }
+
+      .list .list-item {
+        list-style: none;
+        width: 100%;
+        height: 50px;
+        margin: 5px 0;
+        line-height: 50px;
+      }
+
+      .list .list-item a {
+        display: flex;
+        align-items: center;
+        font-size: 18px;
+        color: #253333;
+        text-decoration: none;
+        border-radius: 6px;
+        white-space: nowrap;
+        transition: .5s;
+      }
+
+      .list .list-item.active a,
+      .list .list-item a:hover {
+        background: rgba(255, 255, 255, .2);
+      }
+
+      .list .list-item a i {
+        min-width: 50px;
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+      }
+
+      .sidebar .link-name {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .3s;
+      }
+
+      .sidebar.active .link-name {
+        opacity: 1;
+        pointer-events: auto;
+        transition-delay: calc(.1s * var(--i));
+      }
+
+      /**css style for journal entry**/
+      body {
+        font-family: sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        width: 800px;
+        margin: 50px auto;
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 5px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      .entry-form {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+      }
+
+      .entry-form label {
+        margin-bottom: 5px;
+      }
+
+      .entry-form input,
+      .entry-form textarea {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        margin-bottom: 10px;
+      }
+
+      .entry-form textarea {
+        height: 200px;
+      }
+
+      #submit-button {
+        background-color: #4f6161;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
+      .entries {
+        display: flex;
+        flex-direction: column-reverse;
+        background-color: #eef5ef;
+        /* Add background color */
+        padding: 20px;
+        /* Add padding for spacing */
+        border-radius: 5px;
+        /* Add border radius for styling */
+        border: 1px solid #fff;
+        /* Add border for separation */
+      }
+
+      .entry {
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 3px;
+        position: relative;
+        /* Ensure relative positioning for absolute positioning of delete button */
+        display: flex;
+        justify-content: space-between;
+        /* Align content and image */
+        position: relative;
+      }
+
+      /* Ensure the entry content has padding to not overlap with delete button */
+      .entry-content {
+        padding-right: 40px;
+        /* Add more padding to ensure text doesn't go under the delete button */
+      }
+
+      /* Style for the image preview */
+      .image-preview {
+        width: 130px;
+        /* Reduced width to give more space to delete button */
+        height: 130px;
+        /* Reduced height to match the width */
+        background-size: cover;
+        background-position: center;
+        border-radius: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-right: 35px;
+        /* Add margin to the right side for space between image and delete button */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
+        /* Optional: added shadow for depth */
+      }
+
+      .horizontal-navbar {
+        margin-bottom: 0;
+        /* Remove space below the navbar */
+      }
+
+      .entry-form {
+        margin-top: 0;
+        /* Remove space above the form */
+      }
+
+      /* If the buttons are in a list, remove margin and padding */
+      .horizontal-navbar ul {
+        list-style: none;
+        padding-left: 0;
+        /* Remove padding if it's a list */
+        margin: 0;
+        /* Adjust margin as needed */
+      }
+
+      /* Align buttons horizontally and close together */
+      .horizontal-navbar ul li {
+        display: inline-block;
+        margin-right: 5px;
+        /* Adjust space between buttons */
+      }
+
+      /* If there is a container around the buttons and the entry field, make it a flex container */
+      .entry-form-wrapper {
+        /* This class name is just an example */
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        /* This will stretch the child elements to fill the width */
+      }
+
+      /* Additional style for entry to ensure it contains floated elements */
+      .entry {
+        overflow: hidden;
+        /* This will contain the floated image inside the entry */
+      }
 
 
+
+      /* Style for delete button */
+      .delete-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        /* Adjust the right position as needed */
+        z-index: 10;
+        /* Ensures the button is above the image */
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        color: #4f6161;
+        padding: 5px;
+        /* Padding for easier clicking */
+      }
+
+      /* delete size */
+      .delete-btn i {
+        font-size: 20px;
+        /* Adjust the size as needed */
+      }
+
+      .entry h2 {
+        margin-top: 0;
+      }
+
+
+      /* Style for toolbar buttons */
+      .horizontal-navbar ul li button {
+        background: #4f6161;
+        /* Background color */
+        color: white;
+        /* Text/icon color */
+        border: none;
+        border-radius: 5px;
+        /* Rounded corners */
+        padding: 8px;
+        /* Spacing inside the buttons */
+        margin-right: 4px;
+        /* Space between buttons */
+        cursor: pointer;
+        /* Mouse cursor on hover */
+        transition: background-color 0.3s, transform 0.1s;
+        /* Smooth transition for background color and transform */
+      }
+
+      /* Hover and focus styles for buttons */
+      .horizontal-navbar ul li button:hover,
+      .horizontal-navbar ul li button:focus {
+        background: #7d9491;
+        /* Lighter color on hover/focus */
+        transform: translateY(-2px);
+        /* Slight raise effect on hover/focus */
+        outline: none;
+        /* Remove focus outline */
+      }
+
+      /* Active style for buttons when they are clicked */
+      .horizontal-navbar ul li button:active {
+        transform: translateY(1px);
+        /* Pushed down effect on click */
+        background: #687c7d;
+        /* Even lighter color on click */
+      }
+
+
+
+      /* Style for the file input label */
+      .file-input-label {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+      }
+
+      /* Style for the icon inside the label */
+      .file-input-label i {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      /* Hide the default file input text */
+      .file-input {
+        display: none;
+      }
+
+
+
+      /* Calendar css styles in the journal entries */
+      .calendar .header {
+        background-color: transparent;
+        /* Remove or set to transparent */
+        margin-bottom: 5px;
+        /* Adjust margin */
+
+      }
+
+      .calendar #monthYear {
+        margin: auto;
+        font-size: 1.1em;
+        color: #333;
+      }
+
+
+      .today {
+        background-color: #b0c0a3;
+        /* Darker color for today */
+        color: #fff;
+        /* White text color */
+      }
+
+
+      .calendar {
+        height: 300px;
+        max-width: 300px;
+        margin: 20px auto;
+        font-family: Arial, sans-serif;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        position: absolute;
+        left: 0;
+        top: 0%
+      }
+
+      .days {
+        display: flex;
+      }
+
+      .day {
+        flex: 1;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      .dates {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .date {
+        flex: 1;
+        text-align: center;
+        padding: 5px;
+        cursor: pointer;
+      }
+
+      .date:hover {
+        background-color: #9db6b3;
+      }
+
+      /* styles.css */
+
+      .calendar .active {
+        cursor: move;
+        user-select: none;
+      }
+
+      /* Calendar container */
+      .calendar {
+        max-width: 420px;
+        /* Increased width */
+        margin: 20px auto;
+        /* Added some margin */
+        font-family: Arial, sans-serif;
+        border-radius: 10px;
+        background-color: #eef5ef;
+        /* Light blue background */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        /* Added shadow for depth */
+        padding: 20px;
+        /* Added padding for spacing */
+        position: absolute;
+        /* Changed to absolute */
+        left: 0;
+        /* Added left position */
+        top: 0;
+        /* Added top position */
+      }
+
+      /* Header */
+      .header {
+        margin-bottom: 5px;
+        /* Adjust margin */
+      }
+
+      /* Month/Year display */
+      #monthYear {
+        margin: auto;
+        font-size: 1.1em;
+        /* Increased font size */
+        color: #333;
+        /* Dark text color */
+
+      }
+
+      .navigation {
+        display: flex;
+        align-items: center;
+      }
+
+      #nextMonth {
+        width: 30px;
+        height: 25px;
+        align-items: center;
+      }
+
+      #prevMonth {
+        width: 30px;
+        height: 25px;
+        align-items: center;
+      }
+
+      #prevMonth,
+      #nextMonth {
+        background-color: #4f6161;
+        color: #fff;
+        border: none;
+        padding: 5px 9px;
+        /* Adjust padding to make the buttons smaller */
+
+        border-radius: 3px;
+        /* Adjust border radius if needed */
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin: 8px;
+        /* Add margin for spacing between buttons */
+      }
+
+      #prevMonth:hover,
+      #nextMonth:hover {
+        background-color: #7d9491;
+      }
+
+      /* Days of the week */
+      .days {
+        /*display: flex;*/
+        display: none;
+
+      }
+
+      .day {
+        flex: 1;
+        text-align: center;
+        font-weight: bold;
+        color: #666;
+        font-size: x-small;
+        /* Dark gray text */
+      }
+
+      /* Dates container */
+      .dates {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        /* Adjust the number of columns */
+        gap: 5px;
+        /* Adjust gap */
+      }
+
+      /* Individual dates */
+      .date {
+        text-align: center;
+        padding: 5px;
+        font-size: 12px;
+        /* Adjust font size */
+      }
+
+      .date:hover {
+        background-color: #9db6b3;
+        /* Light blue on hover */
+      }
+
+    </style>
 
     <!-- Ionic Icons -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
@@ -269,6 +955,6 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
 
-</body>
+  </body>
 
-</html>
+  </html>
