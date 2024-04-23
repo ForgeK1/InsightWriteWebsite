@@ -279,8 +279,8 @@ SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'APP': {
             # I posted the client id and secret in discord resources paste them here. as a string 
-            'client_id': '',
-            'secret': '',
+            'client_id': '775272789283-bd58phnf10399q6b117m7quu947bucgs.apps.googleusercontent.com',
+            'secret': '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',
 
             # ignore this
             'key': ''
