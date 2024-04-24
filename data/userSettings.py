@@ -1,4 +1,13 @@
+import psycopg2
 from datetime import datetime
+
+conn = psycopg2.connect(
+    database = 'railway',
+    user = 'postgres',
+    password = 'SYydOpWeEquRsAJbFJGHuGGSsLjoZYuO',
+    host = 'roundhouse.proxy.rlwy.net',
+    port = '21286',
+)
 
 class userSettings:
     def formatDate(self, month:str, day:str, year:str):
