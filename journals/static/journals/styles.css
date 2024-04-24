@@ -175,15 +175,9 @@
        color: #F1F7F3;
        border-radius: 0 0 10px 10px;
        font-size: 0.85rem;
-       z-index: 1000;
+       z-index: 5;
        /* This should be higher than the z-index of other elements */
    }
-
-
-
-
-
-
 
 
    /**css style for journal entry**/
@@ -303,6 +297,7 @@
        cursor: pointer;
        transition: background-color 0.3s, color 0.3s;
        /* Smooth transition for hover effects */
+       box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
    }
 
 
@@ -726,11 +721,19 @@
        align-items: center;
        z-index: 10;
        /* High z-index to overlay on the page */
+       display: none; /* This will be managed by JS */
+       opacity: 0;
+       visibility: hidden;
+       transition: opacity 0.3s, visibility 0.3s;
    }
 
-   .popup-container.active {
-       display: flex;
-       /* Show when active */
+/* When the popup container is active, it slowly fades in */
+.popup-container.active {
+    display: flex; /* Make it a flex container to center the content */
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 1s; /* Apply the transition right away */
+
    }
 
    .popup-box {
@@ -751,7 +754,8 @@
    }
 
    #daily-prompt-container {
-       font-family: 'Poppins', sans-serif; /* Match theme's font */
+       font-family: 'Poppins', sans-serif;
+       /* Match theme's font */
        background: #F2F5EC;
        /* Light grey background for the text container */
        padding: 20px;
@@ -759,27 +763,39 @@
        /* Add some margin to the top and bottom */
        border-radius: 10px;
        /* Soft rounded corners for the prompt container */
-       color: #253333; /* Text color theme */
+       color: #253333;
+       /* Text color theme */
    }
 
    .close-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: -10px; /* Adjust as needed */
-    right: -10px; /* Adjust as needed */
-    background-color: #54696E; /* Background color theme */
-    color: #F1F7F3; /* Text color theme */
-    border: none;
-    border-radius: 50%; /* Circle shape */
-    padding: 0; /* Removed the horizontal padding */
-    height: 40px; /* Fixed height for a perfect circle */
-    width: 40px; /* Fixed width for a perfect circle */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for the button */
-    cursor: pointer;
-    font-size: 20px; /* Adjust as needed */
-    overflow: hidden; /* To prevent any overflow */
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       position: absolute;
+       top: -10px;
+       /* Adjust as needed */
+       right: -10px;
+       /* Adjust as needed */
+       background-color: #54696E;
+       /* Background color theme */
+       color: #F1F7F3;
+       /* Text color theme */
+       border: none;
+       border-radius: 50%;
+       /* Circle shape */
+       padding: 0;
+       /* Removed the horizontal padding */
+       height: 40px;
+       /* Fixed height for a perfect circle */
+       width: 40px;
+       /* Fixed width for a perfect circle */
+       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+       /* Subtle shadow for the button */
+       cursor: pointer;
+       font-size: 20px;
+       /* Adjust as needed */
+       overflow: hidden;
+       /* To prevent any overflow */
 
 
    }
@@ -813,15 +829,40 @@
    }
 
    .input-response {
-    width: 100%; /* Full width of the container */
-    padding: 10px; /* Padding inside the textarea */
-    border: 1px solid #ddd; /* Border to match your style */
-    border-radius: 3px; /* Rounded corners */
-    font-family: 'Poppins', sans-serif; /* Font to match your theme */
-    font-size: 1rem; /* Font size */
-    line-height: 1.5; /* Line height for better readability */
-    /* Additional styles... */
-    resize: vertical; /* Allows the user to resize vertically */
-    background-color: #F1F4EB;
+       width: 100%;
+       /* Full width of the container */
+       padding: 10px;
+       /* Padding inside the textarea */
+       border: 1px solid #ddd;
+       /* Border to match your style */
+       border-radius: 3px;
+       /* Rounded corners */
+       font-family: 'Poppins', sans-serif;
+       /* Font to match your theme */
+       font-size: 1rem;
+       /* Font size */
+       line-height: 1.5;
+       /* Line height for better readability */
+       /* Additional styles... */
+       resize: vertical;
+       /* Allows the user to resize vertically */
+       background-color: #F1F4EB;
+   }
+
+   .answer-btn {
+    background-color: #54696E; /* Color to match the theme */
+    color: #F1F7F3; /* Text color */
+    border: none;
+    border-radius: 4px; /* Rounded corners */
+    padding: 10px 20px; /* Padding for size */
+    margin-top: 15px; /* Spacing from the textarea */
+    cursor: pointer; /* Cursor for interactivity */
+    transition: background-color 0.3s; /* Transition for hover effect */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
 }
+
+.answer-btn:hover {
+    background-color: #b5c3a0; /* Slightly darker on hover */
+}
+
 

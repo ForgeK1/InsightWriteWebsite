@@ -5,6 +5,8 @@ from django.views import generic
 from django.utils import timezone
 from .models import Journal
 
+from django.shortcuts import render
+
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -32,6 +34,8 @@ class CustomLoginRedirectView(LoginRequiredMixin, TemplateView):
         return context
 
 
-#define custom view for the calendar page
-class CalendarView(TemplateView):
-    template_name = 'journals/Calendar.html'
+
+# Class-based view for the weather page
+class WeatherView(TemplateView):
+    template_name = 'journals/weather.html'
+

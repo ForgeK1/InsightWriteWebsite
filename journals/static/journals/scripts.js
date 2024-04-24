@@ -375,76 +375,70 @@
       // Initial rendering of the calendar
       renderCalendar();
 
+    //what the daily code functions do right now
+    //It shows a daily prompt, randomly selected from an array of prompts.
+    //It saves the user's response in local storage with a key that includes the current date.
+    //It changes the button text from "Add Answer" to "Save Answer" after the user inputs their response.
+    //It closes the popup when the user clicks the "Add Answer" button after entering their response.
 
       // Daily Prompt function
       document.addEventListener('DOMContentLoaded', function () {
-          const prompts = [
-              "What's the best thing that happened to you today?",
-              "Write about a place you would love to visit someday.",
-              "Describe your favorite hobby and why you love it.",
-              "What's a fond childhood memory that makes you smile?",
-              "Who made a positive impact on your life recently?",
-              "How do you like to relax?"
-              // Add as many as we like
-          ];
-
-          function showDailyPrompt() {
-              const promptContainer = document.getElementById('daily-prompt-container');
-              const promptText = document.getElementById('daily-prompt');
-              const randomIndex = Math.floor(Math.random() * prompts.length);
-              promptText.textContent = prompts[randomIndex];
-              // promptContainer.style.display = 'block'; // Now handled by adding the 'active' class
-              document.querySelector('.popup-container').classList.add('active'); // Show the popup
-          }
-
-          // Attach event listener to your Daily-Prompt link
-          // Daily Prompt event listener correction
-          document.getElementById('daily-prompt-link').addEventListener('click', function (e) {
-              e.preventDefault(); // Prevent the default anchor action
-              document.querySelector('.popup-container').classList.add('active'); // Show the popup
-              showDailyPrompt(); // Call this function to display a random prompt
-          });
-          // Close button event listener
-          document.querySelector('.close-btn').addEventListener('click', function () {
-              document.querySelector('.popup-container').classList.remove('active'); // Hide the popup
-          });
-
-      });
-      //
-      function fetchAndShowPrompt() {
-          fetch('URL_TO_YOUR_QUOTES_SERVICE')
-              .then(response => response.json())
-              .then(data => {
-                  const promptContainer = document.getElementById('daily-prompt-container');
-                  const promptText = document.getElementById('daily-prompt');
-                  // Assuming the service returns an object with a property 'quote'
-                  promptText.textContent = data.quote;
-                  promptContainer.style.display = 'block';
-              })
-              .catch(error => console.error('Error fetching prompt:', error));
-      }
-
-      //
-      const popupContainer = document.querySelector('.popup-container');
-      const closeBtn = document.querySelector('.close-btn');
-      showPopup.onclick = () => {
-          popupContainer.classList.add('active');
-      }
-      closeBtn.onclick = () => {
-          popupContainer.classList.remove('active');
-      }
-
-      //save the user's response or handle it in some other way in the future
-      document.querySelector('.close-btn').addEventListener('click', function () {
-        const userResponse = document.querySelector('.input-response').value;
-        // Do something with the user response, like saving it
-        saveUserResponse(userResponse); // This should be a function that handles the response
-        document.querySelector('.popup-container').classList.remove('active'); // Hide the popup
-        document.querySelector('.input-response').value = ''; // Clear the input field
+        const prompts = [
+            "What's the best thing that happened to you today?",
+            "Write about a place you would love to visit someday.",
+            "Describe your favorite hobby and why you love it.",
+            "What's a fond childhood memory that makes you smile?",
+            "Who made a positive impact on your life recently?",
+            "How do you like to relax?",
+            "What's a compliment that meant a lot to you?",
+            // Add as many as we like
+        ];
+        function getTodaysDate() {
+            const today = new Date();
+            return `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+        }
+    
+        function showDailyPrompt() {
+            const promptText = document.getElementById('daily-prompt');
+            const inputResponse = document.querySelector('.input-response');
+            const addAnswerBtn = document.getElementById('add-answer-btn');
+            const savedAnswerKey = 'dailyPromptAnswer-' + getTodaysDate();
+    
+            let todaysPrompt = localStorage.getItem('dailyPrompt-' + getTodaysDate());
+            if (!todaysPrompt) {
+                const randomIndex = Math.floor(Math.random() * prompts.length);
+                todaysPrompt = prompts[randomIndex];
+                localStorage.setItem('dailyPrompt-' + getTodaysDate(), todaysPrompt);
+            }
+            promptText.textContent = todaysPrompt;
+    
+            // Retrieve the saved answer if it exists
+            let savedAnswer = localStorage.getItem(savedAnswerKey);
+            inputResponse.value = savedAnswer || '';
+            addAnswerBtn.textContent = savedAnswer ? 'Save Answer' : 'Add Answer';
+    
+            document.querySelector('.popup-container').classList.add('active'); // Show the popup
+        }
+    
+        // Add Answer Button
+        const addAnswerBtn = document.getElementById('add-answer-btn');
+        const inputResponse = document.querySelector('.input-response');
+    
+        addAnswerBtn.addEventListener('click', function () {
+            const savedAnswerKey = 'dailyPromptAnswer-' + getTodaysDate();
+            localStorage.setItem(savedAnswerKey, inputResponse.value);
+            addAnswerBtn.textContent = 'Save Answer';
+            document.querySelector('.popup-container').classList.remove('active');
+        });
+    
+        // Daily Prompt Link Click
+        document.getElementById('daily-prompt-link').addEventListener('click', showDailyPrompt);
+    
+        // Close Button Click
+        document.querySelector('.close-btn').addEventListener('click', function () {
+            document.querySelector('.popup-container').classList.remove('active'); // Hide the popup
+        });
     });
-
-
-  
 
 
 
