@@ -264,8 +264,15 @@ STATIC_URL = '/static/'
 # Define the directories where Django will look for static files.
 STATICFILES_DIRS = [
     BASE_DIR / 'static',  # Include the base static directory
-    os.path.join(BASE_DIR, 'website', 'polls', 'static', 'polls'),  # Include the static directory for the polls app
-    os.path.join(BASE_DIR, 'polls', 'static'),
+    os.path.join(BASE_DIR, 'journals', 'static'),  # The static directory for the journals app
+    os.path.join(BASE_DIR, 'login_signup', 'static'),# The static directory for the login_signup page
+    os.path.join(BASE_DIR, 'meditations', 'static'),# The static directory for the meditations page
+
+
+    #I commented these path out because it doesn't make sense to have css and js in poll file
+    #since we does not need them yet
+    #os.path.join(BASE_DIR, 'website', 'polls', 'static', 'polls'),  # Include the static directory for the polls app
+    #os.path.join(BASE_DIR, 'polls', 'static'),
 ]
 
 AUTHENTICATION_BACKENDS = [

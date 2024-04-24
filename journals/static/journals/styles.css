@@ -1,0 +1,827 @@
+   /**this is css style for the journal entries app**/
+
+   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+
+   * {
+       margin: 0;
+       padding: 0;
+       box-sizing: border-box;
+       font-family: 'Poppins', sans-serif;
+   }
+
+
+   body {
+       min-height: 100vh;
+       background: url('/static/journals/img/photo5.jpg') no-repeat;
+       background-size: cover;
+       background-position: center;
+   }
+
+   /**this is css style for the sidebar**/
+   .sidebar {
+       position: fixed;
+       top: 0;
+       left: 0;
+       width: 80px;
+       height: 100%;
+       background: transparent;
+       backdrop-filter: blur(40px);
+       border-right: 2px solid rgba(255, 255, 255, .2);
+       box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+       padding: 6px 14px;
+       transition: .5s;
+   }
+
+
+   .sidebar.active {
+       width: 260px;
+   }
+
+
+   .sidebar .logo-menu {
+       display: flex;
+       align-items: center;
+       width: 100%;
+       height: 70px;
+   }
+
+
+   .sidebar .logo-menu .logo {
+       font-size: 25px;
+       color: #253333;
+       pointer-events: none;
+       opacity: 0;
+       transition: .3s;
+   }
+
+
+   .sidebar.active .logo-menu .logo {
+       opacity: 1;
+       transition-delay: .2s;
+   }
+
+
+   .sidebar .logo-menu .toggle-btn {
+       position: absolute;
+       left: 50%;
+       transform: translateX(-50%);
+       width: 40px;
+       height: 40px;
+       font-size: 22px;
+       color: #253333;
+       text-align: center;
+       line-height: 40px;
+       cursor: pointer;
+       transition: .5s;
+   }
+
+
+   .sidebar.active .logo-menu .toggle-btn {
+       left: 90%;
+   }
+
+
+   .sidebar .list {
+       margin-top: 10px;
+   }
+
+
+   .list .list-item {
+       list-style: none;
+       width: 100%;
+       height: 50px;
+       margin: 5px 0;
+       line-height: 50px;
+   }
+
+
+   .list .list-item a {
+       display: flex;
+       align-items: center;
+       font-size: 18px;
+       color: #253333;
+       text-decoration: none;
+       border-radius: 6px;
+       white-space: nowrap;
+       transition: .5s;
+   }
+
+
+   .list .list-item.active a,
+   .list .list-item a:hover {
+       background: rgba(255, 255, 255, .2);
+   }
+
+
+   .list .list-item a i {
+       min-width: 50px;
+       height: 50px;
+       text-align: center;
+       line-height: 50px;
+   }
+
+
+   .sidebar .link-name {
+       opacity: 0;
+       pointer-events: none;
+       transition: opacity .3s;
+   }
+
+
+   .sidebar.active .link-name {
+       opacity: 1;
+       pointer-events: auto;
+       transition-delay: calc(.1s * var(--i));
+   }
+
+
+   /* Style prompt container */
+   #daily-prompt-container {
+       margin: 20px;
+       padding: 10px;
+       border: 1px solid #ddd;
+       border-radius: 5px;
+       background-color: #f8f8f8;
+       text-align: center;
+   }
+
+
+
+
+   /**Time bar style**/
+   #time-bar {
+       position: absolute;
+       top: 0;
+       right: 0;
+       padding: 5px 10px;
+       background: #54696E;
+       /* Change this as per your color theme */
+       color: #F1F7F3;
+       /* For text color */
+       border-radius: 0 0 0 10px;
+       /* Rounded bottom-left corner */
+       font-size: 0.85rem;
+   }
+
+
+   #word-count {
+       position: absolute;
+       top: 0px;
+       /* Adjust as needed */
+       left: 25%;
+       padding: 3px 8px;
+       background: #54696E;
+       color: #F1F7F3;
+       border-radius: 0 0 10px 10px;
+       font-size: 0.85rem;
+       z-index: 1000;
+       /* This should be higher than the z-index of other elements */
+   }
+
+
+
+
+
+
+
+
+   /**css style for journal entry**/
+   body {
+       font-family: sans-serif;
+       margin: 0;
+       padding: 0;
+   }
+
+
+   .container {
+       width: 800px;
+       margin: 50px auto;
+       border: 1px solid #ddd;
+       padding: 20px;
+       border-radius: 5px;
+       backdrop-filter: blur(10px);
+       box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+   }
+
+
+   h1 {
+       text-align: center;
+   }
+
+
+   /** Clear button **/
+   .clear-btn {
+       position: absolute;
+       top: 15px;
+       right: 20px;
+       transform: translate(50%, -50%);
+       background-color: transparent;
+       /* Make the button background transparent */
+       border: none;
+       /* No border */
+       cursor: pointer;
+       transition: background-color 0.3s ease;
+       border-radius: 4px;
+       /* Slightly rounded corners for aesthetics */
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       width: 40px;
+       /* Fixed width */
+       height: 40px;
+       /* Fixed height */
+       color: #4f6161;
+   }
+
+
+   .clear-btn i {
+       font-size: 1.5rem;
+       /* Icon size */
+       transition: opacity 0.3s ease;
+       /* Animate the opacity */
+       opacity: 1;
+       /* Start fully visible */
+   }
+
+
+   .clear-btn .btn-text {
+       position: absolute;
+       transition: opacity 0.3s ease;
+       /* Animate the opacity */
+       opacity: 0;
+       /* Start fully transparent */
+       white-space: nowrap;
+   }
+
+
+   .clear-btn:hover i {
+       opacity: 0;
+       /* Fade out the icon */
+   }
+
+
+   .clear-btn:hover .btn-text {
+       opacity: 1;
+       /* Fade in the text */
+   }
+
+
+   /* entry field style */
+   .entry-form {
+       display: flex;
+       flex-direction: column;
+       margin-bottom: 20px;
+   }
+
+
+   .entry-form label {
+       margin-bottom: 5px;
+   }
+
+
+   .entry-form input,
+   .entry-form textarea {
+       padding: 10px;
+       border: 1px solid #ddd;
+       border-radius: 3px;
+       margin-bottom: 10px;
+   }
+
+
+   .entry-form textarea {
+       height: 200px;
+   }
+
+
+   #submit-button {
+       background-color: #4f6161;
+       color: white;
+       padding: 10px 20px;
+       border: none;
+       border-radius: 3px;
+       cursor: pointer;
+       transition: background-color 0.3s, color 0.3s;
+       /* Smooth transition for hover effects */
+   }
+
+
+   /* Hover and focus styles */
+   #submit-button:hover,
+   #submit-button:focus {
+       background-color: #7d9491;
+       /* Lighter color on hover/focus */
+       color: #eef5ef;
+       /* Text color on hover/focus */
+       /* Add any additional styles for hover state */
+   }
+
+
+   /* Active style when the button is clicked */
+   #submit-button:active {
+       background-color: #687c7d;
+       /* Even darker color on click */
+       /* Add any additional styles for active state */
+   }
+
+
+   .entries {
+       display: flex;
+       flex-direction: column-reverse;
+       background-color: #eef5ef;
+       /* Add background color */
+       padding: 20px;
+       /* Add padding for spacing */
+       border-radius: 5px;
+       /* Add border radius for styling */
+       border: 1px solid #fff;
+       /* Add border for separation */
+   }
+
+
+   .entry {
+       border: 1px solid #ddd;
+       padding: 10px;
+       margin-bottom: 10px;
+       border-radius: 3px;
+       position: relative;
+       /* Ensure relative positioning for absolute positioning of delete button */
+       display: flex;
+       justify-content: space-between;
+       /* Align content and image */
+       position: relative;
+   }
+
+
+   /* Ensure the entry content has padding to not overlap with delete button */
+   .entry-content {
+       padding-right: 40px;
+       /* Add more padding to ensure text doesn't go under the delete button */
+   }
+
+
+   /* Style for the image preview */
+   .image-preview {
+       width: 130px;
+       /* Reduced width to give more space to delete button */
+       height: 130px;
+       /* Reduced height to match the width */
+       background-size: cover;
+       background-position: center;
+       border-radius: 5px;
+       margin-top: 10px;
+       margin-bottom: 10px;
+       margin-right: 35px;
+       /* Add margin to the right side for space between image and delete button */
+       box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
+       /* Optional: added shadow for depth */
+
+
+   }
+
+
+   .horizontal-navbar {
+       margin-bottom: 5px;
+       /* Remove space below the navbar */
+   }
+
+
+   .entry-form {
+       margin-top: 0;
+       /* Remove space above the form */
+   }
+
+
+   /* If the buttons are in a list, remove margin and padding */
+   .horizontal-navbar ul {
+       list-style: none;
+       padding-left: 0;
+       /* Remove padding if it's a list */
+       margin: 0;
+       /* Adjust margin as needed */
+   }
+
+
+   /* Align buttons horizontally and close together */
+   .horizontal-navbar ul li {
+       display: inline-block;
+       margin-right: 5px;
+       /* Adjust space between buttons */
+   }
+
+
+   /* If there is a container around the buttons and the entry field, make it a flex container */
+   .entry-form-wrapper {
+       /* This class name is just an example */
+       display: flex;
+       flex-direction: column;
+       align-items: stretch;
+       /* This will stretch the child elements to fill the width */
+   }
+
+
+   /* Additional style for entry to ensure it contains floated elements */
+   .entry {
+       overflow: hidden;
+       /* This will contain the floated image inside the entry */
+   }
+
+
+
+
+
+
+   /* Style for delete button */
+   .delete-btn {
+       position: absolute;
+       top: 10px;
+       right: 10px;
+       /* Adjust the right position as needed */
+       z-index: 10;
+       /* Ensures the button is above the image */
+       background: transparent;
+       border: none;
+       cursor: pointer;
+       color: #4f6161;
+       padding: 5px;
+       /* Padding for easier clicking */
+   }
+
+
+   /* delete size */
+   .delete-btn i {
+       font-size: 20px;
+       /* Adjust the size as needed */
+   }
+
+
+   .entry h2 {
+       margin-top: 0;
+   }
+
+   /* Style for toolbar buttons */
+   .horizontal-navbar ul li button {
+       background: #4f6161;
+       /* Background color */
+       color: white;
+       /* Text/icon color */
+       border: none;
+       border-radius: 5px;
+       /* Rounded corners */
+       padding: 8px;
+       /* Spacing inside the buttons */
+       margin-right: 4px;
+       /* Space between buttons */
+       cursor: pointer;
+       /* Mouse cursor on hover */
+       transition: background-color 0.3s, transform 0.1s;
+       /* Smooth transition for background color and transform */
+   }
+
+
+   /* Hover and focus styles for buttons */
+   .horizontal-navbar ul li button:hover,
+   .horizontal-navbar ul li button:focus {
+       background: #7d9491;
+       /* Lighter color on hover/focus */
+       transform: translateY(-2px);
+       /* Slight raise effect on hover/focus */
+       outline: none;
+       /* Remove focus outline */
+   }
+
+   /* Active style for buttons when they are clicked */
+   .horizontal-navbar ul li button:active {
+       transform: translateY(1px);
+       /* Pushed down effect on click */
+       background: #687c7d;
+       /* Even lighter color on click */
+   }
+
+
+
+   /* Style for the file input label */
+   .file-input-label {
+       position: relative;
+       display: inline-block;
+       cursor: pointer;
+   }
+
+
+   /* Style for the icon inside the label */
+   .file-input-label i {
+       position: absolute;
+       left: 0;
+       top: 50%;
+       transform: translateY(-50%);
+   }
+
+
+   /* Hide the default file input text */
+   .file-input {
+       display: none;
+   }
+
+
+   /* Calendar css styles in the journal entries */
+   .calendar .header {
+       background-color: transparent;
+       /* Remove or set to transparent */
+       margin-bottom: 5px;
+       /* Adjust margin */
+   }
+
+   .calendar #monthYear {
+       margin: auto;
+       font-size: 1.1em;
+       color: #333;
+   }
+
+   .today {
+       background-color: #b0c0a3;
+       /* Darker color for today */
+       color: #fff;
+       /* White text color */
+   }
+
+
+   .calendar {
+       height: 300px;
+       max-width: 300px;
+       margin: 20px auto;
+       font-family: Arial, sans-serif;
+       border-radius: 10px;
+       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+       padding: 20px;
+       position: absolute;
+       left: 0;
+       top: 0%
+   }
+
+   .days {
+       display: flex;
+   }
+
+
+   .day {
+       flex: 1;
+       text-align: center;
+       font-weight: bold;
+   }
+
+
+   .dates {
+       display: flex;
+       flex-wrap: wrap;
+   }
+
+   .date {
+       flex: 1;
+       text-align: center;
+       padding: 5px;
+       cursor: pointer;
+   }
+
+
+   .date:hover {
+       background-color: #9db6b3;
+   }
+
+   .calendar .active {
+       cursor: move;
+       user-select: none;
+   }
+
+   /* Calendar container */
+   .calendar {
+       max-width: 420px;
+       /* Increased width */
+       margin: 20px auto;
+       /* Added some margin */
+       font-family: Arial, sans-serif;
+       border-radius: 10px;
+       background-color: #eef5ef;
+       /* Light blue background */
+       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+       /* Added shadow for depth */
+       padding: 20px;
+       /* Added padding for spacing */
+       position: absolute;
+       /* Changed to absolute */
+       left: 0;
+       /* Added left position */
+       top: 0;
+       /* Added top position */
+   }
+
+   /* Header */
+   .header {
+       margin-bottom: 5px;
+       /* Adjust margin */
+   }
+
+
+   /* Month/Year display */
+   #monthYear {
+       margin: auto;
+       font-size: 1.1em;
+       /* Increased font size */
+       color: #333;
+       /* Dark text color */
+
+   }
+
+   .navigation {
+       display: flex;
+       align-items: center;
+   }
+
+
+   #nextMonth {
+       width: 30px;
+       height: 25px;
+       align-items: center;
+   }
+
+   #prevMonth {
+       width: 30px;
+       height: 25px;
+       align-items: center;
+   }
+
+   #prevMonth,
+   #nextMonth {
+       background-color: #4f6161;
+       color: #fff;
+       border: none;
+       padding: 5px 9px;
+       /* Adjust padding to make the buttons smaller */
+
+
+       border-radius: 3px;
+       /* Adjust border radius if needed */
+       cursor: pointer;
+       transition: background-color 0.3s ease;
+       margin: 8px;
+       /* Add margin for spacing between buttons */
+   }
+
+   #prevMonth:hover,
+   #nextMonth:hover {
+       background-color: #7d9491;
+   }
+
+   /* Days of the week */
+   .days {
+       /*display: flex;*/
+       display: none;
+
+   }
+
+   .day {
+       flex: 1;
+       text-align: center;
+       font-weight: bold;
+       color: #666;
+       font-size: x-small;
+       /* Dark gray text */
+   }
+
+
+   /* Dates container */
+   .dates {
+       display: grid;
+       grid-template-columns: repeat(5, 1fr);
+       /* Adjust the number of columns */
+       gap: 5px;
+       /* Adjust gap */
+   }
+
+   /* Individual dates */
+   .date {
+       text-align: center;
+       padding: 5px;
+       font-size: 12px;
+       /* Adjust font size */
+   }
+
+   .date:hover {
+       background-color: #9db6b3;
+       /* Light blue on hover */
+   }
+
+
+   /* daily popup style */
+   .popup-container {
+       display: none;
+       /* Hide by default */
+       position: fixed;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       background-color: rgba(0, 0, 0, 0.5);
+       /* Semi-transparent background */
+       justify-content: center;
+       align-items: center;
+       z-index: 10;
+       /* High z-index to overlay on the page */
+   }
+
+   .popup-container.active {
+       display: flex;
+       /* Show when active */
+   }
+
+   .popup-box {
+       background: #C1CEB4;
+       /* Use a plain white background for maximum contrast */
+       border-radius: 15px;
+       /* Rounded corners for a softer look */
+       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+       /* Stronger shadow for more depth */
+       padding: 30px;
+       /* More padding for a spacious feel */
+       width: 100%;
+       max-width: 600px;
+       /* A bit wider for more space */
+       text-align: center;
+       position: relative;
+       /* Needed for positioning the close button absolutely */
+   }
+
+   #daily-prompt-container {
+       font-family: 'Poppins', sans-serif; /* Match theme's font */
+       background: #F2F5EC;
+       /* Light grey background for the text container */
+       padding: 20px;
+       margin: 20px 0;
+       /* Add some margin to the top and bottom */
+       border-radius: 10px;
+       /* Soft rounded corners for the prompt container */
+       color: #253333; /* Text color theme */
+   }
+
+   .close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -10px; /* Adjust as needed */
+    right: -10px; /* Adjust as needed */
+    background-color: #54696E; /* Background color theme */
+    color: #F1F7F3; /* Text color theme */
+    border: none;
+    border-radius: 50%; /* Circle shape */
+    padding: 0; /* Removed the horizontal padding */
+    height: 40px; /* Fixed height for a perfect circle */
+    width: 40px; /* Fixed width for a perfect circle */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for the button */
+    cursor: pointer;
+    font-size: 20px; /* Adjust as needed */
+    overflow: hidden; /* To prevent any overflow */
+
+
+   }
+
+   .close-btn:hover {
+       background-color: #b5c3a0;
+       /* A darker shade of red for hover state */
+   }
+
+   #daily-prompt {
+       font-size: 18px;
+       /* Increase font size for better readability */
+       color: #333;
+       /* Dark color for the text */
+       margin-bottom: 20px;
+       /* Space below the prompt text */
+   }
+
+   /* Consider adding an overlay effect to the entire page to focus attention on the popup */
+   .popup-container::before {
+       content: '';
+       position: absolute;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       background-color: rgba(0, 0, 0, 0.6);
+       /* Dark overlay */
+       z-index: -1;
+       /* Ensure it's behind the popup content */
+   }
+
+   .input-response {
+    width: 100%; /* Full width of the container */
+    padding: 10px; /* Padding inside the textarea */
+    border: 1px solid #ddd; /* Border to match your style */
+    border-radius: 3px; /* Rounded corners */
+    font-family: 'Poppins', sans-serif; /* Font to match your theme */
+    font-size: 1rem; /* Font size */
+    line-height: 1.5; /* Line height for better readability */
+    /* Additional styles... */
+    resize: vertical; /* Allows the user to resize vertically */
+    background-color: #F1F4EB;
+}
+
