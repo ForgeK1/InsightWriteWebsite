@@ -8,13 +8,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const cityHide = document.querySelector('.city-hide');
 
     search.addEventListener('click', function () {
-        const APIKey = '';
+        const APIKey = '3927527a830a6dd02e14e9d2087c86b7';
         const cityInput = document.querySelector('.search-box input');
         const city = cityInput.value.trim();
 
         if (!city) return;
 
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`)
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${APIKey}`)
             .then(response => response.json())
             .then(json => {
                 if (json.cod === '404') {
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
         image.src = baseUrl + getWeatherImageName(json.weather[0].main);
 
         // Update weather details
-        temperature.innerHTML = `${Math.round(json.main.temp)}<span>°C</span>`;
+        temperature.innerHTML = `${Math.round(json.main.temp)}<span>°F</span>`;
         description.textContent = json.weather[0].description;
         humidity.textContent = `${json.main.humidity}%`;
         wind.textContent = `${Math.round(json.wind.speed)}Km/h`;

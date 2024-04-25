@@ -18,6 +18,8 @@
        background-position: center;
    }
 
+   /** --------------------------------------------------------------------------------------------------  **/
+
    /**this is css style for the sidebar**/
    .sidebar {
        position: fixed;
@@ -135,6 +137,7 @@
        transition-delay: calc(.1s * var(--i));
    }
 
+   /** --------------------------------------------------------------------------------------------------  **/
 
    /* Style prompt container */
    #daily-prompt-container {
@@ -146,8 +149,7 @@
        text-align: center;
    }
 
-
-
+   /** --------------------------------------------------------------------------------------------------  **/
 
    /**Time bar style**/
    #time-bar {
@@ -179,6 +181,7 @@
        /* This should be higher than the z-index of other elements */
    }
 
+   /** --------------------------------------------------------------------------------------------------  **/
 
    /**css style for journal entry**/
    body {
@@ -342,16 +345,21 @@
        position: relative;
        /* Ensure relative positioning for absolute positioning of delete button */
        display: flex;
-       justify-content: space-between;
-       /* Align content and image */
+       align-items: flex-start; /* Align items to the start of the flex container */
+       justify-content: space-between; /* Space out the children */
+       flex-wrap: wrap; /* Allow items to wrap as needed */
+       gap: 1px; /* Optional: add some space between your items */
+
        position: relative;
    }
 
 
    /* Ensure the entry content has padding to not overlap with delete button */
    .entry-content {
-       padding-right: 40px;
+       padding-right: 100px;
        /* Add more padding to ensure text doesn't go under the delete button */
+       flex: 1; /* This allows the content to grow and take available space */
+       min-width: 0; /* This prevents the flex item from overflowing its container */
    }
 
 
@@ -364,15 +372,24 @@
        background-size: cover;
        background-position: center;
        border-radius: 5px;
-       margin-top: 10px;
-       margin-bottom: 10px;
-       margin-right: 35px;
+       margin-top: 23px;
+       margin-bottom: 7px;
+       margin-right: 5px;
        /* Add margin to the right side for space between image and delete button */
        box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
        /* Optional: added shadow for depth */
 
+       flex: none;/* This prevents the image from growing and only taking up the space of its content */
+       display: none;
 
    }
+
+   /* You might want to adjust the delete and edit button's positions if necessary */
+.edit-btn, .delete-btn {
+    position: absolute;
+    top: 10px;
+    /* Adjust the positioning according to your layout needs */
+}
 
 
    .horizontal-navbar {
@@ -422,15 +439,61 @@
    }
 
 
+   /* Style for edit button */
+   .edit-btn {
+       position: absolute;
+       top: 3px;
+       right: 30px;
+       /* Adjust this value so that it doesn't overlap with the delete button */
+       background: transparent;
+       border: none;
+       cursor: pointer;
+       padding: 5px;
+       z-index: 20;
+       color: #4f6161;
+   }
 
+   .edit-btn i {
+       font-size: 20px;
+       /* Match the delete button size */
+   }
+
+   .entry:hover .edit-btn {
+       opacity: 1;
+       /* if you want to make the edit button fully visible on entry hover adjust to 0*/
+   }
+
+   .entry .edit-btn {
+       opacity: 1;
+       /* Make the edit button invisible by default */
+       transition: opacity 0.3s;
+       /* Smooth transition for the opacity */
+   }
+
+   /* Adjusting the entry content padding to prevent overlap */
+   .entry-content {
+       padding-right: 80px;
+       /* Increase right padding to make space for buttons */
+   }
+
+   /* Additional hover styles for the edit button */
+   .edit-btn:hover {
+       color: #7d9491;
+       /* Lighter color on hover */
+   }
+
+   /* Style for the delete button hover effect for consistency */
+   .delete-btn:hover {
+       color: #7d9491;
+   }
 
 
 
    /* Style for delete button */
    .delete-btn {
        position: absolute;
-       top: 10px;
-       right: 10px;
+       top: 1px;
+       right: 5px;
        /* Adjust the right position as needed */
        z-index: 10;
        /* Ensures the button is above the image */
@@ -440,6 +503,8 @@
        color: #4f6161;
        padding: 5px;
        /* Padding for easier clicking */
+       z-index: 20;
+       /* Match z-index of edit button */
    }
 
 
@@ -518,6 +583,9 @@
    }
 
 
+
+
+   /** --------------------------------------------------------------------------------------------------  **/
    /* Calendar css styles in the journal entries */
    .calendar .header {
        background-color: transparent;
@@ -705,7 +773,7 @@
        /* Light blue on hover */
    }
 
-
+   /** --------------------------------------------------------------------------------------------------  **/
    /* daily popup style */
    .popup-container {
        display: none;
@@ -721,18 +789,21 @@
        align-items: center;
        z-index: 10;
        /* High z-index to overlay on the page */
-       display: none; /* This will be managed by JS */
+       display: none;
+       /* This will be managed by JS */
        opacity: 0;
        visibility: hidden;
        transition: opacity 0.3s, visibility 0.3s;
    }
 
-/* When the popup container is active, it slowly fades in */
-.popup-container.active {
-    display: flex; /* Make it a flex container to center the content */
-    opacity: 1;
-    visibility: visible;
-    transition-delay: 1s; /* Apply the transition right away */
+   /* When the popup container is active, it slowly fades in */
+   .popup-container.active {
+       display: flex;
+       /* Make it a flex container to center the content */
+       opacity: 1;
+       visibility: visible;
+       transition-delay: 1s;
+       /* Apply the transition right away */
 
    }
 
@@ -850,19 +921,25 @@
    }
 
    .answer-btn {
-    background-color: #54696E; /* Color to match the theme */
-    color: #F1F7F3; /* Text color */
-    border: none;
-    border-radius: 4px; /* Rounded corners */
-    padding: 10px 20px; /* Padding for size */
-    margin-top: 15px; /* Spacing from the textarea */
-    cursor: pointer; /* Cursor for interactivity */
-    transition: background-color 0.3s; /* Transition for hover effect */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
-}
+       background-color: #54696E;
+       /* Color to match the theme */
+       color: #F1F7F3;
+       /* Text color */
+       border: none;
+       border-radius: 4px;
+       /* Rounded corners */
+       padding: 10px 20px;
+       /* Padding for size */
+       margin-top: 15px;
+       /* Spacing from the textarea */
+       cursor: pointer;
+       /* Cursor for interactivity */
+       transition: background-color 0.3s;
+       /* Transition for hover effect */
+       box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
+   }
 
-.answer-btn:hover {
-    background-color: #b5c3a0; /* Slightly darker on hover */
-}
-
-
+   .answer-btn:hover {
+       background-color: #b5c3a0;
+       /* Slightly darker on hover */
+   }

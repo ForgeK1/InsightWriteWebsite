@@ -9,6 +9,7 @@
           sidebar.classList.toggle('active');
       });
 
+      //---------------------------------------------------------------------------------------------------------
 
       //word count functions
       document.addEventListener('DOMContentLoaded', function () {
@@ -34,7 +35,7 @@
           updateWord
       });
 
-
+      //---------------------------------------------------------------------------------------------------------
 
 
       //time bar top right functions
@@ -68,7 +69,8 @@
           }, 1000);
       });
 
-
+      //---------------------------------------------------------------------------------------------------------
+      //Journal Entry functions
 
 
       // Get the file button and file input
@@ -89,12 +91,10 @@
               const reader = new FileReader();
               reader.onload = function (e) {
                   const imageUrl = e.target.result;
-                  const entryContent = document.querySelector('.entry-content'); // Select the entry content div
-                  const imagePreview = entryContent.querySelector('.image-preview'); // Select the image preview div
-                  // Set the image URL as the background of the image preview div
+                  const entryContent = document.querySelector('.entry-content');
+                  const imagePreview = entryContent.querySelector('.image-preview');
                   imagePreview.style.backgroundImage = `url('${imageUrl}')`;
-                  // Show the image preview div
-                  imagePreview.style.display = 'block';
+                  imagePreview.style.display = 'block'; // Make the image preview visible
               };
               reader.readAsDataURL(file);
           }
@@ -145,7 +145,7 @@
       function createDeleteButton() {
           const deleteButton = document.createElement('button');
           deleteButton.classList.add('delete-btn');
-          deleteButton.innerHTML = "<i class='bx bxs-trash'></i>";
+          deleteButton.innerHTML = "<i class='bx bxs-trash' title='Delete'></i>";
 
 
           // Add event listener to handle click event on delete button
@@ -182,11 +182,71 @@
 
 
 
+      // Function to create the edit button
+      function createEditButton() {
+          const editButton = document.createElement('button');
+          editButton.classList.add('edit-btn');
+          editButton.innerHTML = "<i class='bx bxs-edit' title='Edit'></i>"; // Use the appropriate icon class for edit
+
+          // Add event listener to handle click event on edit button
+          editButton.addEventListener('click', handleEditButtonClick);
+          return editButton;
+      }
+
+      // Function to handle edit button click
+      function handleEditButtonClick(event) {
+          const entry = event.target.closest('.entry');
+          const entryId = entry.dataset.entryId;
+
+          // Find the entry's current data
+          const entryDate = entry.querySelector('h2').textContent;
+          const entryTitle = entry.querySelector('h3').textContent;
+          const entryText = entry.querySelector('p').textContent;
+          const entryImage = entry.querySelector('.image-preview') ?
+              entry.querySelector('.image-preview').style.backgroundImage.slice(5, -2) : ''; // Remove url("")
+
+          // Populate the form fields with this data
+          document.querySelector('#date').value = entryDate;
+          document.querySelector('#title').value = entryTitle;
+          document.querySelector('#entry').value = entryText;
+
+          // If there's an image, display it in the form's image preview
+          const formImagePreview = document.querySelector('.entry-form .image-preview');
+          if (formImagePreview && entryImage) {
+              formImagePreview.style.backgroundImage = `url('${entryImage}')`;
+              formImagePreview.style.display = 'block';
+          }
+
+          // Store the entryId in the form so we know we're editing
+          const form = document.querySelector('.entry-form');
+          form.dataset.editingEntryId = entryId;
+
+          // After populating the form, set the focus to the entry text area
+          const entryTextArea = document.querySelector('#entry');
+          entryTextArea.focus();
+
+          // Optional: if we want to move the cursor to the end of the text
+          const textLength = entryTextArea.value.length;
+          entryTextArea.setSelectionRange(textLength, textLength);
+
+
+      }
+
+
+
+
       // Function to create and append new entry
       function appendNewEntry(date, title, text, imageUrl) {
           // Create a new entry element
           const newEntry = document.createElement('div');
           newEntry.classList.add('entry');
+
+          // Unique ID for the entry, could be a timestamp or a unique number from a counter
+          newEntry.dataset.entryId = Date.now().toString();
+
+          // Create and append edit button to the new entry
+          const editButton = createEditButton();
+          newEntry.appendChild(editButton);
 
 
           // Create entry content container
@@ -225,35 +285,75 @@
           if (imageUrl) {
               const imagePreview = document.createElement('div');
               imagePreview.classList.add('image-preview');
-              // Extract URL from backgroundImage
-              const cleanUrl = imageUrl.match(/url\("(.*)"\)/)[1];
-              imagePreview.style.backgroundImage = `url('${cleanUrl}')`;
+              imagePreview.style.backgroundImage = `url('${imageUrl}')`;
+              imagePreview.style.display = 'block'; // Make sure to set this to block
               newEntry.appendChild(imagePreview); // Append image preview to new entry
           }
-
 
           // Add the new entry to the entries container
           entryContainer.appendChild(newEntry);
       }
 
 
+
       submitButton.addEventListener('click', function () {
+          const form = document.querySelector('.entry-form');
+          const isEditing = form.dataset.editingEntryId; // Check if we're editing an entry
           const dateValue = document.querySelector('#date').value;
           const titleValue = document.querySelector('#title').value;
           const textValue = document.querySelector('#entry').value;
-          const imageUrl = document.querySelector('.image-preview').style.backgroundImage;
 
+          // Handle image preview update
+          let imageUrl = null;
+          const existingImagePreview = document.querySelector('.entry-form .image-preview');
+          if (fileInput.files.length > 0) {
+              const file = fileInput.files[0];
+              imageUrl = URL.createObjectURL(file); // This creates a URL for the selected file
+          } else if (existingImagePreview && existingImagePreview.style.backgroundImage) {
+              imageUrl = existingImagePreview.style.backgroundImage.slice(5, -2); // Get the existing image URL if it's there
+          }
 
-          // Call the function with the correct parameters
-          appendNewEntry(dateValue, titleValue, textValue, imageUrl);
+          if (isEditing) {
+              // Existing entry update logic
+              const entryToUpdate = document.querySelector(`[data-entry-id="${isEditing}"]`);
+              if (entryToUpdate) {
+                  entryToUpdate.querySelector('h2').textContent = dateValue;
+                  entryToUpdate.querySelector('h3').textContent = titleValue;
+                  entryToUpdate.querySelector('p').textContent = textValue;
 
+                  const imagePreview = entryToUpdate.querySelector('.image-preview');
+                  if (imageUrl) {
+                      if (imagePreview) {
+                          imagePreview.style.backgroundImage = `url('${imageUrl}')`;
+                      } else {
+                          // Create and append a new image preview
+                          const newImagePreview = document.createElement('div');
+                          newImagePreview.classList.add('image-preview');
+                          newImagePreview.style.backgroundImage = `url('${imageUrl}')`;
+                          newImagePreview.style.display = 'block';
+                          entryToUpdate.appendChild(newImagePreview);
+                      }
+                  } else if (imagePreview) {
+                      imagePreview.style.display = 'none'; // Hide if no image
+                  }
+              }
+              // Clear the editing mode
+              delete form.dataset.editingEntryId;
+          } else {
+              // New entry append logic
+              appendNewEntry(dateValue, titleValue, textValue, imageUrl);
+          }
 
-          // Clear the form and hide the image preview
+          // Form reset logic
           entryForm.reset();
-          document.querySelector('.image-preview').style.backgroundImage = '';
-          document.querySelector('.image-preview').style.display = 'none';
+          if (existingImagePreview) {
+              existingImagePreview.style.backgroundImage = '';
+              existingImagePreview.style.display = 'none';
+          }
+          fileInput.value = '';
       });
 
+      //---------------------------------------------------------------------------------------------------------
 
       // Corrected Get the Calendar button and the Calendar container
       const calendarBtn = document.getElementById("calendar-btn"); // Ensure this ID is unique
@@ -375,73 +475,97 @@
       // Initial rendering of the calendar
       renderCalendar();
 
-    //what the daily code functions do right now
-    //It shows a daily prompt, randomly selected from an array of prompts.
-    //It saves the user's response in local storage with a key that includes the current date.
-    //It changes the button text from "Add Answer" to "Save Answer" after the user inputs their response.
-    //It closes the popup when the user clicks the "Add Answer" button after entering their response.
+      //---------------------------------------------------------------------------------
+
+      //what the daily code functions do right now
+      //It shows a daily prompt, randomly selected from an array of prompts.
+      //It saves the user's response in local storage with a key that includes the current date.
+      //It changes the button text from "Add Answer" to "Save Answer" after the user inputs their response.
+      //It closes the popup when the user clicks the "Add Answer" button after entering their response.
 
       // Daily Prompt function
       document.addEventListener('DOMContentLoaded', function () {
-        const prompts = [
-            "What's the best thing that happened to you today?",
-            "Write about a place you would love to visit someday.",
-            "Describe your favorite hobby and why you love it.",
-            "What's a fond childhood memory that makes you smile?",
-            "Who made a positive impact on your life recently?",
-            "How do you like to relax?",
-            "What's a compliment that meant a lot to you?",
-            // Add as many as we like
-        ];
-        function getTodaysDate() {
-            const today = new Date();
-            return `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
-        }
-    
-        function showDailyPrompt() {
-            const promptText = document.getElementById('daily-prompt');
-            const inputResponse = document.querySelector('.input-response');
-            const addAnswerBtn = document.getElementById('add-answer-btn');
-            const savedAnswerKey = 'dailyPromptAnswer-' + getTodaysDate();
-    
-            let todaysPrompt = localStorage.getItem('dailyPrompt-' + getTodaysDate());
-            if (!todaysPrompt) {
-                const randomIndex = Math.floor(Math.random() * prompts.length);
-                todaysPrompt = prompts[randomIndex];
-                localStorage.setItem('dailyPrompt-' + getTodaysDate(), todaysPrompt);
-            }
-            promptText.textContent = todaysPrompt;
-    
-            // Retrieve the saved answer if it exists
-            let savedAnswer = localStorage.getItem(savedAnswerKey);
-            inputResponse.value = savedAnswer || '';
-            addAnswerBtn.textContent = savedAnswer ? 'Save Answer' : 'Add Answer';
-    
-            document.querySelector('.popup-container').classList.add('active'); // Show the popup
-        }
-    
-        // Add Answer Button
-        const addAnswerBtn = document.getElementById('add-answer-btn');
-        const inputResponse = document.querySelector('.input-response');
-    
-        addAnswerBtn.addEventListener('click', function () {
-            const savedAnswerKey = 'dailyPromptAnswer-' + getTodaysDate();
-            localStorage.setItem(savedAnswerKey, inputResponse.value);
-            addAnswerBtn.textContent = 'Save Answer';
-            document.querySelector('.popup-container').classList.remove('active');
-        });
-    
-        // Daily Prompt Link Click
-        document.getElementById('daily-prompt-link').addEventListener('click', showDailyPrompt);
-    
-        // Close Button Click
-        document.querySelector('.close-btn').addEventListener('click', function () {
-            document.querySelector('.popup-container').classList.remove('active'); // Hide the popup
-        });
-    });
+          const prompts = [
+              "What's the best thing that happened to you today?",
+              "Write about a place you would love to visit someday.",
+              "Describe your favorite hobby and why you love it.",
+              "What's a fond childhood memory that makes you smile?",
+              "Who made a positive impact on your life recently?",
+              "How do you like to relax?",
+              "What's a compliment that meant a lot to you?",
+              // Add as many as we like
+          ];
 
+          function getTodaysDate() {
+              const today = new Date();
+              return `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+          }
 
+          function showDailyPrompt() {
+              const promptText = document.getElementById('daily-prompt');
+              const inputResponse = document.querySelector('.input-response');
+              const addAnswerBtn = document.getElementById('add-answer-btn');
+              const savedAnswerKey = 'dailyPromptAnswer-' + getTodaysDate();
 
+              let todaysPrompt = localStorage.getItem('dailyPrompt-' + getTodaysDate());
+              if (!todaysPrompt) {
+                  const randomIndex = Math.floor(Math.random() * prompts.length);
+                  todaysPrompt = prompts[randomIndex];
+                  localStorage.setItem('dailyPrompt-' + getTodaysDate(), todaysPrompt);
+              }
+              promptText.textContent = todaysPrompt;
+
+              // Retrieve the saved answer if it exists
+              let savedAnswer = localStorage.getItem(savedAnswerKey);
+              inputResponse.value = savedAnswer || '';
+              addAnswerBtn.textContent = savedAnswer ? 'Save Answer' : 'Add Answer';
+
+              document.querySelector('.popup-container').classList.add('active'); // Show the popup
+          }
+
+          // Add Answer Button
+          const addAnswerBtn = document.getElementById('add-answer-btn');
+          const inputResponse = document.querySelector('.input-response');
+
+          addAnswerBtn.addEventListener('click', function () {
+              const savedAnswerKey = 'dailyPromptAnswer-' + getTodaysDate();
+              localStorage.setItem(savedAnswerKey, inputResponse.value);
+              addAnswerBtn.textContent = 'Save Answer';
+              document.querySelector('.popup-container').classList.remove('active');
+          });
+
+          // Daily Prompt Link Click
+          document.getElementById('daily-prompt-link').addEventListener('click', showDailyPrompt);
+
+          // Close Button Click
+          document.querySelector('.close-btn').addEventListener('click', function () {
+              document.querySelector('.popup-container').classList.remove('active'); // Hide the popup
+          });
+      });
+
+      //---------------------------------------------------------------------------------------------------------
+
+      // Function to save entry
+      /**function saveEntry() {
+          const dateValue = document.querySelector('#date').value;
+          const titleValue = document.querySelector('#title').value;
+          const textValue = document.querySelector('#entry').value;
+          const imageUrl = document.querySelector('.image-preview').style.backgroundImage;
+
+          // Call the function to append the new entry
+          appendNewEntry(dateValue, titleValue, textValue, imageUrl);
+
+          // Clear the form and hide the image preview
+          entryForm.reset();
+          const imagePreview = document.querySelector('.image-preview');
+          imagePreview.style.backgroundImage = '';
+          imagePreview.style.display = 'none';
+      }
+
+      // Event listener for the submit button
+      submitButton.addEventListener('click', function () {
+          saveEntry();
+      });***/
 
       //Function to auto-Save the Data, this would involve sending the data to a server using AJAX
       let lastSavedTitle = '';

@@ -26,10 +26,10 @@
     <header>
         <h2 class="InsightWrite"><ion-icon name="partly-sunny"></ion-icon><span>Insight Write</span></h2>
         <nav class="navigation">
-          <a href="#">Dashboard</a>
-          <a href="#">Meditations</a>   
+          <a href="{% url 'journals:index' %}">Dashboard</a>
+          <a href="{% url 'meditations:index' %}">Meditations</a>   
           <a href="#">Calendar</a>
-          <a href="#">Journals</a>
+          <a href="/journals/journal-entries/">Journals</a>
         </nav>
       </header>
       
