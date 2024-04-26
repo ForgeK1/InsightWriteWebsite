@@ -3,5 +3,7 @@ from django.db import models
 
 
 class Meditation(models.Model):
-    pub_date = models.DateTimeField('date published')
-
+    meditation_id = models.IntegerField(primary_key=True, serialize=False, verbose_name='Meditation ID')
+    user_id = models.IntegerField()
+    video_url = models.URLField()
+    audio_url = models.URLField()
