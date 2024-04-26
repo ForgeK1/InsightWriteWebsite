@@ -135,6 +135,17 @@
     <section>
       <div class="container">
 
+		{% if submitted %}
+			SUCCESS!
+		{% else %}
+			<form action="" method=POST>
+				{% csrf_token %}
+
+				{{ form.as_p }}
+
+				<input type="submit" value="Save Entry" id="submit-button" style="width:100%">
+			</form>
+		{% endif %}
 
         <h1>Your Journals</h1>
         <div class="entry-form">
