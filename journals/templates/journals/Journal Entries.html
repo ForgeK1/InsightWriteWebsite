@@ -1,10 +1,7 @@
   <!-- Load the static template tag library -->
   {% load static %}
-
-
   <!DOCTYPE html>
   <html lang="en">
-
 
   <head>
     <meta charset="UTF-8">
@@ -13,7 +10,6 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'journals/styles.css' %}">
     <script src="{% static 'journals/scripts.js' %}" defer></script>
-
 
     <!-- css linked file fixed to polls -->
  
@@ -116,6 +112,7 @@
             <span class="link-name" style="--i:10;">Settings</span>
           </a>
         </li>
+
       </ul>
     </nav>
 
@@ -130,10 +127,15 @@
 
 <!-- ---------------------------------------------------------------------------------------------------------------- -->
 
-
     <!-- Journal entry -->
     <section>
       <div class="container">
+        <!-- Dark mode toggle -->
+<label for="dark-mode-toggle" class="dark-mode-label">
+  <input type="checkbox" id="dark-mode-toggle" class="dark-mode-checkbox">
+  <ion-icon name="moon" class="icon-moon" title="Dark Mode"></ion-icon>
+  <ion-icon name="sunny" class="icon-sun" title="Light Mode"></ion-icon>
+</label>
 
 
         <h1>Your Journals</h1>
@@ -155,7 +157,6 @@
 
 
 
-
           <label for="entry">Entry:</label>
 
 
@@ -171,7 +172,6 @@
               <li><button title="Ordered"><i class='bx bx-list-ol' ></i></button></li>
               <li><button title="Checklist"><i class='bx bx-list-check'></i></button></li>
               <li><button title="Tag"><i class='bx bx-purchase-tag' ></i></button></li>
-
 
               
             </ul>
@@ -244,6 +244,9 @@
 
       </div>
     </div>
+
+<!-- ---------------------------------------------------------------------------------------------------------------- -->
+
 
 
 <!-- ---------------------------------------------------------------------------------------------------------------- -->

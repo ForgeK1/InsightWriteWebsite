@@ -139,18 +139,6 @@
 
    /** --------------------------------------------------------------------------------------------------  **/
 
-   /* Style prompt container */
-   #daily-prompt-container {
-       margin: 20px;
-       padding: 10px;
-       border: 1px solid #ddd;
-       border-radius: 5px;
-       background-color: #f8f8f8;
-       text-align: center;
-   }
-
-   /** --------------------------------------------------------------------------------------------------  **/
-
    /**Time bar style**/
    #time-bar {
        position: absolute;
@@ -179,6 +167,20 @@
        font-size: 0.85rem;
        z-index: 5;
        /* This should be higher than the z-index of other elements */
+   }
+
+   /* Dark mode styles */
+   [data-theme="dark"] {
+       --word-count-time-bar-bg: #181818;
+       /* Choose your desired background color */
+       --word-count-time-bar-color: #D1D1D1;
+       /* Choose your desired text color */
+   }
+
+   [data-theme="dark"] #word-count,
+   [data-theme="dark"] #time-bar {
+       background-color: var(--word-count-time-bar-bg);
+       color: var(--word-count-time-bar-color);
    }
 
    /** --------------------------------------------------------------------------------------------------  **/
@@ -302,8 +304,7 @@
        /* Smooth transition for hover effects */
        box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
    }
-
-
+   
    /* Hover and focus styles */
    #submit-button:hover,
    #submit-button:focus {
@@ -345,21 +346,28 @@
        position: relative;
        /* Ensure relative positioning for absolute positioning of delete button */
        display: flex;
-       align-items: flex-start; /* Align items to the start of the flex container */
-       justify-content: space-between; /* Space out the children */
-       flex-wrap: wrap; /* Allow items to wrap as needed */
-       gap: 1px; /* Optional: add some space between your items */
+       align-items: flex-start;
+       /* Align items to the start of the flex container */
+       justify-content: space-between;
+       /* Space out the children */
+       flex-wrap: wrap;
+       /* Allow items to wrap as needed */
+       gap: 1px;
+       /* Optional: add some space between your items */
 
        position: relative;
    }
+
 
 
    /* Ensure the entry content has padding to not overlap with delete button */
    .entry-content {
        padding-right: 100px;
        /* Add more padding to ensure text doesn't go under the delete button */
-       flex: 1; /* This allows the content to grow and take available space */
-       min-width: 0; /* This prevents the flex item from overflowing its container */
+       flex: 1;
+       /* This allows the content to grow and take available space */
+       min-width: 0;
+       /* This prevents the flex item from overflowing its container */
    }
 
 
@@ -379,17 +387,19 @@
        box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
        /* Optional: added shadow for depth */
 
-       flex: none;/* This prevents the image from growing and only taking up the space of its content */
+       flex: none;
+       /* This prevents the image from growing and only taking up the space of its content */
        display: none;
 
    }
 
    /* You might want to adjust the delete and edit button's positions if necessary */
-.edit-btn, .delete-btn {
-    position: absolute;
-    top: 10px;
-    /* Adjust the positioning according to your layout needs */
-}
+   .edit-btn,
+   .delete-btn {
+       position: absolute;
+       top: 10px;
+       /* Adjust the positioning according to your layout needs */
+   }
 
 
    .horizontal-navbar {
@@ -943,3 +953,272 @@
        background-color: #b5c3a0;
        /* Slightly darker on hover */
    }
+
+   /** --------------------------------------------------------------------------------------------------  **/
+
+
+   /* Define light mode variables */
+   :root {
+       --background-image: url('/static/journals/img/photo5.jpg');
+       --text-color: #333;
+   }
+
+   /* Define dark mode variables */
+   [data-theme="dark"] {
+       --background-image: url('/static/journals/img/photo4.jpg');
+       --text-color: #D1D1D1;
+       --icon-color: #D1D1D1;
+   }
+
+   /* Apply the icon color variable with increased specificity */
+   [data-theme="dark"] .sidebar .logo-menu .bx-menu {
+       color: var(--icon-color);
+       /* Ensuring this color takes precedence */
+   }
+
+   [data-theme="dark"] .sidebar,
+   [data-theme="dark"] .sidebar .logo,
+   [data-theme="dark"] .sidebar .logo-menu,
+   [data-theme="dark"] .sidebar .link-name,
+   [data-theme="dark"] .time-bar,
+   [data-theme="dark"] .word-count,
+   [data-theme="dark"] .list .list-item a {
+       color: #D1D1D1;
+       background-color: transparent;
+   }
+
+   /* Define styles that change when dark mode is active */
+   [data-theme="dark"] .horizontal-navbar ul li button,
+   [data-theme="dark"] #submit-button {
+       color: #D1D1D1;
+       /* Lighter text color for dark mode */
+       background: #181818;
+       /* Optional: change background for buttons and sidebar */
+   }
+
+   [data-theme="dark"] .clear-btn {
+       color: #D1D1D1;
+   }
+
+   /* Hover state for the save entry button for both light and dark modes */
+   #submit-button:hover {
+       background-color: #D1D1D1;
+       /* Lighter color on hover */
+       color: #eef5ef;
+       /* Text color on hover */
+       /* Other styles for hover state, if any */
+   }
+
+   /* You may want to ensure dark mode does not override this with a more specific rule */
+   [data-theme="dark"] #submit-button:hover {
+       background-color: #D1D1D1;
+       /* Same as light mode */
+       color: #eef5ef;
+       /* Same as light mode */
+   }
+
+   /* Hover state for the formatting buttons for both light and dark modes */
+   .horizontal-navbar ul li button:hover {
+       background: #D1D1D1;
+       /* Lighter background color on hover */
+       /* Add any other styles for hover state */
+   }
+
+   /* Same for dark mode */
+   [data-theme="dark"] .horizontal-navbar ul li button:hover {
+       background: #D1D1D1;
+       /* Same as light mode */
+       /* Ensure no other dark mode rules are more specific than this */
+   }
+
+   [data-theme="dark"] .list .list-item.active a,
+   [data-theme="dark"] .list .list-item a:hover {
+       background: rgba(255, 255, 255, .2);
+   }
+
+   /** --------------------------------------------------------------------------------------------------  **/
+
+
+   body {
+       background-image: var(--background-image);
+       color: var(--text-color);
+       background-size: cover;
+       background-position: center;
+       transition: background-image 0.5s ease-in-out;
+   }
+
+   /* Specific styles for the dark mode toggle to avoid conflicts */
+/* Specific styles for the dark mode toggle */
+.dark-mode-label {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 35px;
+    height: 30px;
+    background-color: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+/* Hide the checkbox visually but keep it in the document flow */
+.dark-mode-checkbox {
+    opacity: 0;
+    position: absolute;
+    z-index: -1; /* Put it behind the icons */
+}
+
+/* Style icons */
+.dark-mode-label ion-icon {
+    font-size: 1.5em; /* Set the size of the icons */
+    color: #4D6267;
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, .5));
+    position: absolute; /* Absolute positioning to stack icons */
+}
+
+/* Initially, only the moon icon is visible */
+.icon-sun {
+    display: none;
+
+}
+
+/* When dark mode is active, show the sun icon and hide the moon icon */
+.dark-mode-label.active .icon-moon {
+    display: none;
+}
+
+.dark-mode-label.active .icon-sun {
+    display: block;
+    color: #FFA500; /* Adjust the color of the sun icon to match your theme */
+    font-size: 1.5em;
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, .5));
+}
+
+/* Hover effect for icons */
+.dark-mode-label ion-icon {
+    transition: transform 0.3s ease-in-out;
+}
+
+.dark-mode-label ion-icon:hover {
+    transform: scale(1.1); /* Slightly enlarge the icon on hover */
+}
+/** --------------------------------------------------------------------------------------------------  **/
+
+/* Dark mode styles for the calendar */
+[data-theme="dark"] .calendar {
+    background-color: #454545; /* Darker background for the calendar */
+    color: #D1D1D1; /* Lighter text color for readability */
+}
+
+[data-theme="dark"] #monthYear {
+    color: #FFFFFF; /* This sets the text color to white */
+}
+
+/* Dark mode styles for the previous and next month buttons */
+[data-theme="dark"] #prevMonth,
+[data-theme="dark"] #nextMonth {
+    background-color: #000000; /* This sets the icon color to black */
+}
+
+[data-theme="dark"] #prevMonth:hover,
+[data-theme="dark"] #nextMonth:hover {
+    background-color: #656565;
+}
+
+
+[data-theme="dark"] .calendar .header1,
+[data-theme="dark"] .calendar .days,
+[data-theme="dark"] .calendar .date {
+    background-color: #454545; /* Slightly lighter than the calendar background for contrast */
+    color: #E1E1E1; /* Light color for the text, ensuring readability */
+}
+
+/* Styles for the navigation buttons in dark mode */
+[data-theme="dark"] .calendar .navigation button {
+    color: #D1D1D1; /* Light color for the buttons */
+}
+
+/* Styles for the days of the week in dark mode */
+[data-theme="dark"] .calendar .days .day {
+    color: #E1E1E1; /* Light color for the days' labels */
+}
+
+/* Styles for the individual dates in dark mode */
+[data-theme="dark"] .calendar .dates .date {
+    color: #E1E1E1; /* Light color for the date numbers */
+}
+
+/* Style for the current day in dark mode */
+[data-theme="dark"] .calendar .dates .date.today {
+    background-color: #565656; /* A distinct background color for today's date */
+    color: #FFFFFF; /* White color for better contrast and visibility */
+}
+
+/* Hover style for dates in dark mode */
+[data-theme="dark"] .calendar .dates .date:hover {
+    background-color: #656565; /* A lighter background color on hover */
+    color: #FFFFFF; /* Maintain white text on hover for readability */
+}
+
+/** --------------------------------------------------------------------------------------------------  **/
+
+/* Dark mode styles for the daily prompt container */
+[data-theme="dark"] .popup-box, 
+[data-theme="dark"] #daily-prompt-container {
+    background-color: #D1D1D1; /* Dark background for the container */
+    color: #333; /* Lighter text for better contrast */
+    /* Add any other styles for the prompt container in dark mode */
+}
+
+[data-theme="dark"] .popup-box{
+    background-color: #333;
+}
+
+/* Dark mode styles for the input area within the daily prompt */
+[data-theme="dark"] .input-response {
+    background-color: #444; /* Dark background for the input */
+    color: #fff; /* White text for better contrast */
+    border-color: #555; /* Darker border to match the input background */
+    /* Add any other styles for the input in dark mode */
+}
+
+/* Dark mode styles for the save answer button within the daily prompt */
+[data-theme="dark"] .answer-btn {
+    background-color: #555; /* Darker background for the button */
+    color: #ddd; /* Lighter text for better contrast */
+    /* Add any other button styles for dark mode */
+}
+
+/* Dark mode styles for the close button within the daily prompt */
+[data-theme="dark"] .close-btn {
+    background-color: #555; /* Darker background for the button */
+    color: #ddd; /* Lighter text for better contrast */
+    /* Add any other close button styles for dark mode */
+}
+[data-theme="dark"] .close-btn:hover,
+[data-theme="dark"] .answer-btn:hover{
+    background-color: #656565;
+}
+
+/** --------------------------------------------------------------------------------------------------  **/
+
+   /* Dark mode styles for entries */
+   [data-theme="dark"] {
+    /* Existing dark mode variable definitions */
+    --entry-bg-color: #D1D1D1;
+    /* Dark background for the entry */
+    --entry-text-color: #181818;
+    /* Light text color for readability */
+    /* Add other dark mode variable definitions as needed */
+}
+
+
+/* Target the saved entry background and text color specifically for dark mode */
+[data-theme="dark"] .entries,
+[data-theme="dark"] .entry {
+    background-color: var(--entry-bg-color);
+    color: var(--entry-text-color);
+}
