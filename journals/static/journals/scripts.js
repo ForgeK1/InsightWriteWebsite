@@ -622,14 +622,3 @@
       });
       // If we plan to use this in production,
       //replace the console.log statement with actual code to save data to a server or local storage.
-
-      //dark mode function
-      document.addEventListener('DOMContentLoaded', function () {
-          var checkbox = document.getElementById('dark-mode-toggle');
-          var label = document.querySelector('.dark-mode-label');
-
-          checkbox.addEventListener('change', function () {
-              label.classList.toggle('active', this.checked);
-              document.body.setAttribute('data-theme', this.checked ? 'dark' : 'light');
-          });
-      });
