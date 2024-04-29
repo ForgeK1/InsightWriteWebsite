@@ -78,14 +78,13 @@ section {
   border: 2px solid #009970;
 }
 
-
 /* Allow vertical resizing only */
 textarea {
-  resize: both; 
+  resize: both;
 }
 
 .writing-quotes {
-  margin-top: 30px;;
+  margin-top: 30px;
   text-align: center;
 }
 
@@ -102,7 +101,6 @@ textarea {
   background-color: #cab79f; /* Background color outside the animation */
 }
 
-
 .fill-text-typing {
   margin-top: 15px;
   display: inline-block;
@@ -115,10 +113,14 @@ textarea {
   size: 2vw;
 }
 
-
 @keyframes cursor {
-  from, to { border-color: transparent }
-  50% { border-color: black; }
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: black;
+  }
 }
 
 @keyframes typing {
