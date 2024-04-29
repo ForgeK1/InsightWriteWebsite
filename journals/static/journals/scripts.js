@@ -302,6 +302,15 @@
           const dateValue = document.querySelector('#date').value;
           const titleValue = document.querySelector('#title').value;
           const textValue = document.querySelector('#entry').value;
+          const fileInputValue = fileInput.files.length;
+
+          // Check if all fields are empty
+          if (!dateValue && !titleValue && !textValue && !fileInputValue) {
+            alert("Please fill in at least one field before saving the entry.");
+            return; // Stop the function from proceeding
+        }
+
+
 
           // Handle image preview update
           let imageUrl = null;
@@ -352,6 +361,8 @@
           }
           fileInput.value = '';
       });
+
+      
 
       //---------------------------------------------------------------------------------------------------------
 
@@ -611,3 +622,14 @@
       });
       // If we plan to use this in production,
       //replace the console.log statement with actual code to save data to a server or local storage.
+
+      //dark mode function
+      document.addEventListener('DOMContentLoaded', function () {
+          var checkbox = document.getElementById('dark-mode-toggle');
+          var label = document.querySelector('.dark-mode-label');
+
+          checkbox.addEventListener('change', function () {
+              label.classList.toggle('active', this.checked);
+              document.body.setAttribute('data-theme', this.checked ? 'dark' : 'light');
+          });
+      });
