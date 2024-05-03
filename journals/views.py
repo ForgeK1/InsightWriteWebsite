@@ -11,6 +11,8 @@ from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .journal_form import JournalForm
 
+from datetime import datetime
+
 # Journal views
 class IndexView(generic.ListView):
     template_name = 'journals/index.html'
@@ -37,8 +39,8 @@ def JournalEntries(request):
         if 'submitted' in request.GET:
             submitted = True
 
-    
-    return render(request, 'journals/Journal Entries.html', {'form':form, 'submitted':submitted})
+    journal_list = Journal.objects.all()
+    return render(request, 'journals/Journal Entries.html', {'form':form, 'submitted':submitted, 'journal_list':journal_list})
 
 
 #define custom view for the login page when log out

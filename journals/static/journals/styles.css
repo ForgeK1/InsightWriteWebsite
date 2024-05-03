@@ -572,6 +572,8 @@
        border: 1px solid #ddd;
        border-radius: 3px;
        margin-bottom: 10px;
+       display:block;
+       width:100%;
    }
 
 
