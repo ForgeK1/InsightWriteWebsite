@@ -3,27 +3,43 @@
   <!DOCTYPE html>
   <html lang="en">
 
+
+
+
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
+
+
     <link rel="stylesheet" type="text/css" href="{% static 'journals/styles.css' %}">
     <script src="{% static 'journals/scripts.js' %}" defer></script>
 
+
+
+
     <!-- css linked file fixed to polls -->
- 
+
+
     <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
       integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
       crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+
+
+
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
+
 
     <title>Journal Entries</title>
 
-  </head>
 
+  </head>
   <body>
     <!-- side bar -->
     <nav class="sidebar">
@@ -31,6 +47,10 @@
         <h2 class="logo">Insight Write</h2>
         <i class='bx bx-menu toggle-btn'></i>
       </div>
+
+
+
+
 
 
       <ul class="list">
@@ -42,12 +62,16 @@
         </li>
 
 
+
+
         <li class="list-item">
           <a href="#" id="calendar-btn">
             <i class='bx bx-calendar'></i>
             <span class="link-name" style="--i:2;">Mini-Calendar</span>
           </a>
         </li>
+
+
 
 
         <li class="list-item">
@@ -58,12 +82,20 @@
         </li>
 
 
+
+
+
+
         <li class="list-item">
           <a href="#" id="streak-btn">
             <i class='bx bxs-hot'></i>
             <span class="link-name" style="--i:4;">Streak</span>
           </a>
         </li>
+
+
+
+
 
 
         <li class="list-item">
@@ -74,12 +106,20 @@
         </li>
 
 
+
+
+
+
         <li class="list-item">
           <a href="{% url 'journals:weather' %}">
             <i class='bx bx-cloud-snow'></i>
             <span class="link-name" style="--i:6;">Weather</span>
           </a>
         </li>
+
+
+
+
 
 
         <li class="list-item">
@@ -90,12 +130,24 @@
         </li>
 
 
+
+
+
+
+
+
         <li class="list-item">
           <a href="#">
             <i class='bx bx-list-ul'></i>
             <span class="link-name" style="--i:8;">List</span>
           </a>
         </li>
+
+
+
+
+
+
 
 
         <li class="list-item">
@@ -106,6 +158,12 @@
         </li>
 
 
+
+
+
+
+
+
         <li class="list-item">
           <a href="#">
             <i class='bx bx-cog'></i>
@@ -113,10 +171,22 @@
           </a>
         </li>
 
+
+
+
       </ul>
     </nav>
 
-<!-- ---------------------------------------------------------------------------------------------------------------- -->
+
+
+
+    <!-- ---------------------------------------------------------------------------------------------------------------- -->
+
+
+
+
+
+
 
 
     <!-- Top right time bar -->
@@ -125,21 +195,32 @@
     <div id="word-count">Word count: 0</div>
 
 
-<!-- ---------------------------------------------------------------------------------------------------------------- -->
+
+
+
+
+
+
+    <!-- ---------------------------------------------------------------------------------------------------------------- -->
+
+
+
 
     <!-- Journal entry -->
     <section>
       <div class="container">
         <!-- Dark mode toggle -->
-<label for="dark-mode-toggle" class="dark-mode-label">
-  <input type="checkbox" id="dark-mode-toggle" class="dark-mode-checkbox">
-  <ion-icon name="moon" class="icon-moon" title="Dark Mode"></ion-icon>
-  <ion-icon name="sunny" class="icon-sun" title="Light Mode"></ion-icon>
-</label>
+        <label for="dark-mode-toggle" class="dark-mode-label">
+          <input type="checkbox" id="dark-mode-toggle" class="dark-mode-checkbox">
+          <ion-icon name="moon" class="icon-moon" title="Dark Mode"></ion-icon>
+          <ion-icon name="sunny" class="icon-sun" title="Light Mode"></ion-icon>
+        </label>
 
 
         <h1>Your Journals</h1>
         <div class="entry-form">
+
+
 
 
           <button id="clear-button" class="clear-btn">
@@ -148,8 +229,12 @@
           </button>
 
 
+
+
           <label for="date">Date:</label>
           <input type="date" id="date" required>
+
+
 
 
           <label for="title">Title:</label>
@@ -157,48 +242,76 @@
 
 
 
+
           <label for="entry">Entry:</label>
+
+
 
 
           <!-- Supported buttons below Entry: -->
           <nav class="horizontal-navbar">
             <ul>
               <li><button title="Attach File" class="file-button"><i class='bx bx-paperclip'></i></button></li>
-              <li><button title="Bold"><i class='bx bx-bold'></i></button></li>
-              <li><button title="Italic"><i class='bx bx-italic'></i></button></li>
-              <li><button title="Underline"><i class='bx bx-underline'></i></button></li>
-              <li><button title="Header"><i class='bx bx-heading' ></i></button></li>
-              <li><button title="Unordered"><i class='bx bx-list-ul' ></i></button></li>
-              <li><button title="Ordered"><i class='bx bx-list-ol' ></i></button></li>
+              <li><button title="Bold" data-command="bold"><i class='bx bx-bold'></i></button></li>
+              <li><button title="Italic" data-command="italic"><i class='bx bx-italic'></i></button></li>
+              <li><button title="Underline" data-command="underline"><i class='bx bx-underline'></i></button></li>
+              <li><button title="Header" data-command="formatBlock" data-value="h1"><i class='bx bx-heading'></i></button></li>
+              <li><button title="Unordered" data-command="insertUnorderedList"><i class='bx bx-list-ul'></i></button></li>
+              <li><button title="Ordered" data-command="insertOrderedList"><i class='bx bx-list-ol'></i></button></li>
               <li><button title="Checklist"><i class='bx bx-list-check'></i></button></li>
-              <li><button title="Tag"><i class='bx bx-purchase-tag' ></i></button></li>
+              <li><button title="Link" data-command="createLink"><i class='bx bx-link-alt'></i></button></li>
+              <li><button title="Tag"><i class='bx bx-purchase-tag'></i></button></li>
 
-              
+
+
+
             </ul>
           </nav>
           <!-- image load in for user-->
           <div class="entry-content">
             <input type="file" id="upload-image" class="file-input"> <!-- Image upload input -->
-            <div class="image-preview" style="margin-top: 4px;" ></div> <!-- Image preview div -->
+            <div class="image-preview" style="margin-top: 4px;"></div> <!-- Image preview div -->
           </div>
 
 
+
+
+
+
+
+
           <!-- Entry area -->
-          <textarea id="entry" rows="10" required
-            placeholder="Write your journal entry here, you can even add an image."></textarea>
+          <div id="entry" contenteditable="true">
+           
+          </div>
+
+
+
+
+
+
 
 
           <button id="submit-button">Save Entry</button>
 
+
+
+
         </div>
+
+
+
 
         <div class="entries" id="entries-container">
           <div class="entries" id="entries"></div>
         </div>
 
+
+
+
       </div>
     </section>
-<!-- ---------------------------------------------------------------------------------------------------------------- -->
+    <!-- ---------------------------------------------------------------------------------------------------------------- -->
     <!-- Hidden Calendar -->
     <div class="header">
       <div id="calendar-container" style="margin-right: 45%; display: none;">
@@ -227,7 +340,10 @@
         </div>
       </div>
     </div>
-<!-- ---------------------------------------------------------------------------------------------------------------- -->
+    <!-- ---------------------------------------------------------------------------------------------------------------- -->
+
+
+
 
     <!-- Hidden Daily Prompt -->
     <div class="popup-container">
@@ -239,17 +355,35 @@
           <button id="add-answer-btn" class="answer-btn">Add Answer</button>
           <button class="close-btn">
             <i class='bx bx-x' style="margin-left:1.5px;"></i>
-          </button> 
+          </button>
         </div>
+
+
+
 
       </div>
     </div>
 
-<!-- ---------------------------------------------------------------------------------------------------------------- -->
 
 
 
-<!-- ---------------------------------------------------------------------------------------------------------------- -->
+    <!-- ---------------------------------------------------------------------------------------------------------------- -->
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- ---------------------------------------------------------------------------------------------------------------- -->
+
+
+
 
     <!-- Ionic Icons -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
@@ -260,7 +394,22 @@
     </script>
 
 
+
+
+
+
+
+
   </body>
 
 
+
+
+
+
+
+
   </html>
+
+
+

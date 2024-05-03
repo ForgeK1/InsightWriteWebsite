@@ -1,6 +1,15 @@
    /**this is css style for the journal entries app**/
 
+
+
+
    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+
+
+
+
+
 
 
    * {
@@ -11,6 +20,12 @@
    }
 
 
+
+
+
+
+
+
    body {
        min-height: 100vh;
        background: url('/static/journals/img/photo5.jpg') no-repeat;
@@ -18,7 +33,13 @@
        background-position: center;
    }
 
+
+
+
    /** --------------------------------------------------------------------------------------------------  **/
+
+
+
 
    /**this is css style for the sidebar**/
    .sidebar {
@@ -36,9 +57,21 @@
    }
 
 
+
+
+
+
+
+
    .sidebar.active {
        width: 260px;
    }
+
+
+
+
+
+
 
 
    .sidebar .logo-menu {
@@ -47,6 +80,12 @@
        width: 100%;
        height: 70px;
    }
+
+
+
+
+
+
 
 
    .sidebar .logo-menu .logo {
@@ -58,10 +97,22 @@
    }
 
 
+
+
+
+
+
+
    .sidebar.active .logo-menu .logo {
        opacity: 1;
        transition-delay: .2s;
    }
+
+
+
+
+
+
 
 
    .sidebar .logo-menu .toggle-btn {
@@ -79,14 +130,32 @@
    }
 
 
+
+
+
+
+
+
    .sidebar.active .logo-menu .toggle-btn {
        left: 90%;
    }
 
 
+
+
+
+
+
+
    .sidebar .list {
        margin-top: 10px;
    }
+
+
+
+
+
+
 
 
    .list .list-item {
@@ -96,6 +165,12 @@
        margin: 5px 0;
        line-height: 50px;
    }
+
+
+
+
+
+
 
 
    .list .list-item a {
@@ -110,10 +185,22 @@
    }
 
 
+
+
+
+
+
+
    .list .list-item.active a,
    .list .list-item a:hover {
        background: rgba(255, 255, 255, .2);
    }
+
+
+
+
+
+
 
 
    .list .list-item a i {
@@ -124,11 +211,23 @@
    }
 
 
+
+
+
+
+
+
    .sidebar .link-name {
        opacity: 0;
        pointer-events: none;
        transition: opacity .3s;
    }
+
+
+
+
+
+
 
 
    .sidebar.active .link-name {
@@ -137,7 +236,13 @@
        transition-delay: calc(.1s * var(--i));
    }
 
+
+
+
    /** --------------------------------------------------------------------------------------------------  **/
+
+
+
 
    /**Time bar style**/
    #time-bar {
@@ -155,6 +260,12 @@
    }
 
 
+
+
+
+
+
+
    #word-count {
        position: absolute;
        top: 0px;
@@ -169,6 +280,9 @@
        /* This should be higher than the z-index of other elements */
    }
 
+
+
+
    /* Dark mode styles */
    [data-theme="dark"] {
        --word-count-time-bar-bg: #181818;
@@ -177,13 +291,126 @@
        /* Choose your desired text color */
    }
 
+
+
+
    [data-theme="dark"] #word-count,
    [data-theme="dark"] #time-bar {
        background-color: var(--word-count-time-bar-bg);
        color: var(--word-count-time-bar-color);
    }
 
+
+
+
    /** --------------------------------------------------------------------------------------------------  **/
+
+
+
+
+   /* new entry for txt formatting */
+   #entry {
+       background-color: white;
+       /* Match the background */
+       border: 1px solid #ccc;
+       /* Standard border */
+       padding: 10px;
+       /* Padding similar to textarea */
+       min-height: 150px;
+       /* Minimum height */
+       overflow: auto;
+       /* Allow scrolling */
+       font-family: 'Poppins', sans-serif;
+       /* Match the font style to your other inputs */
+       font-size: 15px;
+       /* Appropriate font size */
+       display: block;
+       /* Ensure it behaves like a block element */
+       width: 100%;
+       /* Take full width */
+       box-sizing: border-box;
+       /* Include padding and border in the width */
+       border-radius: 3px;
+       /* Optional: rounded corners like inputs */
+       color: #555;
+       /* Text color */
+       transition: border-color 0.3s;
+       /* Smooth transition for focus border */
+       margin-bottom: 8px;
+       
+   }
+
+
+   #entry:focus {
+       content: attr(data-placeholder);
+       border: 1px solid #333;
+       border-color: #333;
+       /* Highlight color on focus */
+       outline: none;
+       /* Remove default focus outline */
+
+
+   }
+
+
+   #entry ul {
+       list-style-type: disc;
+       /* standard bullet points */
+       padding-left: 20px;
+       /* ensure bullets are inside the visible area */
+   }
+
+
+   #entry ol {
+       list-style-type: decimal;
+       /* standard numbers */
+       padding-left: 20px;
+       /* ensure numbers are inside the visible area */
+   }
+
+
+   .entry-content ul,
+   .entry-content ol {
+       padding-left: 10px;
+       /* Adjust as needed for alignment */
+       list-style-position: inside;
+       /* Ensure bullets/numbers are visible */
+   }
+
+
+   .entry-content ul {
+       list-style-type: disc;
+       /* Style for unordered list */
+   }
+
+
+   .entry-content ol {
+       list-style-type: decimal;
+       /* Style for ordered list */
+   }
+
+
+   .checklist-item {
+       list-style-type: none;
+       /* Removes the default list bullet */
+       position: relative;
+       padding-left: 25px;
+       /* Give some space for the custom checkbox */
+   }
+
+
+   .checklist-item:before {
+       content: '☑';
+       margin-right: 5px;
+       position: absolute;
+       left: 0;
+       top: 0;
+       color: black;
+       /* Adjust color as needed */
+       font-size: 18px;
+       /* Adjust size as needed */
+   }
+
 
    /**css style for journal entry**/
    body {
@@ -191,6 +418,12 @@
        margin: 0;
        padding: 0;
    }
+
+
+
+
+
+
 
 
    .container {
@@ -204,9 +437,21 @@
    }
 
 
+
+
+
+
+
+
    h1 {
        text-align: center;
    }
+
+
+
+
+
+
 
 
    /** Clear button **/
@@ -234,6 +479,12 @@
    }
 
 
+
+
+
+
+
+
    .clear-btn i {
        font-size: 1.5rem;
        /* Icon size */
@@ -242,6 +493,12 @@
        opacity: 1;
        /* Start fully visible */
    }
+
+
+
+
+
+
 
 
    .clear-btn .btn-text {
@@ -254,16 +511,34 @@
    }
 
 
+
+
+
+
+
+
    .clear-btn:hover i {
        opacity: 0;
        /* Fade out the icon */
    }
 
 
+
+
+
+
+
+
    .clear-btn:hover .btn-text {
        opacity: 1;
        /* Fade in the text */
    }
+
+
+
+
+
+
 
 
    /* entry field style */
@@ -274,9 +549,21 @@
    }
 
 
+
+
+
+
+
+
    .entry-form label {
        margin-bottom: 5px;
    }
+
+
+
+
+
+
 
 
    .entry-form input,
@@ -288,9 +575,21 @@
    }
 
 
+
+
+
+
+
+
    .entry-form textarea {
        height: 200px;
    }
+
+
+
+
+
+
 
 
    #submit-button {
@@ -304,7 +603,8 @@
        /* Smooth transition for hover effects */
        box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
    }
-   
+
+
    /* Hover and focus styles */
    #submit-button:hover,
    #submit-button:focus {
@@ -316,12 +616,24 @@
    }
 
 
+
+
+
+
+
+
    /* Active style when the button is clicked */
    #submit-button:active {
        background-color: #687c7d;
        /* Even darker color on click */
        /* Add any additional styles for active state */
    }
+
+
+
+
+
+
 
 
    .entries {
@@ -336,6 +648,12 @@
        border: 1px solid #fff;
        /* Add border for separation */
    }
+
+
+
+
+
+
 
 
    .entry {
@@ -355,8 +673,20 @@
        gap: 1px;
        /* Optional: add some space between your items */
 
+
+
+
        position: relative;
    }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -369,6 +699,12 @@
        min-width: 0;
        /* This prevents the flex item from overflowing its container */
    }
+
+
+
+
+
+
 
 
    /* Style for the image preview */
@@ -387,11 +723,20 @@
        box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
        /* Optional: added shadow for depth */
 
+
+
+
        flex: none;
        /* This prevents the image from growing and only taking up the space of its content */
        display: none;
 
+
+
+
    }
+
+
+
 
    /* You might want to adjust the delete and edit button's positions if necessary */
    .edit-btn,
@@ -402,16 +747,34 @@
    }
 
 
+
+
+
+
+
+
    .horizontal-navbar {
        margin-bottom: 5px;
        /* Remove space below the navbar */
    }
 
 
+
+
+
+
+
+
    .entry-form {
        margin-top: 0;
        /* Remove space above the form */
    }
+
+
+
+
+
+
 
 
    /* If the buttons are in a list, remove margin and padding */
@@ -424,12 +787,24 @@
    }
 
 
+
+
+
+
+
+
    /* Align buttons horizontally and close together */
    .horizontal-navbar ul li {
        display: inline-block;
        margin-right: 5px;
        /* Adjust space between buttons */
    }
+
+
+
+
+
+
 
 
    /* If there is a container around the buttons and the entry field, make it a flex container */
@@ -442,11 +817,23 @@
    }
 
 
+
+
+
+
+
+
    /* Additional style for entry to ensure it contains floated elements */
    .entry {
        overflow: hidden;
        /* This will contain the floated image inside the entry */
    }
+
+
+
+
+
+
 
 
    /* Style for edit button */
@@ -463,15 +850,24 @@
        color: #4f6161;
    }
 
+
+
+
    .edit-btn i {
        font-size: 20px;
        /* Match the delete button size */
    }
 
+
+
+
    .entry:hover .edit-btn {
        opacity: 1;
        /* if you want to make the edit button fully visible on entry hover adjust to 0*/
    }
+
+
+
 
    .entry .edit-btn {
        opacity: 1;
@@ -480,11 +876,17 @@
        /* Smooth transition for the opacity */
    }
 
+
+
+
    /* Adjusting the entry content padding to prevent overlap */
    .entry-content {
        padding-right: 80px;
        /* Increase right padding to make space for buttons */
    }
+
+
+
 
    /* Additional hover styles for the edit button */
    .edit-btn:hover {
@@ -492,10 +894,22 @@
        /* Lighter color on hover */
    }
 
+
+
+
    /* Style for the delete button hover effect for consistency */
    .delete-btn:hover {
        color: #7d9491;
    }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -518,6 +932,12 @@
    }
 
 
+
+
+
+
+
+
    /* delete size */
    .delete-btn i {
        font-size: 20px;
@@ -525,9 +945,18 @@
    }
 
 
+
+
+
+
+
+
    .entry h2 {
        margin-top: 0;
    }
+
+
+
 
    /* Style for toolbar buttons */
    .horizontal-navbar ul li button {
@@ -549,6 +978,12 @@
    }
 
 
+
+
+
+
+
+
    /* Hover and focus styles for buttons */
    .horizontal-navbar ul li button:hover,
    .horizontal-navbar ul li button:focus {
@@ -560,6 +995,9 @@
        /* Remove focus outline */
    }
 
+
+
+
    /* Active style for buttons when they are clicked */
    .horizontal-navbar ul li button:active {
        transform: translateY(1px);
@@ -567,6 +1005,15 @@
        background: #687c7d;
        /* Even lighter color on click */
    }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -578,6 +1025,12 @@
    }
 
 
+
+
+
+
+
+
    /* Style for the icon inside the label */
    .file-input-label i {
        position: absolute;
@@ -587,10 +1040,28 @@
    }
 
 
+
+
+
+
+
+
    /* Hide the default file input text */
    .file-input {
        display: none;
    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -604,11 +1075,17 @@
        /* Adjust margin */
    }
 
+
+
+
    .calendar #monthYear {
        margin: auto;
        font-size: 1.1em;
        color: #333;
    }
+
+
+
 
    .today {
        background-color: #b0c0a3;
@@ -616,6 +1093,12 @@
        color: #fff;
        /* White text color */
    }
+
+
+
+
+
+
 
 
    .calendar {
@@ -631,9 +1114,18 @@
        top: 0%
    }
 
+
+
+
    .days {
        display: flex;
    }
+
+
+
+
+
+
 
 
    .day {
@@ -643,10 +1135,19 @@
    }
 
 
+
+
+
+
+
+
    .dates {
        display: flex;
        flex-wrap: wrap;
    }
+
+
+
 
    .date {
        flex: 1;
@@ -656,14 +1157,26 @@
    }
 
 
+
+
+
+
+
+
    .date:hover {
        background-color: #9db6b3;
    }
+
+
+
 
    .calendar .active {
        cursor: move;
        user-select: none;
    }
+
+
+
 
    /* Calendar container */
    .calendar {
@@ -687,11 +1200,20 @@
        /* Added top position */
    }
 
+
+
+
    /* Header */
    .header {
        margin-bottom: 5px;
        /* Adjust margin */
    }
+
+
+
+
+
+
 
 
    /* Month/Year display */
@@ -702,12 +1224,24 @@
        color: #333;
        /* Dark text color */
 
+
+
+
    }
+
+
+
 
    .navigation {
        display: flex;
        align-items: center;
    }
+
+
+
+
+
+
 
 
    #nextMonth {
@@ -716,11 +1250,17 @@
        align-items: center;
    }
 
+
+
+
    #prevMonth {
        width: 30px;
        height: 25px;
        align-items: center;
    }
+
+
+
 
    #prevMonth,
    #nextMonth {
@@ -731,6 +1271,12 @@
        /* Adjust padding to make the buttons smaller */
 
 
+
+
+
+
+
+
        border-radius: 3px;
        /* Adjust border radius if needed */
        cursor: pointer;
@@ -739,17 +1285,29 @@
        /* Add margin for spacing between buttons */
    }
 
+
+
+
    #prevMonth:hover,
    #nextMonth:hover {
        background-color: #7d9491;
    }
+
+
+
 
    /* Days of the week */
    .days {
        /*display: flex;*/
        display: none;
 
+
+
+
    }
+
+
+
 
    .day {
        flex: 1;
@@ -761,6 +1319,12 @@
    }
 
 
+
+
+
+
+
+
    /* Dates container */
    .dates {
        display: grid;
@@ -770,6 +1334,9 @@
        /* Adjust gap */
    }
 
+
+
+
    /* Individual dates */
    .date {
        text-align: center;
@@ -778,10 +1345,16 @@
        /* Adjust font size */
    }
 
+
+
+
    .date:hover {
        background-color: #9db6b3;
        /* Light blue on hover */
    }
+
+
+
 
    /** --------------------------------------------------------------------------------------------------  **/
    /* daily popup style */
@@ -806,6 +1379,9 @@
        transition: opacity 0.3s, visibility 0.3s;
    }
 
+
+
+
    /* When the popup container is active, it slowly fades in */
    .popup-container.active {
        display: flex;
@@ -815,7 +1391,13 @@
        transition-delay: 1s;
        /* Apply the transition right away */
 
+
+
+
    }
+
+
+
 
    .popup-box {
        background: #C1CEB4;
@@ -834,6 +1416,9 @@
        /* Needed for positioning the close button absolutely */
    }
 
+
+
+
    #daily-prompt-container {
        font-family: 'Poppins', sans-serif;
        /* Match theme's font */
@@ -847,6 +1432,9 @@
        color: #253333;
        /* Text color theme */
    }
+
+
+
 
    .close-btn {
        display: flex;
@@ -879,12 +1467,24 @@
        /* To prevent any overflow */
 
 
+
+
+
+
+
+
    }
+
+
+
 
    .close-btn:hover {
        background-color: #b5c3a0;
        /* A darker shade of red for hover state */
    }
+
+
+
 
    #daily-prompt {
        font-size: 18px;
@@ -894,6 +1494,9 @@
        margin-bottom: 20px;
        /* Space below the prompt text */
    }
+
+
+
 
    /* Consider adding an overlay effect to the entire page to focus attention on the popup */
    .popup-container::before {
@@ -908,6 +1511,9 @@
        z-index: -1;
        /* Ensure it's behind the popup content */
    }
+
+
+
 
    .input-response {
        width: 100%;
@@ -930,6 +1536,9 @@
        background-color: #F1F4EB;
    }
 
+
+
+
    .answer-btn {
        background-color: #54696E;
        /* Color to match the theme */
@@ -949,12 +1558,24 @@
        box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
    }
 
+
+
+
    .answer-btn:hover {
        background-color: #b5c3a0;
        /* Slightly darker on hover */
    }
 
+
+
+
    /** --------------------------------------------------------------------------------------------------  **/
+
+
+
+
+
+
 
 
    /* Define light mode variables */
@@ -963,6 +1584,9 @@
        --text-color: #333;
    }
 
+
+
+
    /* Define dark mode variables */
    [data-theme="dark"] {
        --background-image: url('/static/journals/img/photo4.jpg');
@@ -970,11 +1594,17 @@
        --icon-color: #D1D1D1;
    }
 
+
+
+
    /* Apply the icon color variable with increased specificity */
    [data-theme="dark"] .sidebar .logo-menu .bx-menu {
        color: var(--icon-color);
        /* Ensuring this color takes precedence */
    }
+
+
+
 
    [data-theme="dark"] .sidebar,
    [data-theme="dark"] .sidebar .logo,
@@ -987,6 +1617,9 @@
        background-color: transparent;
    }
 
+
+
+
    /* Define styles that change when dark mode is active */
    [data-theme="dark"] .horizontal-navbar ul li button,
    [data-theme="dark"] #submit-button {
@@ -996,9 +1629,15 @@
        /* Optional: change background for buttons and sidebar */
    }
 
+
+
+
    [data-theme="dark"] .clear-btn {
        color: #D1D1D1;
    }
+
+
+
 
    /* Hover state for the save entry button for both light and dark modes */
    #submit-button:hover {
@@ -1009,6 +1648,9 @@
        /* Other styles for hover state, if any */
    }
 
+
+
+
    /* You may want to ensure dark mode does not override this with a more specific rule */
    [data-theme="dark"] #submit-button:hover {
        background-color: #D1D1D1;
@@ -1017,12 +1659,18 @@
        /* Same as light mode */
    }
 
+
+
+
    /* Hover state for the formatting buttons for both light and dark modes */
    .horizontal-navbar ul li button:hover {
        background: #D1D1D1;
        /* Lighter background color on hover */
        /* Add any other styles for hover state */
    }
+
+
+
 
    /* Same for dark mode */
    [data-theme="dark"] .horizontal-navbar ul li button:hover {
@@ -1031,12 +1679,24 @@
        /* Ensure no other dark mode rules are more specific than this */
    }
 
+
+
+
    [data-theme="dark"] .list .list-item.active a,
    [data-theme="dark"] .list .list-item a:hover {
        background: rgba(255, 255, 255, .2);
    }
 
+
+
+
    /** --------------------------------------------------------------------------------------------------  **/
+
+
+
+
+
+
 
 
    body {
@@ -1047,178 +1707,305 @@
        transition: background-image 0.5s ease-in-out;
    }
 
+
+
+
    /* Specific styles for the dark mode toggle to avoid conflicts */
-/* Specific styles for the dark mode toggle */
-.dark-mode-label {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 35px;
-    height: 30px;
-    background-color: transparent;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
-
-/* Hide the checkbox visually but keep it in the document flow */
-.dark-mode-checkbox {
-    opacity: 0;
-    position: absolute;
-    z-index: -1; /* Put it behind the icons */
-}
-
-/* Style icons */
-.dark-mode-label ion-icon {
-    font-size: 1.5em; /* Set the size of the icons */
-    color: #4D6267;
-    filter: drop-shadow(0 0 2px rgba(0, 0, 0, .5));
-    position: absolute; /* Absolute positioning to stack icons */
-}
-
-/* Initially, only the moon icon is visible */
-.icon-sun {
-    display: none;
-
-}
-
-/* When dark mode is active, show the sun icon and hide the moon icon */
-.dark-mode-label.active .icon-moon {
-    display: none;
-}
-
-.dark-mode-label.active .icon-sun {
-    display: block;
-    color: #FFA500; /* Adjust the color of the sun icon to match your theme */
-    font-size: 1.5em;
-    filter: drop-shadow(0 0 2px rgba(0, 0, 0, .5));
-}
-
-/* Hover effect for icons */
-.dark-mode-label ion-icon {
-    transition: transform 0.3s ease-in-out;
-}
-
-.dark-mode-label ion-icon:hover {
-    transform: scale(1.1); /* Slightly enlarge the icon on hover */
-}
-/** --------------------------------------------------------------------------------------------------  **/
-
-/* Dark mode styles for the calendar */
-[data-theme="dark"] .calendar {
-    background-color: #454545; /* Darker background for the calendar */
-    color: #D1D1D1; /* Lighter text color for readability */
-}
-
-[data-theme="dark"] #monthYear {
-    color: #FFFFFF; /* This sets the text color to white */
-}
-
-/* Dark mode styles for the previous and next month buttons */
-[data-theme="dark"] #prevMonth,
-[data-theme="dark"] #nextMonth {
-    background-color: #000000; /* This sets the icon color to black */
-}
-
-[data-theme="dark"] #prevMonth:hover,
-[data-theme="dark"] #nextMonth:hover {
-    background-color: #656565;
-}
+   /* Specific styles for the dark mode toggle */
+   .dark-mode-label {
+       position: fixed;
+       left: 0;
+       top: 0;
+       width: 35px;
+       height: 30px;
+       background-color: transparent;
+       border-radius: 50%;
+       cursor: pointer;
+       display: flex;
+       justify-content: center;
+       align-items: center;
 
 
-[data-theme="dark"] .calendar .header1,
-[data-theme="dark"] .calendar .days,
-[data-theme="dark"] .calendar .date {
-    background-color: #454545; /* Slightly lighter than the calendar background for contrast */
-    color: #E1E1E1; /* Light color for the text, ensuring readability */
-}
 
-/* Styles for the navigation buttons in dark mode */
-[data-theme="dark"] .calendar .navigation button {
-    color: #D1D1D1; /* Light color for the buttons */
-}
 
-/* Styles for the days of the week in dark mode */
-[data-theme="dark"] .calendar .days .day {
-    color: #E1E1E1; /* Light color for the days' labels */
-}
+   }
 
-/* Styles for the individual dates in dark mode */
-[data-theme="dark"] .calendar .dates .date {
-    color: #E1E1E1; /* Light color for the date numbers */
-}
 
-/* Style for the current day in dark mode */
-[data-theme="dark"] .calendar .dates .date.today {
-    background-color: #565656; /* A distinct background color for today's date */
-    color: #FFFFFF; /* White color for better contrast and visibility */
-}
 
-/* Hover style for dates in dark mode */
-[data-theme="dark"] .calendar .dates .date:hover {
-    background-color: #656565; /* A lighter background color on hover */
-    color: #FFFFFF; /* Maintain white text on hover for readability */
-}
 
-/** --------------------------------------------------------------------------------------------------  **/
+   /* Hide the checkbox visually but keep it in the document flow */
+   .dark-mode-checkbox {
+       opacity: 0;
+       position: absolute;
+       z-index: -1;
+       /* Put it behind the icons */
+   }
 
-/* Dark mode styles for the daily prompt container */
-[data-theme="dark"] .popup-box, 
-[data-theme="dark"] #daily-prompt-container {
-    background-color: #D1D1D1; /* Dark background for the container */
-    color: #333; /* Lighter text for better contrast */
-    /* Add any other styles for the prompt container in dark mode */
-}
 
-[data-theme="dark"] .popup-box{
-    background-color: #333;
-}
 
-/* Dark mode styles for the input area within the daily prompt */
-[data-theme="dark"] .input-response {
-    background-color: #444; /* Dark background for the input */
-    color: #fff; /* White text for better contrast */
-    border-color: #555; /* Darker border to match the input background */
-    /* Add any other styles for the input in dark mode */
-}
 
-/* Dark mode styles for the save answer button within the daily prompt */
-[data-theme="dark"] .answer-btn {
-    background-color: #555; /* Darker background for the button */
-    color: #ddd; /* Lighter text for better contrast */
-    /* Add any other button styles for dark mode */
-}
+   /* Style icons */
+   .dark-mode-label ion-icon {
+       font-size: 1.5em;
+       /* Set the size of the icons */
+       color: #4D6267;
+       filter: drop-shadow(0 0 2px rgba(0, 0, 0, .5));
+       position: absolute;
+       /* Absolute positioning to stack icons */
+   }
 
-/* Dark mode styles for the close button within the daily prompt */
-[data-theme="dark"] .close-btn {
-    background-color: #555; /* Darker background for the button */
-    color: #ddd; /* Lighter text for better contrast */
-    /* Add any other close button styles for dark mode */
-}
-[data-theme="dark"] .close-btn:hover,
-[data-theme="dark"] .answer-btn:hover{
-    background-color: #656565;
-}
 
-/** --------------------------------------------------------------------------------------------------  **/
+
+
+   /* Initially, only the moon icon is visible */
+   .icon-sun {
+       display: none;
+
+
+
+
+   }
+
+
+
+
+   /* When dark mode is active, show the sun icon and hide the moon icon */
+   .dark-mode-label.active .icon-moon {
+       display: none;
+   }
+
+
+
+
+   .dark-mode-label.active .icon-sun {
+       display: block;
+       color: #FFA500;
+       /* Adjust the color of the sun icon to match your theme */
+       font-size: 1.5em;
+       filter: drop-shadow(0 0 2px rgba(0, 0, 0, .5));
+   }
+
+
+
+
+   /* Hover effect for icons */
+   .dark-mode-label ion-icon {
+       transition: transform 0.3s ease-in-out;
+   }
+
+
+
+
+   .dark-mode-label ion-icon:hover {
+       transform: scale(1.1);
+       /* Slightly enlarge the icon on hover */
+   }
+
+
+   /** --------------------------------------------------------------------------------------------------  **/
+
+
+
+
+   /* Dark mode styles for the calendar */
+   [data-theme="dark"] .calendar {
+       background-color: #454545;
+       /* Darker background for the calendar */
+       color: #D1D1D1;
+       /* Lighter text color for readability */
+   }
+
+
+
+
+   [data-theme="dark"] #monthYear {
+       color: #FFFFFF;
+       /* This sets the text color to white */
+   }
+
+
+
+
+   /* Dark mode styles for the previous and next month buttons */
+   [data-theme="dark"] #prevMonth,
+   [data-theme="dark"] #nextMonth {
+       background-color: #000000;
+       /* This sets the icon color to black */
+   }
+
+
+
+
+   [data-theme="dark"] #prevMonth:hover,
+   [data-theme="dark"] #nextMonth:hover {
+       background-color: #656565;
+   }
+
+
+
+
+
+
+
+
+   [data-theme="dark"] .calendar .header1,
+   [data-theme="dark"] .calendar .days,
+   [data-theme="dark"] .calendar .date {
+       background-color: #454545;
+       /* Slightly lighter than the calendar background for contrast */
+       color: #E1E1E1;
+       /* Light color for the text, ensuring readability */
+   }
+
+
+
+
+   /* Styles for the navigation buttons in dark mode */
+   [data-theme="dark"] .calendar .navigation button {
+       color: #D1D1D1;
+       /* Light color for the buttons */
+   }
+
+
+
+
+   /* Styles for the days of the week in dark mode */
+   [data-theme="dark"] .calendar .days .day {
+       color: #E1E1E1;
+       /* Light color for the days' labels */
+   }
+
+
+
+
+   /* Styles for the individual dates in dark mode */
+   [data-theme="dark"] .calendar .dates .date {
+       color: #E1E1E1;
+       /* Light color for the date numbers */
+   }
+
+
+
+
+   /* Style for the current day in dark mode */
+   [data-theme="dark"] .calendar .dates .date.today {
+       background-color: #565656;
+       /* A distinct background color for today's date */
+       color: #FFFFFF;
+       /* White color for better contrast and visibility */
+   }
+
+
+
+
+   /* Hover style for dates in dark mode */
+   [data-theme="dark"] .calendar .dates .date:hover {
+       background-color: #656565;
+       /* A lighter background color on hover */
+       color: #FFFFFF;
+       /* Maintain white text on hover for readability */
+   }
+
+
+
+
+   /** --------------------------------------------------------------------------------------------------  **/
+
+
+
+
+   /* Dark mode styles for the daily prompt container */
+   [data-theme="dark"] .popup-box,
+   [data-theme="dark"] #daily-prompt-container {
+       background-color: #D1D1D1;
+       /* Dark background for the container */
+       color: #333;
+       /* Lighter text for better contrast */
+       /* Add any other styles for the prompt container in dark mode */
+   }
+
+
+
+
+   [data-theme="dark"] .popup-box {
+       background-color: #333;
+   }
+
+
+
+
+   /* Dark mode styles for the input area within the daily prompt */
+   [data-theme="dark"] .input-response {
+       background-color: #444;
+       /* Dark background for the input */
+       color: #fff;
+       /* White text for better contrast */
+       border-color: #555;
+       /* Darker border to match the input background */
+       /* Add any other styles for the input in dark mode */
+   }
+
+
+
+
+   /* Dark mode styles for the save answer button within the daily prompt */
+   [data-theme="dark"] .answer-btn {
+       background-color: #555;
+       /* Darker background for the button */
+       color: #ddd;
+       /* Lighter text for better contrast */
+       /* Add any other button styles for dark mode */
+   }
+
+
+
+
+   /* Dark mode styles for the close button within the daily prompt */
+   [data-theme="dark"] .close-btn {
+       background-color: #555;
+       /* Darker background for the button */
+       color: #ddd;
+       /* Lighter text for better contrast */
+       /* Add any other close button styles for dark mode */
+   }
+
+
+   [data-theme="dark"] .close-btn:hover,
+   [data-theme="dark"] .answer-btn:hover {
+       background-color: #656565;
+   }
+
+
+
+
+   /** --------------------------------------------------------------------------------------------------  **/
+
+
+
 
    /* Dark mode styles for entries */
    [data-theme="dark"] {
-    /* Existing dark mode variable definitions */
-    --entry-bg-color: #D1D1D1;
-    /* Dark background for the entry */
-    --entry-text-color: #181818;
-    /* Light text color for readability */
-    /* Add other dark mode variable definitions as needed */
-}
+       /* Existing dark mode variable definitions */
+       --entry-bg-color: #D1D1D1;
+       /* Dark background for the entry */
+       --entry-text-color: #181818;
+       /* Light text color for readability */
+       /* Add other dark mode variable definitions as needed */
+   }
 
 
-/* Target the saved entry background and text color specifically for dark mode */
-[data-theme="dark"] .entries,
-[data-theme="dark"] .entry {
-    background-color: var(--entry-bg-color);
-    color: var(--entry-text-color);
-}
+
+
+
+
+
+
+   /* Target the saved entry background and text color specifically for dark mode */
+   [data-theme="dark"] .entries,
+   [data-theme="dark"] .entry {
+       background-color: var(--entry-bg-color);
+       color: var(--entry-text-color);
+   }
+
+
+
