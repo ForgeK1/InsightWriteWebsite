@@ -9,9 +9,8 @@ class JournalForm(ModelForm):
     class Meta:
         model = Journal
         # fields = "__all__" #calls all fields in Journal
-        fields = ('journal_id', 'user_id', 'tag_id', 'title', 'content')
+        fields = ('user_id', 'tag_id', 'title', 'content')
         labels = {
-            'journal_id': '',
             'user_id': '',
             'tag_id': '',
             'title': 'Title',
@@ -19,7 +18,6 @@ class JournalForm(ModelForm):
         }
         #attaches bootstrap onto form fields for styling
         widgets = {
-            'journal_id': forms.NumberInput(attrs={'class':'form-control', 'placeholder':'Journal ID'}),
             'user_id': forms.NumberInput(attrs={'class':'form-control', 'placeholder':'User ID'}),
             'tag_id': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Tag ID'}),
             'title': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Enter title here'}),

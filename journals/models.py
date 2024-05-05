@@ -4,7 +4,7 @@ from datetime import date
 # Journal Models
 
 class Journal(models.Model):
-    journal_id = models.IntegerField(primary_key=True, serialize=False, verbose_name='Journal ID')
+    journal_id = models.AutoField(primary_key=True)
     user_id = models.IntegerField()
     tag_id = models.CharField()
     title = models.CharField(max_length=200)
