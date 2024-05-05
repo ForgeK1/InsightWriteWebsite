@@ -101,8 +101,8 @@ textarea {
   width: 100%;
   padding: 10px;
   text-align: center;
-  box-shadow: 0px -1px 5px rgba(0, 0, 0, 0.1);
-  background-color: #cab79f; /* Background color outside the animation */
+  box-shadow: 0px -1px 5px rgb(255, 255, 255);
+  background-color: white; /* Background color outside the animation */
 }
 
 .fill-text-typing {
@@ -123,7 +123,7 @@ textarea {
     border-color: transparent;
   }
   50% {
-    border-color: black;
+    border-color: white;
   }
 }
 
@@ -137,7 +137,7 @@ textarea {
 }
 
 h2 {
-  color: #333;
+  color: white;
 }
 
 .header-icon {
@@ -198,6 +198,7 @@ h2 {
 
 .card-description {
   color: #888;
+  font-family: Popins-sans-serif;
 }
 
 .card-grid {
