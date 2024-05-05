@@ -28,6 +28,7 @@ urlpatterns = [
     path('login_signup/', include('login_signup.urls')),
     path('meditations/', include('meditations.urls')),
     path('accounts/', include('allauth.urls')),
+    path('calendar/', include('calendar.urls')),
     
     
 ]
