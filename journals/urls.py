@@ -4,6 +4,7 @@ from . import views
 from .views import CustomLoginRedirectView
 
 from .views import WeatherView
+from .views import GalleryView
 
 app_name = 'journals'
 urlpatterns = [
@@ -20,6 +21,8 @@ urlpatterns = [
     #configure the URL pattern for the weather page
     # In journals/urls.py
     path('weather/', WeatherView.as_view(), name='weather'),
+
+    path('gallery/', GalleryView.as_view(), name='gallery'),
 
 
 ]

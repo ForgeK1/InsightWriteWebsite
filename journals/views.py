@@ -39,3 +39,8 @@ class CustomLoginRedirectView(LoginRequiredMixin, TemplateView):
 class WeatherView(TemplateView):
     template_name = 'journals/weather.html'
 
+
+# Class-based view for the weather page
+class GalleryView(TemplateView):
+    template_name = 'journals/gallery.html'
+

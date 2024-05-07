@@ -1,16 +1,10 @@
    /**this is css style for the journal entries app**/
 
 
-
-
    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-
-
-
-
-
-
-
+   html {
+    scroll-behavior: smooth;
+}
 
    * {
        margin: 0;
@@ -18,10 +12,6 @@
        box-sizing: border-box;
        font-family: 'Poppins', sans-serif;
    }
-
-
-
-
 
 
 
@@ -222,9 +212,6 @@
        pointer-events: none;
        transition: opacity .3s;
    }
-
-
-
 
 
 
@@ -1807,6 +1794,8 @@
 
 
 
+   /** --------------------------------------------------------------------------------------------------  **/
+
    /* Dark mode styles for the calendar */
    [data-theme="dark"] .calendar {
        background-color: #454545;
@@ -2007,5 +1996,50 @@
        color: var(--entry-text-color);
    }
 
+   [data-theme="dark"] #streak-popup {
+    background-color: #656565;
+    color:#D1D1D1;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+   }
 
+
+
+/* Define keyframes for moving the popup */
+@keyframes slideInFromSidebar {
+    0% {
+        top: 95%; /* Starting from the bottom (adjust based on sidebar's position) */
+        right: 5%; /* Start close to the sidebar's width */
+        opacity: 0; /* Start hidden */
+    }
+    100% {
+        top: 4%; /* End position */
+        right: 3%; /* End position */
+        opacity: 1; /* Fully visible */
+    }
+}
+
+#streak-popup {
+    position: fixed; /* Changed to fixed for consistent positioning across screen sizes */
+    top: 5%; /* End position */
+    right: 10%; /* End position */
+    transform: translate(-50%, -50%); 
+    background-color: #F2F5EC;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: none; /* Initially hidden */
+    animation: slideInFromSidebar 0.5s ease-out forwards; /* Animation applied */
+}
+
+/* Styles when not hidden */
+#streak-popup:not(.hidden) {
+    display: block; /* Make visible when class 'hidden' is not present */
+}
+
+.fire-icon {
+    color: orange;
+    margin-right: 5px;
+}
 

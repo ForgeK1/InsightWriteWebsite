@@ -783,6 +783,10 @@ document.addEventListener('DOMContentLoaded', function () {
          saveEntry();
      });***/
 
+ 
+
+
+
 
      //Function to auto-Save the Data, this would involve sending the data to a server using AJAX
      let lastSavedTitle = '';
@@ -853,4 +857,21 @@ document.addEventListener('DOMContentLoaded', function () {
      });
 
 
-
+     //streak function
+     document.addEventListener('DOMContentLoaded', function() {
+        var streakBtn = document.getElementById('streak-btn');
+        if (streakBtn) {
+            console.log('Streak button is properly initialized.');
+            var streakPopup = document.getElementById('streak-popup');
+            
+            streakBtn.addEventListener('click', function(event) {
+                console.log('Streak button clicked');
+                event.preventDefault();
+                streakPopup.classList.toggle('hidden');
+                console.log('Popup should now be:', streakPopup.classList.contains('hidden') ? 'hidden' : 'visible');
+            });
+        } else {
+            console.error('Streak button not found');
+        }
+    });
+    
