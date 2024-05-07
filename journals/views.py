@@ -40,7 +40,10 @@ class WeatherView(TemplateView):
     template_name = 'journals/weather.html'
 
 
-# Class-based view for the weather page
+# Class-based view for the media page
 class GalleryView(TemplateView):
     template_name = 'journals/gallery.html'
 
+# Class-based view for the weather page
+class CalendarView(TemplateView):
+    template_name = 'journals/calendar.html'

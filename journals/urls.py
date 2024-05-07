@@ -5,6 +5,7 @@ from .views import CustomLoginRedirectView
 
 from .views import WeatherView
 from .views import GalleryView
+from .views import CalendarView
 
 app_name = 'journals'
 urlpatterns = [
@@ -24,5 +25,5 @@ urlpatterns = [
 
     path('gallery/', GalleryView.as_view(), name='gallery'),
 
-
+    path('calendar/', CalendarView.as_view(), name='calendar'),
 ]
