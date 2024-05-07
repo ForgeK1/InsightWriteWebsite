@@ -46,6 +46,7 @@
 
   <body class="container">
     {% load socialaccount %}
+    {% if user.is_authenticated %}
 
     <div>
       <header>
@@ -104,7 +105,7 @@
           <li>
             <a
               class="dropdown-item"
-              href="{% url 'account_logout' %}?next=/login_signup"
+              href="{% url 'account_logout' %}?next=/"
               ><ion-icon name="log-out" style="margin-right: 20px"></ion-icon
               >Logout</a
             >
@@ -291,5 +292,7 @@
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
+
+    {% endif %}
   </body>
 </html>

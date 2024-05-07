@@ -39,7 +39,10 @@ def JournalEntries(request):
         if 'submitted' in request.GET:
             submitted = True
 
-    journal_list = Journal.objects.all()
+    '''We pass in the id of the current user that is logged in to the website
+       to show user specific journals'''
+    journal_list = Journal.objects.filter(user_id = request.user.id)
+    
     return render(request, 'journals/Journal Entries.html', {'form':form, 'submitted':submitted, 'journal_list':journal_list})
 
 
