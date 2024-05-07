@@ -342,7 +342,19 @@
 
 
       <div class="entries" id="entries-container">
-        <div class="entries" id="entries"></div>
+        <div class="entries" id="entries">
+          {{ request.user.id }} <br/> <br/>
+          
+          {% for journal in journal_list %}
+            User ID:               {{ journal.user_id }} <br/>
+            Journal ID:            {{ journal.journal_id}} <br/>
+            Journal Title:         {{ journal.title }} <br/>
+            Journal Content:       {{ journal.content }} <br/>
+            Journal Entry Date:    {{ journal.entry_date }} <br/>
+            Jorunal Last Modified: {{ journal.last_modified_date }}
+            <br/><br/>
+          {% endfor %}
+        </div>
       </div>
 
 
