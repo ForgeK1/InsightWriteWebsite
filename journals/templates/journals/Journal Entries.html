@@ -272,100 +272,30 @@
 
           <input type="submit" value="Save Entry" id="submit-button" style="width:100%">
         </form>
-        
 
-        <label for="date">Date:</label>
-        <input type="date" id="date" required>
-
-
-
-
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title" required placeholder="Enter your title here">
-
-
-
-
-        <label for="entry">Entry:</label>
-
-
-
-
-        <!-- Supported buttons below Entry: -->
-        <nav class="horizontal-navbar">
-          <ul>
-            <li><button title="Attach File" class="file-button"><i class='bx bx-paperclip'></i></button></li>
-            <li><button title="Bold" data-command="bold"><i class='bx bx-bold'></i></button></li>
-            <li><button title="Italic" data-command="italic"><i class='bx bx-italic'></i></button></li>
-            <li><button title="Underline" data-command="underline"><i class='bx bx-underline'></i></button></li>
-            <li><button title="Header" data-command="formatBlock" data-value="h1"><i class='bx bx-heading'></i></button>
-            </li>
-            <li><button title="Unordered" data-command="insertUnorderedList"><i class='bx bx-list-ul'></i></button></li>
-            <li><button title="Ordered" data-command="insertOrderedList"><i class='bx bx-list-ol'></i></button></li>
-            <li><button title="Checklist"><i class='bx bx-list-check'></i></button></li>
-            <li><button title="Link" data-command="createLink"><i class='bx bx-link-alt'></i></button></li>
-            <li><button title="Tag"><i class='bx bx-purchase-tag'></i></button></li>
-
-
-
-
-          </ul>
-        </nav>
-        <!-- image load in for user-->
-        <div class="entry-content">
-          <input type="file" id="upload-image" class="file-input"> <!-- Image upload input -->
-          <div class="image-preview" style="margin-top: 4px;"></div> <!-- Image preview div -->
+        <div class="entries" id="entries-container">
+          <div class="entries" id="entries">
+            <!-- Prints backwards, from latest to oldest -->
+            {% for journal in journal_list %}
+              <div>
+                <p>User ID: {{ journal.user_id }}</p>
+                <p>Journal ID: {{ journal.journal_id}}</p>
+                <p>Journal Title: {{ journal.title }}</p>
+                <p>Journal Content: {{ journal.content }}</p>
+                <p>Journal Entry Date: {{ journal.entry_date }}</p>
+                <p>Jorunal Last Modified: {{ journal.last_modified_date }}</p>
+              </div>
+              <br>
+              <br>
+            {% endfor %}
+            <h1>{{ request.user.username|capfirst }}'s Journal Entries</h1>
+          </div>
         </div>
-
-
-
-
-
-
-
-
-        <!-- Entry area -->
-        <div id="entry" contenteditable="true">
-
-        </div>
-
-
-
-
-
-
-
-
-        <button id="submit-button">Save Entry</button>
 
 
 
 
       </div>
-
-
-
-
-      <div class="entries" id="entries-container">
-        <div class="entries" id="entries">
-          {{ request.user.id }} <br/> <br/>
-          
-          {% for journal in journal_list %}
-            User ID:               {{ journal.user_id }} <br/>
-            Journal ID:            {{ journal.journal_id}} <br/>
-            Journal Title:         {{ journal.title }} <br/>
-            Journal Content:       {{ journal.content }} <br/>
-            Journal Entry Date:    {{ journal.entry_date }} <br/>
-            Jorunal Last Modified: {{ journal.last_modified_date }}
-            <br/><br/>
-          {% endfor %}
-        </div>
-      </div>
-
-
-
-
-    </div>
   </section>
   <!-- ---------------------------------------------------------------------------------------------------------------- -->
   <!-- Hidden Calendar -->
@@ -457,14 +387,5 @@
 
 
 </body>
-
-
-
-
-
-
-
-
-  </html>
 
 </html>
