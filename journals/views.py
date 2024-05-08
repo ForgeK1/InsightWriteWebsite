@@ -29,18 +29,25 @@ class DetailView(generic.DetailView):
 #TEST JOURNAL ENTRIES REQUEST RENDER
 def JournalEntries(request):
     submitted = False
+
+    '''Utilizes a dictionary to add initial value for user ID 
+       based on the current user's ID recorded auth_table in 
+       the Railway Database so that each journal made is 
+       specific to the current user logged in'''
+    initial_dict = {'user_id': request.user.id}
+
     if(request.method == "POST"):
-        form = JournalForm(request.POST)
+        form = JournalForm(request.POST, initial = initial_dict)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/journals/journal-entries?submitted=True')
     else:
-        form = JournalForm
+        form = JournalForm(initial = initial_dict)
         if 'submitted' in request.GET:
             submitted = True
 
-    '''We pass in the id of the current user that is logged in to the website
-       to show user specific journals'''
+    '''Passes in the id of the current user ID that is logged in to the 
+       website to show user specific journals'''
     journal_list = Journal.objects.filter(user_id = request.user.id)
     
     return render(request, 'journals/Journal Entries.html', {'form':form, 'submitted':submitted, 'journal_list':journal_list})
