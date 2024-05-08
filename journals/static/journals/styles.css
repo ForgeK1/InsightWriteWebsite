@@ -844,12 +844,15 @@
        top: 3px;
        right: 30px;
        /* Adjust this value so that it doesn't overlap with the delete button */
-       background: transparent;
+       background: #4f6161;
        border: none;
        cursor: pointer;
        padding: 5px;
        z-index: 20;
-       color: #4f6161;
+       color: #FFFFFF;
+       text-decoration:none;
+       border-radius:5px;
+       padding:5px 5px
    }
 
 

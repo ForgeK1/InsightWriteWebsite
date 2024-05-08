@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
@@ -22,11 +22,7 @@ class IndexView(generic.ListView):
 class DetailView(generic.DetailView):
     template_name = 'journals/detail.html'
 
-#define custom view for the journal page
-# class JournalEntriesView(TemplateView):
-#     template_name = 'journals/Journal Entries.html'
-
-#TEST JOURNAL ENTRIES REQUEST RENDER
+# Main Journal Entry webpage (Create/Read Journals)
 def JournalEntries(request):
     submitted = False
 
@@ -48,9 +44,19 @@ def JournalEntries(request):
 
     '''Passes in the id of the current user ID that is logged in to the 
        website to show user specific journals'''
-    journal_list = Journal.objects.filter(user_id = request.user.id)
+    journal_list = Journal.objects.filter(user_id = request.user.id).order_by('-journal_id').values()
     
     return render(request, 'journals/Journal Entries.html', {'form':form, 'submitted':submitted, 'journal_list':journal_list})
+
+
+# Update Journal Entry page
+def update_entry(request, journal_id):
+    journal_entry = Journal.objects.get(pk=journal_id)
+    form = JournalForm(request.POST or None, instance=journal_entry)
+    if form.is_valid():
+        form.save()
+        return redirect('journals:journal_entries')
+    return render(request, 'journals/update_entry.html', {'journal_entry': journal_entry, 'form':form})
 
 
 #define custom view for the login page when log out

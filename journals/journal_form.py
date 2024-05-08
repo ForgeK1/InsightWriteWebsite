@@ -13,13 +13,13 @@ class JournalForm(ModelForm):
         labels = {
             'user_id': '',
             'tag_id': '',
-            'title': 'Title',
-            'content': 'Fishy',
+            'title': '',
+            'content': '',
         }
         #attaches bootstrap onto form fields for styling
         widgets = {
             'user_id': forms.NumberInput(attrs={'class':'form-control', 'placeholder':'User ID'}),
             'tag_id': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Tag ID'}),
             'title': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Enter title here'}),
-            'content': forms.Textarea(attrs={'class':'form-control', 'placeholder':'Write your journal entry here, you can even add an image'}),
+            'content': forms.Textarea(attrs={'class':'form-control', 'placeholder':'Write your journal entry here'}),
         }
