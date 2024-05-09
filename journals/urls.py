@@ -12,7 +12,14 @@ urlpatterns = [
 
     #configure the URL pattern for the /journal-entries page
     path('journal-entries/', views.JournalEntries, name='journal_entries'),
+
+    #configure the URL pattern for the /update_entry page
     path('update_entry/<journal_id>', views.update_entry, name='update-entry'),
+
+    #configure the URL pattern for the /delete_entry (pseudo) page,
+    #merely redirects back to journal_entries after deletion
+    path('delete_entry/<journal_id>', views.delete_entry, name='delete-entry'),
+
 
     #configure the URL pattern for the /custom_logout_page
     path('custom_login_redirect/', CustomLoginRedirectView.as_view(), name='custom_login_redirect'),

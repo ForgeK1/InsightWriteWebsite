@@ -841,8 +841,8 @@
    /* Style for edit button */
    .edit-btn {
        position: absolute;
-       top: 3px;
-       right: 30px;
+       top: 1px;
+       right: 70px;
        /* Adjust this value so that it doesn't overlap with the delete button */
        background: #4f6161;
        border: none;

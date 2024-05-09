@@ -285,6 +285,7 @@
                 <p>Journal Entry Date: {{ journal.entry_date }}</p>
                 <p>Jorunal Last Modified: {{ journal.last_modified_date }}</p>
                 <a href="{% url 'journals:update-entry' journal.journal_id %}" class="edit-btn">Update</a>
+                <a href="{% url 'journals:delete-entry' journal.journal_id %}" class="delete-btn">Delete</a>
               </div>
               <br>
               <br>

@@ -49,7 +49,7 @@ def JournalEntries(request):
     return render(request, 'journals/Journal Entries.html', {'form':form, 'submitted':submitted, 'journal_list':journal_list})
 
 
-# Update Journal Entry page
+# Update Journal Entry page, redirects to JournalEntries view
 def update_entry(request, journal_id):
     journal_entry = Journal.objects.get(pk=journal_id)
     form = JournalForm(request.POST or None, instance=journal_entry)
@@ -57,6 +57,13 @@ def update_entry(request, journal_id):
         form.save()
         return redirect('journals:journal_entries')
     return render(request, 'journals/update_entry.html', {'journal_entry': journal_entry, 'form':form})
+
+
+# Delete a Journal Entry
+def delete_entry(request, journal_id):
+    journal_entry = Journal.objects.get(pk=journal_id)
+    journal_entry.delete()
+    return redirect('journals:journal_entries')    
 
 
 #define custom view for the login page when log out
