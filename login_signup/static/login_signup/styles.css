@@ -1,6 +1,8 @@
 /** login_signup CSS Styles***/
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
+html {
+    scroll-behavior: smooth;
+}
 *{
     margin: 0;
     padding: 0;
@@ -33,7 +35,7 @@ header{
 
 .InsightWrite{
     display: flex;
-align-items: center; /* Center items vertically */
+    align-items: center; /* Center items vertically */
     font-size: 2em;
     color: #2a2a28;
     user-select: none;

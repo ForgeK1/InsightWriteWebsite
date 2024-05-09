@@ -46,6 +46,7 @@
 
   <body class="container">
     {% load socialaccount %}
+    {% if user.is_authenticated %}
 
     <div>
       <header>
@@ -104,7 +105,7 @@
           <li>
             <a
               class="dropdown-item"
-              href="{% url 'account_logout' %}?next=/login_signup"
+              href="{% url 'account_logout' %}?next=/"
               ><ion-icon name="log-out" style="margin-right: 20px"></ion-icon
               >Logout</a
             >
@@ -169,7 +170,11 @@
         </div>
         <!-- Card 2 -->
         <div class="col-lg-6 col-md-6 mb-4">
+<<<<<<< HEAD
           <a href="{% url 'account_logout' %}?next=/calendar">
+=======
+          <a href="/journals/calendar/">
+>>>>>>> 0f630299b56fdfaccd317f7d4129d7476ef7a8e9
             <div class="card">
               <!-- Card image -->
               <div class="card-image">
@@ -291,5 +296,7 @@
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
+
+    {% endif %}
   </body>
 </html>

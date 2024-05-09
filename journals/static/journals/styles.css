@@ -1,16 +1,10 @@
    /**this is css style for the journal entries app**/
 
 
-
-
    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-
-
-
-
-
-
-
+   html {
+    scroll-behavior: smooth;
+}
 
    * {
        margin: 0;
@@ -18,10 +12,6 @@
        box-sizing: border-box;
        font-family: 'Poppins', sans-serif;
    }
-
-
-
-
 
 
 
@@ -222,9 +212,6 @@
        pointer-events: none;
        transition: opacity .3s;
    }
-
-
-
 
 
 
@@ -572,6 +559,8 @@
        border: 1px solid #ddd;
        border-radius: 3px;
        margin-bottom: 10px;
+       display:block;
+       width:100%;
    }
 
 
@@ -839,15 +828,18 @@
    /* Style for edit button */
    .edit-btn {
        position: absolute;
-       top: 3px;
-       right: 30px;
+       top: 1px;
+       right: 70px;
        /* Adjust this value so that it doesn't overlap with the delete button */
-       background: transparent;
+       background: #4f6161;
        border: none;
        cursor: pointer;
        padding: 5px;
        z-index: 20;
-       color: #4f6161;
+       color: #FFFFFF;
+       text-decoration:none;
+       border-radius:5px;
+       padding:5px 5px
    }
 
 
@@ -1807,6 +1799,8 @@
 
 
 
+   /** --------------------------------------------------------------------------------------------------  **/
+
    /* Dark mode styles for the calendar */
    [data-theme="dark"] .calendar {
        background-color: #454545;
@@ -1936,9 +1930,9 @@
 
    /* Dark mode styles for the input area within the daily prompt */
    [data-theme="dark"] .input-response {
-       background-color: #444;
+
        /* Dark background for the input */
-       color: #fff;
+       color: #444;
        /* White text for better contrast */
        border-color: #555;
        /* Darker border to match the input background */
@@ -2007,5 +2001,205 @@
        color: var(--entry-text-color);
    }
 
+   [data-theme="dark"] #streak-popup {
+    background-color: #656565;
+    color:#D1D1D1;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+   }
+
+   /** --------------------------------------------------------------------------------------------------  **/
+
+#streak-popup {
+    position: fixed; /* Changed to fixed for consistent positioning across screen sizes */
+    top: 5%; /* End position */
+    right: 5%; /* End position */
+    transform: translate(-50%, -50%); 
+    background-color: #F2F5EC;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: none; /* Initially hidden */
+    animation: slideInFromSidebar 0.5s ease-out forwards; /* Animation applied */
+}
+
+/* Styles when not hidden */
+#streak-popup:not(.hidden) {
+    display: block; /* Make visible when class 'hidden' is not present */
+}
+
+.fire-icon {
+    color: orange;
+    margin-right: 5px;
+}
+
+/* Define keyframes for moving the popup */
+@keyframes slideInFromSidebar {
+    0% {
+        top: 20%; /* Starting from the bottom (adjust based on sidebar's position) */
+        right: 10%; /* Start close to the sidebar's width */
+        opacity: 0; /* Start hidden */
+    }
+    100% {
+        top: 5%; /* End position */
+        right: 6%; /* End position */
+        opacity: 1; /* Fully visible */
+    }
+}
+
+  /** --------------------------------------------------------------------------------------------------  **/
 
 
+/* Search styles */
+.search-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: none; /* This hides the overlay initially */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+
+
+
+.search-box {
+    position: relative;
+    background: #f3f3f3; /* Light grey background that matches your theme */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Soft shadow for 3D effect */
+    display: flex;
+    gap: 10px;
+    width: 50%; /* Adjust based on your preference */
+}
+
+
+.search-box input[type="text"] {
+    flex-grow: 1; /* Allows input to expand more */
+    padding: 8px 10px;
+    font-size: 16px; /* Larger font size for better readability */
+    border: 2px solid #ccc; /* Subtle border */
+    border-radius: 4px; /* Rounded borders */
+}
+
+
+.search-box button {
+    background-color: #b0c0a3; /* Green background for buttons */
+    color: #333;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+
+.search-box button:hover {
+    background-color: #687c7d; /* Slightly darker green on hover */
+}
+
+
+/* Updated styles for the close button */
+#close-search {
+    position: absolute; /* Position relative to .search-box */
+    top: -10px; /* Adjust as needed */
+    right: -10px; /* Adjust to keep the button outside the search box */
+    background-color: #54696E;
+    color: #F1F7F3;
+    border: none;
+    border-radius: 50%;
+    padding: 0;
+    height: 35px;
+    width: 35px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-size: 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#close-search:hover {
+    background-color: #7d9491; /* Lighter color on hover for visibility */
+}
+
+
+#clear-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#clear-button2 i {
+    font-size: 20px; /* Size of the 'x' icon */
+}
+
+
+
+
+@media (max-width: 600px) {
+    #close-search {
+        top: -5px;
+        right: -5px;
+    }
+}
+
+
+/* Dark mode styles for the search overlay */
+[data-theme="dark"] .search-overlay {
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+
+/* Dark mode styles for the search box and its components */
+[data-theme="dark"] .search-box {
+    background-color: #333;
+    color: #fff;
+}
+
+
+[data-theme="dark"] .search-box input[type="text"] {
+    background-color: #555;
+    color: #fff;
+    border-color: #777;
+}
+
+
+[data-theme="dark"] .search-box input[type="text"]::placeholder {
+    color: #ccc;
+}
+
+
+[data-theme="dark"] .search-box button {
+    background-color: #555;
+    color: #ddd;
+}
+
+
+[data-theme="dark"] .search-box button:hover {
+    background-color: #686868;
+    color: #fff;
+}
+
+
+/* Ensure consistent styling for specific buttons if needed */
+[data-theme="dark"] #close-search,
+[data-theme="dark"] #clear-button2 {
+    background-color: #444;
+    color: #ccc;
+}
+
+
+[data-theme="dark"] #close-search:hover,
+[data-theme="dark"] #clear-button2:hover {
+    background-color: #686868;
+    color: #fff;
+}

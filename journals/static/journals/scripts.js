@@ -783,6 +783,10 @@ document.addEventListener('DOMContentLoaded', function () {
          saveEntry();
      });***/
 
+ 
+
+
+
 
      //Function to auto-Save the Data, this would involve sending the data to a server using AJAX
      let lastSavedTitle = '';
@@ -853,4 +857,53 @@ document.addEventListener('DOMContentLoaded', function () {
      });
 
 
-
+     //streak function
+     document.addEventListener('DOMContentLoaded', function() {
+        var streakBtn = document.getElementById('streak-btn');
+        if (streakBtn) {
+            console.log('Streak button is properly initialized.');
+            var streakPopup = document.getElementById('streak-popup');
+            
+            streakBtn.addEventListener('click', function(event) {
+                console.log('Streak button clicked');
+                event.preventDefault();
+                streakPopup.classList.toggle('hidden');
+                console.log('Popup should now be:', streakPopup.classList.contains('hidden') ? 'hidden' : 'visible');
+            });
+        } else {
+            console.error('Streak button not found');
+        }
+    });
+    
+//---------------------------------------------------------------------------------------------------------
+         //Search function
+         document.getElementById('search-btn').addEventListener('click', function() {
+            document.getElementById('search-overlay').style.display = 'flex'; // Show the overlay
+            document.getElementById('search-input').focus(); // Automatically focus the input
+        });
+    
+    
+         function closeSearch() {
+             document.getElementById('search-overlay').style.display = 'none'; // Hide the search overlay
+         }
+    
+    
+         function performSearch() {
+             const query = document.getElementById('search-input').value;
+             const url = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+             window.open(url, '_blank'); // Open in a new tab
+             closeSearch(); // Optionally close the search after submitting
+         }
+    
+    
+         document.addEventListener('keydown', function (event) {
+             if (event.key === "Escape") {
+                 closeSearch(); // Close search if Esc key is pressed
+             }
+         });
+    
+    
+         document.getElementById('clear-button2').addEventListener('click', function () {
+             document.querySelector('.search-box input[type="text"]').value = '';
+         });
+    
