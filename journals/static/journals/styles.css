@@ -559,6 +559,8 @@
        border: 1px solid #ddd;
        border-radius: 3px;
        margin-bottom: 10px;
+       display:block;
+       width:100%;
    }
 
 
@@ -826,15 +828,18 @@
    /* Style for edit button */
    .edit-btn {
        position: absolute;
-       top: 3px;
-       right: 30px;
+       top: 1px;
+       right: 70px;
        /* Adjust this value so that it doesn't overlap with the delete button */
-       background: transparent;
+       background: #4f6161;
        border: none;
        cursor: pointer;
        padding: 5px;
        z-index: 20;
-       color: #4f6161;
+       color: #FFFFFF;
+       text-decoration:none;
+       border-radius:5px;
+       padding:5px 5px
    }
 
 

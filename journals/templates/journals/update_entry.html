@@ -4,13 +4,15 @@
 <html lang="en">
 
 
+
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
 
   <link rel="stylesheet" type="text/css" href="{% static 'journals/styles.css' %}">
   <script src="{% static 'journals/scripts.js' %}" defer></script>
@@ -28,13 +30,13 @@
 
 
 
-    <!-- BoxIcons -->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 
 
 
-  <title>Journal Entries</title>
+  <title>Update Journal Entries</title>
 
 
 </head>
@@ -97,12 +99,12 @@
 
 
 
-        <li class="list-item">
-          <a href="{% url 'journals:gallery' %}">
-            <i class='bx bx-image'></i>
-            <span class="link-name" style="--i:5;">Media</span>
-          </a>
-        </li>
+      <li class="list-item">
+        <a href="#">
+          <i class='bx bx-image'></i>
+          <span class="link-name" style="--i:5;">Media</span>
+        </a>
+      </li>
 
 
 
@@ -121,12 +123,12 @@
 
 
 
-        <li class="list-item">
-          <a href="#" id="search-btn">
-            <i class='bx bx-search'></i>
-            <span class="link-name" style="--i:7;">Search</span>
-          </a>
-        </li>
+      <li class="list-item">
+        <a href="#">
+          <i class='bx bx-search'></i>
+          <span class="link-name" style="--i:7;">Search</span>
+        </a>
+      </li>
 
 
 
@@ -135,12 +137,12 @@
 
 
 
-        <li class="list-item">
-          <a href="{% url 'journals:calendar' %}">
-            <i class='bx bx-calendar-event'></i>
-            <span class="link-name" style="--i:8;">Event-Calendar</span>
-          </a>
-        </li>
+      <li class="list-item">
+        <a href="#">
+          <i class='bx bx-list-ul'></i>
+          <span class="link-name" style="--i:8;">List</span>
+        </a>
+      </li>
 
 
 
@@ -183,6 +185,11 @@
 
 
 
+
+
+
+
+
   <!-- Top right time bar -->
   <div id="time-bar">Friday, 11:31 PM</div>
   <!-- Word count -->
@@ -191,15 +198,6 @@
 
 
 
-        <!-- Search overlay and input -->
-        <div id="search-overlay" class="search-overlay">
-          <div class="search-box">
-            <input type="text" id="search-input" placeholder="Search...">
-            <button id="clear-button2">Clear</button>
-            <button id="search-submit" onclick="performSearch()"><i class='bx bx-search'></i></button>
-            <button id="close-search" onclick="closeSearch()"><i class='bx bx-x'></i></button>
-          </div>
-        </div>
 
 
 
@@ -221,7 +219,7 @@
 
 
 
-      <h1>Create a Journal Entry</h1>
+      <h1>Update Journal</h1>
       <div class="entry-form">
 
         <button id="clear-button" class="clear-btn">
@@ -229,79 +227,49 @@
           <span class="btn-text"><strong>Clear</strong></span>
         </button>
 
-
-
-        {% if submitted %}
-        SUCCESS!
-        {% endif %}
         <form action="" method=POST>
-          {% csrf_token %}
-
-          <!-- We have ther user_id form field hidden because the
-               ID of the current user is already passed in as initial
-               value from the views.py file-->
-
-          <!-- <label for="id_user_id">User ID:</label> -->
-          <p style="display: none;"> {{ form.user_id }} </p>
-          <label for="id_title">Title:</label>
-          {{ form.title }}
-          <label for="id_tag_id">Tag ID:</label>
-          {{ form.tag_id }}
-          <label for="id_content">Entry:</label>
-
-          <!-- Supported buttons below Entry: -->
-          <nav class="horizontal-navbar">
-            <ul>
-              <li><button type="button" title="Attach File" class="file-button"><i class='bx bx-paperclip'></i></button></li>
-              <li><button type="button" title="Bold" data-command="bold"><i class='bx bx-bold'></i></button></li>
-              <li><button type="button" title="Italic" data-command="italic"><i class='bx bx-italic'></i></button></li>
-              <li><button type="button" title="Underline" data-command="underline"><i class='bx bx-underline'></i></button></li>
-              <li><button type="button" title="Header" data-command="formatBlock" data-value="h1"><i class='bx bx-heading'></i></button></li>
-              <li><button type="button" title="Unordered" data-command="insertUnorderedList"><i class='bx bx-list-ul'></i></button></li>
-              <li><button type="button" title="Ordered" data-command="insertOrderedList"><i class='bx bx-list-ol'></i></button></li>
-              <li><button type="button" title="Checklist"><i class='bx bx-list-check'></i></button></li>
-              <li><button title="Link" data-command="createLink"><i class='bx bx-link-alt'></i></button></li>
-              <li><button type="button" title="Tag" ><i class='bx bx-purchase-tag'></i></button></li>
-
-
-            </ul>
-          </nav>
-          <!-- image load in for user-->
-          <div class="entry-content">
-            <input type="file" id="upload-image" class="file-input"> <!-- Image upload input -->
-            <div class="image-preview" style="margin-top: 4px;"></div> <!-- Image preview div -->
-          </div>
-          {{ form.content }}
-
-          <input type="submit" value="Save Entry" id="submit-button" style="width:100%">
-        </form>
-
-        <div class="entries" id="entries-container">
-          <div class="entries" id="entries">
-            <!-- Prints backwards, from latest to oldest -->
-            {% for journal in journal_list %}
-              <div style="position:relative">
-                <p>User ID: {{ journal.user_id }}</p>
-                <p>Journal ID: {{ journal.journal_id}}</p>
-                <p>Journal Title: {{ journal.title }}</p>
-                <p>Journal Content: {{ journal.content }}</p>
-                <p>Journal Entry Date: {{ journal.entry_date }}</p>
-                <p>Jorunal Last Modified: {{ journal.last_modified_date }}</p>
-                <a href="{% url 'journals:update-entry' journal.journal_id %}" class="edit-btn">Update</a>
-                <a href="{% url 'journals:delete-entry' journal.journal_id %}" class="delete-btn">Delete</a>
-              </div>
-              <br>
-              <br>
-            {% endfor %}
-            <h1>{{ request.user.username|capfirst }}'s Journal Entries</h1>
-          </div>
-        </div>
+            {% csrf_token %}
+  
+            <!-- We have ther user_id form field hidden because the
+                 ID of the current user is already passed in as initial
+                 value from the views.py file-->
+  
+            <!-- <label for="id_user_id">User ID:</label> -->
+            <p style="display: none;"> {{ form.user_id }} </p>
+            <label for="id_title">Title:</label>
+            {{ form.title }}
+            <label for="id_tag_id">Tag ID:</label>
+            {{ form.tag_id }}
+            <label for="id_content">Entry:</label>
+  
+            <!-- Supported buttons below Entry: -->
+            <nav class="horizontal-navbar">
+              <ul>
+                <li><button type="button" title="Attach File" class="file-button"><i class='bx bx-paperclip'></i></button></li>
+                <li><button type="button" title="Bold"><i class='bx bx-bold'></i></button></li>
+                <li><button type="button" title="Italic"><i class='bx bx-italic'></i></button></li>
+                <li><button type="button" title="Underline"><i class='bx bx-underline'></i></button></li>
+                <li><button type="button" title="Header"><i class='bx bx-heading'></i></button></li>
+                <li><button type="button" title="Unordered"><i class='bx bx-list-ul'></i></button></li>
+                <li><button type="button" title="Ordered"><i class='bx bx-list-ol'></i></button></li>
+                <li><button type="button" title="Checklist"><i class='bx bx-list-check'></i></button></li>
+                <li><button type="button" title="Tag"><i class='bx bx-purchase-tag'></i></button></li>
+  
+  
+              </ul>
+            </nav>
+            <!-- image load in for user-->
+            <div class="entry-content">
+              <input type="file" id="upload-image" class="file-input"> <!-- Image upload input -->
+              <div class="image-preview" style="margin-top: 4px;"></div> <!-- Image preview div -->
+            </div>
+            {{ form.content }}
+  
+            <input type="submit" value="Save Entry" id="submit-button" style="width:100%">
+          </form>
 
 
-
-
-      </div>
-  </section>
+        
   <!-- ---------------------------------------------------------------------------------------------------------------- -->
   <!-- Hidden Calendar -->
   <div class="header">
@@ -349,8 +317,11 @@
         </button>
       </div>
 
-      </div>
+
+
+
     </div>
+  </div>
 
 
 
@@ -360,10 +331,11 @@
 
 
 
-<!-- Streak Popup -->
-<div id="streak-popup" class="hidden">
-  <span class="fire-icon"><i class="fas fa-fire"></i></span> Streak: Day 1
-</div>
+
+
+
+
+
 
 
 
@@ -388,5 +360,4 @@
 
 
 </body>
-
 </html>
