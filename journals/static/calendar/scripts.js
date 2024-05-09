@@ -1,3 +1,23 @@
+//nav bar JS Scripts
+let lastScrollTop = 0; // Variable to store the last scroll position
+const header = document.querySelector('header'); // Select the header
+
+
+window.addEventListener('scroll', function() {
+    let scrollTop = window.scrollY; // Get current scroll position
+
+
+    if (scrollTop > lastScrollTop && scrollTop > 50) {
+        // If current scroll position is greater than the last one and more than 50px from the top
+        header.classList.add('header-hidden');
+    } else {
+        // If scrolling up
+        header.classList.remove('header-hidden');
+    }
+    lastScrollTop = scrollTop; // Update lastScrollTop to the new position
+});
+
+
 //Calendar JS Scripts
 const calendar = document.querySelector(".calendar"),
   date = document.querySelector(".date"),

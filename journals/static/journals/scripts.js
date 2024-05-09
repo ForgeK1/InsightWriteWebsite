@@ -875,3 +875,35 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
     
+//---------------------------------------------------------------------------------------------------------
+         //Search function
+         document.getElementById('search-btn').addEventListener('click', function() {
+            document.getElementById('search-overlay').style.display = 'flex'; // Show the overlay
+            document.getElementById('search-input').focus(); // Automatically focus the input
+        });
+    
+    
+         function closeSearch() {
+             document.getElementById('search-overlay').style.display = 'none'; // Hide the search overlay
+         }
+    
+    
+         function performSearch() {
+             const query = document.getElementById('search-input').value;
+             const url = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+             window.open(url, '_blank'); // Open in a new tab
+             closeSearch(); // Optionally close the search after submitting
+         }
+    
+    
+         document.addEventListener('keydown', function (event) {
+             if (event.key === "Escape") {
+                 closeSearch(); // Close search if Esc key is pressed
+             }
+         });
+    
+    
+         document.getElementById('clear-button2').addEventListener('click', function () {
+             document.querySelector('.search-box input[type="text"]').value = '';
+         });
+    

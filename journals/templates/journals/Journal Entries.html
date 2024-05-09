@@ -116,7 +116,7 @@
 
 
         <li class="list-item">
-          <a href="#">
+          <a href="#" id="search-btn">
             <i class='bx bx-search'></i>
             <span class="link-name" style="--i:7;">Search</span>
           </a>
@@ -130,9 +130,9 @@
 
 
         <li class="list-item">
-          <a href="#">
-            <i class='bx bx-list-ul'></i>
-            <span class="link-name" style="--i:8;">List</span>
+          <a href="{% url 'journals:calendar' %}">
+            <i class='bx bx-calendar-event'></i>
+            <span class="link-name" style="--i:8;">Event-Calendar</span>
           </a>
         </li>
 
@@ -177,11 +177,6 @@
 
 
 
-
-
-
-
-
     <!-- Top right time bar -->
     <div id="time-bar">Friday, 11:31 PM</div>
     <!-- Word count -->
@@ -190,9 +185,15 @@
 
 
 
-
-
-
+        <!-- Search overlay and input -->
+        <div id="search-overlay" class="search-overlay">
+          <div class="search-box">
+            <input type="text" id="search-input" placeholder="Search...">
+            <button id="clear-button2">Clear</button>
+            <button id="search-submit" onclick="performSearch()"><i class='bx bx-search'></i></button>
+            <button id="close-search" onclick="closeSearch()"><i class='bx bx-x'></i></button>
+          </div>
+        </div>
 
 
 
