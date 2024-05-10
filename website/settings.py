@@ -269,7 +269,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'journals', 'static'),  # The static directory for the journals app
     os.path.join(BASE_DIR, 'login_signup', 'static'),# The static directory for the login_signup page
     os.path.join(BASE_DIR, 'meditations', 'static'),# The static directory for the meditations page
-    os.path.join(BASE_DIR, 'calendar', 'static'),# The static directory for the calendar page
 
 
     #I commented these path out because it doesn't make sense to have css and js in poll file
