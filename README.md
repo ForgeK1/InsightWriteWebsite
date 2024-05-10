@@ -3,9 +3,10 @@
 
 # Insight Write (2024)
 ### Documentation
-- Proposal:
-- Change Management Plan:
-- STP:
-- SRD:
-- SDD:
-- Final Presentation:
+#### - Please refer to this repository in the "Documentation" directory for all related project documentations including:
+- Project Proposal
+- Change Management Plan
+- Software Testing Plan
+- Software Requirements
+- Software Design
+- Final Presentation Slide on the current project state
