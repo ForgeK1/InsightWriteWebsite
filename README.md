@@ -1,6 +1,6 @@
 ## CS3337 (Software Engineering) - Project Repository 
 
-## Group Members: Keyvan Mahmoodzadeh Kani, Miguel Gonzalez Torres, Tony Lau, Hoang Le, Will May, Hayk Vardapetyan, Jian Verdad, Niyusha Zarnegar
+# Group Members: Keyvan Mahmoodzadeh Kani, Miguel Gonzalez Torres, Tony Lau, Hoang Le, Will May, Hayk Vardapetyan, Jian Verdad, Niyusha Zarnegar
 
 # Insight Write (2024)
 ### Documentation
