@@ -1,4 +1,4 @@
-## CS3337 - GROUP 7 Project Repository 
+## CS3337 (Software Engineering) - Project Repository 
 ### Group Members: Miguel Gonzalez Torres, Tony Lau, Hoang Le, Keyvan Mahmoodzadeh Kani, Will May, Hayk Vardapetyan,Jian Verdad, Niyusha Zarnegar
 
 # Insight Write (2024)
