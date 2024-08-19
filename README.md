@@ -2,14 +2,14 @@
 
 **Description**: Welcome! My team and I collaborated to create "Insight Write," a Django web application built with Python. Designed to offer a unique journaling experience, our project aims to serve individuals interested in personal growth and self-expression. Insight Write provides a private and supportive space for users to reflect and improve their mental health.
 
-### Project contents
+### Project contents 💻
 
-#### A video demonstrating the website 🎥: 
+#### A video demonstrating the website: 
 
 #### Website contents: 
 - 
 
-### Documentation
+### Documentation 📜
 
 #### Please refer to this repository in the "Documentation" directory for all related project documentation including:
 - Project Proposal
