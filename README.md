@@ -12,11 +12,11 @@ Welcome! My team and I collaborated to create Insight Write 📒📝, a Django w
 ### Documentation 📜
 
 #### Please refer to this repository in the "documentation" directory for all related project documentation including:
-- Project Proposal
-- Change Management Plan
-- Software Testing Plan
-- Software Requirements
-- Software Design
-- Final Presentation Slide on the current project state
+1. Project Proposal
+2. Change Management Plan
+3. Software Testing Plan
+4. Software Requirements
+5. Software Design
+6. Final Presentation Slide on the current project state
 
 #### Group Members: Keyvan Mahmoodzadeh Kani, Miguel Gonzalez Torres, Tony Lau, Hoang Le, Will May, Hayk Vardapetyan, Jian Verdad, Niyusha Zarnegar
