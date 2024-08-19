@@ -11,7 +11,7 @@
 
 ### Documentation 📜
 
-#### Please refer to this repository in the "Documentation" directory for all related project documentation including:
+#### Please refer to this repository in the "documentation" directory for all related project documentation including:
 - Project Proposal
 - Change Management Plan
 - Software Testing Plan
