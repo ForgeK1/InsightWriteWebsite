@@ -3,7 +3,7 @@ Welcome! For our Software Engineering final project, my team and I collaborated 
 
 ### Project Contents 💻
 
-A video demonstrating the website 
+[Insight Write Website Video Showcase](https://1drv.ms/v/s!Ai-JIymNQM3GgoBGCreTIyCWJl-BTw?e=qR5dnf)
 
 [Insight Write Product Google Slides Presentation & Demo](https://github.com/user-attachments/files/16719811/Insight.Write.Product.Presentation.Demo.-.Group.7.pdf)
 
