@@ -11,7 +11,7 @@ Our website is designed to offer a unique journaling experience, and our project
 
 ### Documentation 📜
 Please refer to this repository in the "documentation" directory for all related project documentation including:
-1. Project Proposal
+1. Product Proposal
 2. Change Management Plan
 3. Software Testing Plan
 4. Software Requirements
