@@ -5,7 +5,7 @@ Our website is designed to offer a unique journaling experience, and our project
 
 ### Project Contents 💻
 
-[Insight Write Website Video Showcase](https://1drv.ms/v/s!Ai-JIymNQM3GgoBGCreTIyCWJl-BTw?e=qR5dnf)
+[Insight Write Website Video Showcase](https://drive.google.com/file/d/1c9Ukrlcn4dsno9vPqzJj2R-oRgrBjnLr/view?usp=sharing)
 
 [Insight Write Google Slides Presentation](https://github.com/user-attachments/files/16719811/Insight.Write.Product.Presentation.Demo.-.Group.7.pdf)
 
